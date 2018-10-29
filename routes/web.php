@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index')->name('index');
+
+//登陆、注册、权限
+Route::get('/signup','UsersController@create')->name('signup');
