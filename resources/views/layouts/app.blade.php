@@ -16,32 +16,35 @@ Purchase: http://wrapbootstrap.com
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}" type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/weather-icons.min.css')}}" rel="stylesheet" />
 
 
 
     <!--Beyond styles-->
-    <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/demo.min.css" rel="stylesheet" />
-    <link href="assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link  href="{{asset('assets/css/beyond.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/demo.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/typicons.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="assets/js/skins.min.js"></script>
+    <script src="{{asset('assets/js/skins.min.js')}}"></script>
+
+    <script src="{{asset('assets/js/jquery-2.0.3.min.js')}}"></script>
+
 </head>
 <!-- /Head -->
 <!-- Body -->
 <body>
     <!-- Loading Container -->
-    <div class="loading-container">
+    <!-- <div class="loading-container">
         <div class="loading-progress">
             <div class="rotator">
                 <div class="rotator">
@@ -61,7 +64,7 @@ Purchase: http://wrapbootstrap.com
             </div>
             <div class="rotator"></div>
         </div>
-    </div>
+    </div> -->
     <!--  /Loading Container -->
     <!-- Navbar -->
     @include('layouts._header')
@@ -74,6 +77,7 @@ Purchase: http://wrapbootstrap.com
             @include('layouts._left')
             <!-- /Page Sidebar -->
             <!-- Page Content -->
+            <!-- @include('shared._messages') -->
             @yield('content')
             <!-- /Page Content -->
         </div>
@@ -83,11 +87,12 @@ Purchase: http://wrapbootstrap.com
     </div>
 
     <!--Basic Scripts-->
-    <script src="assets/js/jquery-2.0.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!--Beyond Scripts-->
-    <script src="assets/js/beyond.min.js"></script>
+    <script src="{{asset('assets/js/beyond.min.js')}}"></script>
+    
 
 
     <!--Page Related Scripts-->

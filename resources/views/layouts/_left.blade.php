@@ -11,7 +11,7 @@
                     </li>
                     <!--Databoxes-->
                     <li>
-                        <a href="databoxes.html">
+                        <a href="{{route('users.index')}}">
                             <i class="menu-icon glyphicon glyphicon-tasks"></i>
                             <span class="menu-text"> 人员管理 </span>
                         </a>

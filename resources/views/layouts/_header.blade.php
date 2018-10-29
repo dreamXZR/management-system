@@ -6,7 +6,7 @@
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <img src="assets/img/logo.png" alt="" />
+                            <img src="{{asset('assets/img/logo.png')}}" alt="" />
                         </small>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages">
                                     <li>
                                         <a href="#">
-                                            <img src="assets/img/avatars/divyia.jpg" class="message-avatar" alt="Divyia Austin">
+                                            <img src="{{asset('assets/img/avatars/divyia.jpg')}}" class="message-avatar" alt="Divyia Austin">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     Divyia Austin
@@ -50,7 +50,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/img/avatars/bing.png" class="message-avatar" alt="Microsoft Bing">
+                                            <img src="{{asset('assets/img/avatars/bing.png')}}" class="message-avatar" alt="Microsoft Bing">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     Bing.com
@@ -69,7 +69,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/img/avatars/adam-jansen.jpg" class="message-avatar" alt="Divyia Austin">
+                                            <img src="{{asset('assets/img/avatars/adam-jansen.jpg')}}" class="message-avatar">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     Nicolas
@@ -97,7 +97,7 @@
                                         <img src="assets/img/avatars/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>admin</span></span></h2>
+                                        <h2><span class="profile"><span>{{ Auth::user()->name }}</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -105,9 +105,15 @@
                                     
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
-                                            退出登陆
+                                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                退出登陆
                                         </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            
+                                            
+                                        </form>
                                     </li>
                                 </ul>
                                 <!--/Login Area Dropdown-->
