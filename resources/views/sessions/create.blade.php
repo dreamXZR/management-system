@@ -50,9 +50,7 @@ Purchase: http://wrapbootstrap.com
                 <div class="loginbox-textbox">
                     <input type="password" class="form-control" placeholder="密码" name="password" />
                 </div>
-                <!-- <div class="loginbox-forgot">
-                    <a href="{{ route('password.request') }}">忘记密码?</a>
-                </div> -->
+                
                 <div class="loginbox-submit">
                     <button type="submit" class="btn btn-primary btn-block" >登陆</button>
                 </div> 
