@@ -24,6 +24,8 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 Route::middleware(['auth'])->group(function(){
 	Route::get('/', 'IndexController@index')->name('index');       //首页
 	Route::resource('tags','TagsController');                      //标签
+	Route::resource('drath_proofs', 'DrathProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //死亡证明
 });
+
 
 
