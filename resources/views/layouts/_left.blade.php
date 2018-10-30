@@ -18,9 +18,9 @@
                     </li>
                     <!--Widgets-->
                     <li>
-                        <a href="widgets.html">
+                        <a href="{{route('tags.index')}}">
                             <i class="menu-icon fa fa-th"></i>
-                            <span class="menu-text"> Widgets </span>
+                            <span class="menu-text"> 标签管理 </span>
                         </a>
                     </li>
                     <!--UI Elements-->

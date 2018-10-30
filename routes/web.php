@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'IndexController@index')->name('index')->middleware('auth');
+
 
 //登陆、注册、权限、找回密码
 // Route::get('/signup','UsersController@create')->name('signup');
@@ -19,5 +19,11 @@ Route::resource('users', 'UsersController');
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+
+Route::middleware(['auth'])->group(function(){
+	Route::get('/', 'IndexController@index')->name('index');       //首页
+	Route::resource('tags','TagsController');                      //标签
+});
 
 
