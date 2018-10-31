@@ -24,6 +24,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('letter_proofs.index')}}">
+                            <i class="menu-icon fa fa-th"></i>
+                            <span class="menu-text"> 证明信 </span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('drath_proofs.index')}}">
                             <i class="menu-icon fa fa-th"></i>
                             <span class="menu-text"> 死亡证明 </span>
