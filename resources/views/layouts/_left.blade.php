@@ -17,10 +17,11 @@
                         </a>
                     </li>
                     <!--Widgets-->
+                    
                     <li>
-                        <a href="{{route('tags.index')}}">
+                        <a href="{{route('register_tables.index')}}">
                             <i class="menu-icon fa fa-th"></i>
-                            <span class="menu-text"> 标签管理 </span>
+                            <span class="menu-text"> 来访登记 </span>
                         </a>
                     </li>
                     <li>
@@ -35,7 +36,12 @@
                             <span class="menu-text"> 死亡证明 </span>
                         </a>
                     </li>
-                    
+                    <li>
+                        <a href="{{route('tags.index')}}">
+                            <i class="menu-icon fa fa-th"></i>
+                            <span class="menu-text"> 标签管理 </span>
+                        </a>
+                    </li>
                     <!--Tables-->
                     <li>
                         <a href="#" class="menu-dropdown">
