@@ -34,6 +34,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">上级分类:</label>
                             <div class="col-sm-6">
                             	<select class="form-control" name="pid" required="">
+                                    <option value="0">顶级</option>
                             		@foreach($tags as $tag)
                             		<option value='{{$tag->id}}'>{{$tag->title}}</option>
                             		@endforeach

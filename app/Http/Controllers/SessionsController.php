@@ -8,12 +8,12 @@ use Auth;
 class SessionsController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('guest',[
-    //         'only' => ['create']
-    //     ]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('guest',[
+            'only' => ['create','store']
+        ]);
+    }
     
     public function create()
     {
@@ -22,11 +22,14 @@ class SessionsController extends Controller
 
     public function store(Request $request)
     {
+
     	$credentials = $this->validate($request, [
            'email' => 'required|email|max:255',
            'password' => 'required'
        ]);
+        
     	if (Auth::attempt($credentials)) {
+
     		return redirect()->route('index');
     	}else{
     		session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');

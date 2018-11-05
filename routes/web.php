@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('letter_proofs', 'LetterProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //证明信
 	Route::resource('drath_proofs', 'DrathProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //死亡证明
 	Route::resource('register_tables', 'RegisterTablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //来访登记
+	Route::resource('informations', 'InformationsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //信息卡
 });
 
 
