@@ -30,28 +30,28 @@
                 <div id="horizontal-form">
                      @include('shared._errors')
                      
-                        <form class="form-horizontal" role="form" action="{{route('letter_proofs.store')}}" method="post">
+                        <div class="form-horizontal">
                    
-                        {{ csrf_field() }}
+                        
                         
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">现居住地详细地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('present_address')}}">
+                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='present_address'>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍所有地详细地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('residence_address')}}">
+                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='residence_address'>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">联系电话:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('phone')}}">
+                                <input class="form-control"  placeholder="" required="" type="text" v-model.trim='phone'>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -60,13 +60,13 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="residence_status" checked="">
+                                        <input type="radio"   v-model="residence_status" value="1" checked="">
                                         <span class="text">农业</span>
                                     </label>
                                 </div>
                                <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="residence_status" >
+                                        <input type="radio" v-model="residence_status" value="2">
                                         <span class="text">非农业</span>
                                     </label>
                                 </div>
@@ -79,19 +79,19 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="tag1" checked="">
+                                        <input type="radio" v-model='type1' value="1" checked="">
                                         <span class="text">业主</span>
                                     </label>
                                 </div>
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="tag1" >
+                                        <input type="radio" v-model='type1' value="2"  >
                                         <span class="text">租户</span>
                                     </label>
                                 </div>
                                <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="tag1" >
+                                        <input type="radio" v-model='type1' value="3"  >
                                         <span class="text">空房</span>
                                     </label>
                                 </div>
@@ -104,26 +104,26 @@
                             <div class="col-sm-6">
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag2"  class="colored-blue">
-                                        <span class="text">户在</span>
+                                        <input type="checkbox" v-model="type2" value="1" class="colored-blue" >
+                                        <span class="text" >户在</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag2"  class="colored-blue">
-                                        <span class="text">户不在</span>
+                                        <input type="checkbox" v-model="type2" value="2"  class="colored-blue" >
+                                        <span class="text" >户不在</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag2"  class="colored-blue">
-                                        <span class="text">人在</span>
+                                        <input type="checkbox" v-model="type2" value="3"  class="colored-blue" >
+                                        <span class="text" >人在</span>
                                     </label>
                                 </div>
                                <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag2"  class="colored-blue">
-                                        <span class="text">人不在</span>
+                                        <input type="checkbox" v-model="type2" value="4"class="colored-blue" >
+                                        <span class="text" >人不在</span>
                                     </label>
                                 </div>
                                 
@@ -135,43 +135,43 @@
                             <div class="col-sm-6">
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="1"  class="colored-blue">
                                         <span class="text">老人空巢</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="2"   class="colored-blue">
                                         <span class="text">独居</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="3"   class="colored-blue">
                                         <span class="text">复退军人</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="4"   class="colored-blue">
                                         <span class="text">残疾人</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="5"   class="colored-blue">
                                         <span class="text">侨属</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="6"   class="colored-blue">
                                         <span class="text">低保户口</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" name="tag3"  class="colored-blue">
+                                        <input type="checkbox" v-model="type3" value="7"   class="colored-blue">
                                         <span class="text">特困</span>
                                     </label>
                                 </div>
@@ -312,11 +312,11 @@
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">保存信息</button>
+                                <button type="submit" class="btn btn-default" @click="add_infomation">保存信息</button>
                                 
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,6 +332,16 @@
 	var app=new Vue({
 		el:'#app',
 		data:{
+            present_address:'',
+            residence_address:'',
+            phone:'',
+            residence_status:'',
+            type1:'',
+            type2:[],
+            type3:[],
+            situation:'',
+            other:'',
+
 			handicappeds:[],
 			handicapped:{},
 			handicapped_status:true,
@@ -367,12 +377,14 @@
 			edit_handicapped_info:function(index){
 				this.handicapped=this.handicappeds[index];
 				this.handicapped_status=false;
-                this.handicapped_index=index;
+                // this.handicapped_index=index;
 				$('#aa').click();
 			},
 
 			update_handicapped_info:function(){
-				this.handicappeds[this.handicapped_index]=this.handicapped
+                //验证
+				this.handicappeds[this.handicapped_index]=this.handicapped;
+                $('#aa_close').click();
 			},
 
             resident_info:function(){
@@ -383,9 +395,13 @@
 
             add_resident_info:function(){
                 //验证
-                console.log(this.resident);
+                //获得性别、出生年月
+                var info=this.id_number_format(this.resident.id_number);
+                this.resident.sex=info[0];
+                this.resident.birthday=info[1];
                 this.residents.push(this.resident);
                 this.resident={}
+                $('#bb_close').click();
             },
             
             del_resident_info:function(index){
@@ -405,7 +421,56 @@
             },
 
             update_resident_info:function(){
+                //验证
                 this.residents[this.resident_index]=this.resident
+                $('#bb_close').click();
+            },
+
+            add_infomation:function(){
+                //验证
+                var data={
+                     present_address:this.present_address,
+                     residence_address:this.residence_address,
+                     phone:this.phone,
+                     residence_status:this.residence_status,
+                     type1:this.type1,
+                     type2:this.type2.join(','),
+                     type3:this.type3.join(','),
+                     situation:this.situation,
+                     other:this.other,
+                     handicappeds:this.handicappeds,
+                     residents:this.residents
+                };
+                //console.log(data)
+                $.ajax({
+                    type:'POST',
+                    url:"{{route('informations.store')}}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    
+                    data:data,
+                    success:function(res){
+                        if(res.status){
+                            window.location.href="{{route('informations.index')}}";
+                        }
+                    }
+                })
+            },
+
+            //根据身份证号生成性别，出生日期
+            id_number_format:function(idCard){
+                let birthday='';
+                let sex=0;
+                if(idCard.length==15){
+                    birthday=`19${idCard.substring(6,8)}-${idCard.substring(9,10)}-${idCard.substring(11,12)}`;
+                    sex=(idCard[14]%2 === 0)?'0':'1';
+                }else{
+                    birthday=`${idCard.substring(6,10)}-${idCard.substring(11,12)}-${idCard.substring(13,14)}`;
+                    sex=(idCard[16]%2 === 0)?'0':'1';
+                }
+
+                return [sex,birthday];
             }
 
 		}

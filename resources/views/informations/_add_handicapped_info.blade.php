@@ -10,19 +10,19 @@
        
           <div class="form-group">
             <label for="recipient-name" class="control-label">残疾人姓名:</label>
-            <input type="text" class="form-control" v-model='handicapped.name'>
+            <input type="text" class="form-control" v-model.lazy='handicapped.name'>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">残疾人证号:</label>
-            <input type="text" class="form-control" v-model='handicapped.number'>
+            <input type="text" class="form-control" v-model.lazy='handicapped.number'>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">残疾类别:</label>
-            <input type="text" class="form-control" v-model='handicapped.type'>
+            <input type="text" class="form-control" v-model.lazy='handicapped.type'>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">残疾等级:</label>
-            <input type="text" class="form-control" v-model='handicapped.level'>
+            <input type="text" class="form-control" v-model.lazy='handicapped.level'>
           </div>
           
         

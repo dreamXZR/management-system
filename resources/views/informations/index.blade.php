@@ -34,9 +34,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            @foreach($informations as $info)
                             <tr>
-                                <td align="center">11111</td>
+                                <td align="center">{{$info->residence_address}}</td>
                                 
                                 
                                 <td align="center">
@@ -48,7 +48,7 @@
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
 
-                                    <form action="#" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                                    <form action="{{route('informations.destroy',$info->id)}}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
@@ -59,11 +59,11 @@
                                 
                                 
                             </tr>
-                                   
+                            @endforeach     
                         </tbody>
                     </table>
                     <div style="margin-top: 20px;">
-                       
+                       {!! $informations->render() !!}
                     </div>
                     
                 </div>
