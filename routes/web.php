@@ -23,12 +23,24 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::middleware(['auth'])->group(function(){
 	Route::get('/', 'IndexController@index')->name('index');       //首页
+	
 	Route::resource('tags','TagsController');                      //标签
+	
 	Route::resource('users', 'UsersController');                   //用户
+	
 	Route::resource('letter_proofs', 'LetterProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //证明信
+	
 	Route::resource('drath_proofs', 'DrathProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //死亡证明
+	
 	Route::resource('register_tables', 'RegisterTablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //来访登记
+	
 	Route::resource('informations', 'InformationsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //信息卡
+	
+	Route::get('getInformation/{information_id}','InformationsController@getInformation')->name('getInformation');  //信息卡全部信息
+
+	Route::resource('handicappeds', 'HandicappedsController', ['only' => ['destroy']]);     //残疾人士
+
+	Route::resource('residents', 'ResidentsController', ['only' => ['destroy','index']]);     //居民
 });
 
 

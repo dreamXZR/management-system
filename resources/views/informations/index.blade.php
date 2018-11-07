@@ -44,7 +44,7 @@
                                         <i class="glyphicon glyphicon-eye-open"></i> 
                                     </a>
                                     
-                                    <a class="btn btn-xs btn-warning" href="#">
+                                    <a class="btn btn-xs btn-warning" href="{{route('informations.edit',$info->id)}}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
 

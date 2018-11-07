@@ -81,6 +81,22 @@
             <label for="recipient-name" class="control-label">工作单位及职务:</label>
             <input type="text" class="form-control" v-model='resident.unit'>
           </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">电话:</label>
+            <input type="text" class="form-control" v-model='resident.phone'>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">职务标签:</label>
+            <select class="form-control" v-model='resident.tag'>
+                <option value="无">无</option>
+                <option value="楼长">楼长</option>
+                <option value="楼长">街道管理</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">备注:</label>
+            <input type="text" class="form-control" v-model='resident.other'>
+          </div>
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" id="bb_close">关闭</button>

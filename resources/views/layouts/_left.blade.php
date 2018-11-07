@@ -25,11 +25,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('users.index')}}">
+                        <a href="{{route('residents.index')}}">
                             <i class="menu-icon glyphicon glyphicon-tasks"></i>
-                            <span class="menu-text"> 人员管理 </span>
+                            <span class="menu-text"> 人员列表 </span>
                         </a>
                     </li>
+                    
                     <li>
                         <a href="{{route('letter_proofs.index')}}">
                             <i class="menu-icon fa fa-th"></i>
@@ -40,6 +41,12 @@
                         <a href="{{route('drath_proofs.index')}}">
                             <i class="menu-icon fa fa-th"></i>
                             <span class="menu-text"> 死亡证明 </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('users.index')}}">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text"> 人员管理 </span>
                         </a>
                     </li>
                     <li>

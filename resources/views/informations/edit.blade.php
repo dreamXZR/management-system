@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="page-content" id="app">
+<div class="page-content" id="vue">
 @include('informations._add_handicapped_info')
 @include('informations._add_resident_info')
                 <!-- Page Breadcrumb -->
@@ -12,7 +12,7 @@
                                         <li>
                         <a href="{{route('informations.index')}}">信息卡列表</a>
                     </li>
-                                        <li class="active">添加信息卡</li>
+                                        <li class="active">更改信息卡</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -24,7 +24,7 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增证明</span>
+                <span class="widget-caption">修改证明</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
@@ -175,14 +175,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">家庭状况:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" v-model="situation">
+                                <input class="form-control"  placeholder=""  required="" type="text" v-model="situation">
                             </div>
                            
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">备注:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" v-model='other'>
+                                <input class="form-control"  placeholder=""  required="" type="text" v-model="other">
                             </div>
                             
                         </div>
@@ -306,7 +306,7 @@
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default" @click="add_infomation">保存信息</button>
+                                <button type="submit" class="btn btn-default" @click="edit_infomation">保存信息</button>
                                 
                             </div>
                         </div>
@@ -323,62 +323,79 @@
             <!-- /Page Content -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script type="text/javascript">
-	var app=new Vue({
-		el:'#app',
-		data:{
+	var vm=new Vue({
+        el:'#vue',
+        data:{
             present_address:'',
             residence_address:'',
-            residence_status:'1',
-            type1:'1',
+            residence_status:'',
+            type1:'',
             type2:[],
             type3:[],
             situation:'',
             other:'',
 
-			handicappeds:[],
-			handicapped:{},
-			handicapped_status:true,
+            handicappeds:[],
+            handicapped:{},
+            handicapped_status:true,
             handicapped_index:'',
             residents:[],
             resident:{},
             resident_status:true,
             resident_index:'',
-		},
-		methods:{
+        },
+        methods:{
             handicapped_info:function(){
                 this.handicapped_status=true;
                 this.handicapped={};
                 $('#aa').click();
 
             },
-			
+            
             add_handicapped_info:function(){
-				this.handicappeds.push(this.handicapped);
-				this.handicapped={};
+                this.handicappeds.push(this.handicapped);
+                this.handicapped={};
                 $('#aa_close').click();
-			},
-			
-			del_handicapped_info:function(index){
-				
-				let r=confirm("是否删除？");
-				if(r==true){
+            },
+            
+            del_handicapped_info:function(index){
+                var that=this
+                let r=confirm("是否删除？");
+                if(r==true){
+                    if(id=this.handicappeds[index].id){
+                        $.ajax({
+                            type:"DELETE",
+                            url:"/handicappeds/"+id,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success:function(res){
+                                if(res.status){
+                                   that.handicappeds.splice(index,1); 
+                                }
+                                
+                            }
+                        })
+                    }else{
+                        this.handicappeds.splice(index,1); 
+                    }
+                }
+                
+                    
+            },
 
-					this.handicappeds.splice(index,1);
-				}
-			},
-
-			edit_handicapped_info:function(index){
-				this.handicapped=this.handicappeds[index];
-				this.handicapped_status=false;
+            edit_handicapped_info:function(index){
+                this.handicapped=this.handicappeds[index];
+                this.handicapped_status=false;
                 // this.handicapped_index=index;
-				$('#aa').click();
-			},
+                $('#aa').click();
+            },
 
-			update_handicapped_info:function(){
+            update_handicapped_info:function(){
                 //验证
-				this.handicappeds[this.handicapped_index]=this.handicapped;
+                this.handicappeds[this.handicapped_index]=this.handicapped;
                 $('#aa_close').click();
-			},
+            },
 
             resident_info:function(){
                 this.resident_status=true;
@@ -398,11 +415,27 @@
             },
             
             del_resident_info:function(index){
-                
+                let that=this
                 let r=confirm("是否删除？");
                 if(r==true){
-
-                    this.residents.splice(index,1);
+                    if(id=this.residents[index].id){
+                        $.ajax({
+                            type:"DELETE",
+                            url:"/residents/"+id,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success:function(res){
+                                if(res.status){
+                                   that.residents.splice(index,1);
+                                }
+                                
+                            }
+                        })
+                    }else{
+                        this.residents.splice(index,1);
+                    }
+                    
                 }
             },
 
@@ -419,7 +452,7 @@
                 $('#bb_close').click();
             },
 
-            add_infomation:function(){
+            edit_infomation:function(){
                 //验证
                 var data={
                      present_address:this.present_address,
@@ -433,16 +466,17 @@
                      handicappeds:this.handicappeds,
                      residents:this.residents
                 };
-                //console.log(data)
+                
                 $.ajax({
-                    type:'POST',
-                    url:"{{route('informations.store')}}",
+                    type:'PUT',
+                    url:"{{route('informations.update',$id)}}",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     
                     data:data,
                     success:function(res){
+
                         if(res.status){
                             window.location.href="{{route('informations.index')}}";
                         }
@@ -464,11 +498,32 @@
 
                 return [sex,birthday];
             }
+        },
+        
+        
+        created:function(){
+            var that=this;
+            $.ajax({
+                type:'GET',
+                url:"{{route('getInformation',$id)}}",
+                success:function(res){
+                    let info=res.information;
+                    that.present_address=info.present_address;
+                    that.residence_address=info.residence_address;
+                    that.residence_status=info.residence_status;
+                    that.type1=info.type1;
+                    
+                    that.type2=info.type2.split(',');
+                    that.type3=info.type3.split(',');
+                    that.situation=info.situation;
+                    that.other=info.other,
+                    
+                    that.handicappeds=res.handicappeds;
+                    that.residents=res.residents;
+                }
+            })
+        },
 
-		}
-	})
+    })
 </script>
-
-
-
 @stop
