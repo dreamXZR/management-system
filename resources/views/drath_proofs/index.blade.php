@@ -66,7 +66,7 @@
                         </tbody>
                     </table>
                     <div style="margin-top: 20px;">
-                        {!! $drath_proofs->appends(['id'=>1])->render() !!}
+                        {!! $drath_proofs->appends($select)->render() !!}
                     </div>
                     
                 </div>

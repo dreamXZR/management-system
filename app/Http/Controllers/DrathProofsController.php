@@ -13,8 +13,9 @@ class DrathProofsController extends Controller
 
 	public function index(Request $request)
 	{
-		$drath_proofs = DrathProof::dataSelect($request->only(['name','id_number','number']))->orderBy('created_at','desc')->paginate(10);
-		return view('drath_proofs.index', compact('drath_proofs'));
+		$drath_proofs = DrathProof::filter($request->all())->paginate(10);
+		$select=$request->except('page');
+		return view('drath_proofs.index', compact('drath_proofs','select'));
 	}
 
     public function show(DrathProof $drath_proof)

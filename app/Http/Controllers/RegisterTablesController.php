@@ -14,10 +14,17 @@ class RegisterTablesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request)
 	{
-		$register_tables = RegisterTable::orderBy('number','desc')->paginate(10);
-		return view('register_tables.index', compact('register_tables'));
+		$get_data=$request->all();
+		
+		if(array_key_exists('start_time', $get_data) && array_key_exists('end_time', $get_data)){
+			$get_data['call_time']=[$get_data['start_time'],$get_data['end_time']];
+		}
+		
+		$register_tables = RegisterTable::filter($get_data)->paginate(10);
+		$select=$request->except('page');
+		return view('register_tables.index', compact('register_tables','select'));
 	}
 
     public function show(RegisterTable $register_table)
@@ -32,7 +39,10 @@ class RegisterTablesController extends Controller
 
 	public function store(RegisterTableRequest $request)
 	{
-		$register_table = RegisterTable::create($request->all());
+		$post_data=$request->all();
+		//number
+		$post_data['number']=create_number('register_tables');
+		$register_table = RegisterTable::create($post_data);
 		return redirect()->route('register_tables.index', $register_table->id)->with('message', 'Created successfully.');
 	}
 
@@ -56,5 +66,21 @@ class RegisterTablesController extends Controller
 		$register_table->delete();
 
 		return redirect()->route('register_tables.index')->with('message', 'Deleted successfully.');
+	}
+
+	public function finished(Request $request)
+	{
+		$register=RegisterTable::find($request->id);
+		$register->is_finish=$request->is_finish;
+		$res=$register->save();
+		if($res){
+			return response()->json([
+				'status'=>true,
+			]);
+		}else{
+			return response()->json([
+				'status'=>true,
+			]);
+		}
 	}
 }

@@ -1,81 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-<!-- <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            
-            <div class="panel-heading">
-                <h1>
-                    <i class="glyphicon glyphicon-edit"></i> RegisterTable /
-                    @if($register_table->id)
-                        Edit #{{$register_table->id}}
-                    @else
-                        Create
-                    @endif
-                </h1>
-            </div>
-
-            @include('common.error')
-
-            <div class="panel-body">
-                @if($register_table->id)
-                    <form action="{{ route('register_tables.update', $register_table->id) }}" method="POST" accept-charset="UTF-8">
-                        <input type="hidden" name="_method" value="PUT">
-                @else
-                    <form action="{{ route('register_tables.store') }}" method="POST" accept-charset="UTF-8">
-                @endif
-
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    
-                <div class="form-group">
-                	<label for="name-field">Name</label>
-                	<input class="form-control" type="text" name="name" id="name-field" value="{{ old('name', $register_table->name ) }}" />
-                </div> 
-                <div class="form-group">
-                    <label for="sex-field">Sex</label>
-                    <input class="form-control" type="text" name="sex" id="sex-field" value="{{ old('sex', $register_table->sex ) }}" />
-                </div> 
-                <div class="form-group">
-                    <label for="call_time-field">Call_time</label>
-                    <input class="form-control" type="text" name="call_time" id="call_time-field" value="{{ old('call_time', $register_table->call_time ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="address-field">Address</label>
-                	<input class="form-control" type="text" name="address" id="address-field" value="{{ old('address', $register_table->address ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="phone-field">Phone</label>
-                	<input class="form-control" type="text" name="phone" id="phone-field" value="{{ old('phone', $register_table->phone ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="call_content-field">Call_content</label>
-                	<textarea name="call_content" id="call_content-field" class="form-control" rows="3">{{ old('call_content', $register_table->call_content ) }}</textarea>
-                </div> 
-                <div class="form-group">
-                	<label for="back_content-field">Back_content</label>
-                	<textarea name="back_content" id="back_content-field" class="form-control" rows="3">{{ old('back_content', $register_table->back_content ) }}</textarea>
-                </div> 
-                <div class="form-group">
-                	<label for="other-field">Other</label>
-                	<input class="form-control" type="text" name="other" id="other-field" value="{{ old('other', $register_table->other ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="number-field">Number</label>
-                	<input class="form-control" type="text" name="number" id="number-field" value="{{ old('number', $register_table->number ) }}" />
-                </div>
-
-                    <div class="well well-sm">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a class="btn btn-link pull-right" href="{{ route('register_tables.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-datetimepicker.min.css')}}">
 <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
@@ -163,9 +89,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">来电主要内容:</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" name="call_content" style="height: 100px;">
-                                    {{old('call_content',$register_table->call_content)}}
-                                </textarea>
+                                <textarea class="form-control" name="call_content" style="height: 100px;">{{old('call_content',$register_table->call_content)}}</textarea>
                                 <!-- <input class="form-control"  placeholder="" name="call_content" required="" type="text" value="{{old('call_content',$register_table->call_content)}}"> -->
                             </div>
                             
@@ -173,9 +97,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">来电主要内容:</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" name="back_content" style="height: 100px;">
-                                    {{old('back_content',$register_table->back_content)}}
-                                </textarea>
+                                <textarea class="form-control" name="back_content" style="height: 100px;">{{old('back_content',$register_table->back_content)}}</textarea>
                                 <!-- <input class="form-control"  placeholder="" name="back_content" required="" type="text" value="{{old('back_content',$register_table->back_content)}}"> -->
                             </div>
                             
@@ -205,10 +127,11 @@
             </div>
             <!-- /Page Content -->
 <!--Bootstrap Date Picker-->
-<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
 <script type="text/javascript">
     $('.date-picker').datetimepicker({
-        format: 'YYYY-MM-DD hh:mm',
+        format: 'YYYY-MM-DD HH:mm',
         
     });
 </script>

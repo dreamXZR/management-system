@@ -1,62 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>
-                    <i class="glyphicon glyphicon-align-justify"></i> RegisterTable
-                    <a class="btn btn-success pull-right" href="{{ route('register_tables.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
-                </h1>
-            </div>
 
-            <div class="panel-body">
-                @if($register_tables->count())
-                    <table class="table table-condensed table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th>Name</th> <th>Sex</th> <th>Call_time</th> <th>Address</th> <th>Phone</th> <th>Call_content</th> <th>Back_content</th> <th>Other</th> <th>Number</th>
-                                <th class="text-right">OPTIONS</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach($register_tables as $register_table)
-                                <tr>
-                                    <td class="text-center"><strong>{{$register_table->id}}</strong></td>
-
-                                    <td>{{$register_table->name}}</td> <td>{{$register_table->sex}}</td> <td>{{$register_table->call_time}}</td> <td>{{$register_table->address}}</td> <td>{{$register_table->phone}}</td> <td>{{$register_table->call_content}}</td> <td>{{$register_table->back_content}}</td> <td>{{$register_table->other}}</td> <td>{{$register_table->number}}</td>
-                                    
-                                    <td class="text-right">
-                                        <a class="btn btn-xs btn-primary" href="{{ route('register_tables.show', $register_table->id) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i> 
-                                        </a>
-                                        
-                                        <a class="btn btn-xs btn-warning" href="{{ route('register_tables.edit', $register_table->id) }}">
-                                            <i class="glyphicon glyphicon-edit"></i> 
-                                        </a>
-
-                                        <form action="{{ route('register_tables.destroy', $register_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="_method" value="DELETE">
-
-                                            <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {!! $register_tables->render() !!}
-                @else
-                    <h3 class="text-center alert alert-info">Empty!</h3>
-                @endif
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
@@ -105,7 +50,7 @@
                                 <td align="center">
                                     
                                         <label>
-                                            <input class="checkbox-slider slider-icon colored-blue" type="checkbox" @if($register_table->is_finish==1)checked=""@endif onclick="is_finish('{{$register_table->id}}')">
+                                            <input class="checkbox-slider slider-icon colored-blue" type="checkbox" @if($register_table->is_finish==1)checked=""@endif onclick="is_finish('{{$register_table->id}}')" id="checkbox_{{$register_table->id}}">
                                             <span class="text"></span>
                                         </label>
                                    
@@ -135,7 +80,7 @@
                         </tbody>
                     </table>
                     <div style="margin-top: 20px;">
-                        {!! $register_tables->render() !!}
+                        {!! $register_tables->appends($select)->render() !!}
                     </div>
                     
                 </div>
@@ -149,12 +94,32 @@
                 </div>
                 <!-- /Page Body -->
             </div>
-@include('letter_proofs._select')
+@include('register_tables._select')
 <!--Page Related Scripts-->
 <script type="text/javascript">
+    
+    //完成访问登记
     function is_finish(id){
-        
-        console.log(this.checked);
+        var is_finish=0;
+        if($('#checkbox_'+id).prop('checked')){
+            is_finish=1;
+        }
+        $.ajax({
+            type:"PUT",
+            url:"{{route('register_tables.finished')}}",
+            headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{
+                id:id,
+                is_finish:is_finish
+            },
+            success:function(res){
+                if(res.status){
+                    window.location.reload();
+                }
+            }
+        })
        
     }
 </script>

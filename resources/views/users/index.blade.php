@@ -38,7 +38,7 @@
                                 <td align="center">{{$user->name}}</td>
                                 <td align="center">{{$user->email}}</td>
                                 <td align="center">
-                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm shiny">
+                                    {{-- <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
                                     <a href="#" onclick="user_delete('{{$user->id}}')" class="btn btn-danger btn-sm shiny">
@@ -48,7 +48,16 @@
         								{{ csrf_field() }}
         								{{ method_field('DELETE') }}
         
-      								</form>
+      								</form> --}}
+                                    <a class="btn btn-xs btn-warning" href="{{ route('users.edit',$user->id) }}">
+                                        <i class="glyphicon glyphicon-edit"></i> 
+                                    </a>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach                        
@@ -70,7 +79,7 @@
                 <!-- /Page Body -->
             </div>
 <!--Page Related Scripts-->
-<script src="{{asset('assets/js/bootbox/bootbox.js')}}"></script>
+{{-- <script src="{{asset('assets/js/bootbox/bootbox.js')}}"></script>
 <script type="text/javascript">
 	function user_delete(user_id)
 	{
@@ -95,5 +104,5 @@
         });
 	}
 	
-</script>
+</script> --}}
 @stop

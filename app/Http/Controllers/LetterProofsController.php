@@ -13,8 +13,9 @@ class LetterProofsController extends Controller
 
 	public function index(Request $request)
 	{
-		$letter_proofs = LetterProof::dataSelect($request->only(['residence_address','number']))->orderBy('number','desc')->paginate(10);
-		return view('letter_proofs.index', compact('letter_proofs'));
+		$letter_proofs = LetterProof::filter($request->all())->paginate(10);
+		$select=$request->except('page');
+		return view('letter_proofs.index', compact('letter_proofs','select'));
 	}
 
     public function show(LetterProof $letter_proof)

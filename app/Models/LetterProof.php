@@ -2,17 +2,13 @@
 
 namespace App\Models;
 
+use EloquentFilter\Filterable;
+
 class LetterProof extends Model
 {
+    use Filterable;
+    
     protected $fillable = ['name', 'community_name', 'present_address', 'residence_address', 'use', 'basis','number'];
 
-    public function scopeDataSelect($query,$select)
-    {
-    	$select=array_filter($select);
-    	if(count($select)){
-    		return $query->where($select);
-    	}else{
-    		return $query;
-    	}
-    }
+    
 }

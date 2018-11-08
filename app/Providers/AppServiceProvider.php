@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Faker\Generator as FakerGenerator;
+use Faker\Factory as FackerFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton(FakerGenerator::class,function(){
+            return FackerFactory::create('zh_CN');
+        });
     }
 
     /**
