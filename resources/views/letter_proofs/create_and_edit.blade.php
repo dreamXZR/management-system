@@ -2,68 +2,6 @@
 
 @section('content')
 
-<!-- <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            
-            <div class="panel-heading">
-                <h1>
-                    <i class="glyphicon glyphicon-edit"></i> LetterProof /
-                    @if($letter_proof->id)
-                        Edit #{{$letter_proof->id}}
-                    @else
-                        Create
-                    @endif
-                </h1>
-            </div>
-
-            @include('common.error')
-
-            <div class="panel-body">
-                @if($letter_proof->id)
-                    <form action="{{ route('letter_proofs.update', $letter_proof->id) }}" method="POST" accept-charset="UTF-8">
-                        <input type="hidden" name="_method" value="PUT">
-                @else
-                    <form action="{{ route('letter_proofs.store') }}" method="POST" accept-charset="UTF-8">
-                @endif
-
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    
-                <div class="form-group">
-                	<label for="name-field">Name</label>
-                	<input class="form-control" type="text" name="name" id="name-field" value="{{ old('name', $letter_proof->name ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="community_name-field">Community_name</label>
-                	<input class="form-control" type="text" name="community_name" id="community_name-field" value="{{ old('community_name', $letter_proof->community_name ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="present_address-field">Present_address</label>
-                	<input class="form-control" type="text" name="present_address" id="present_address-field" value="{{ old('present_address', $letter_proof->present_address ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="residence_address-field">Residence_address</label>
-                	<input class="form-control" type="text" name="residence_address" id="residence_address-field" value="{{ old('residence_address', $letter_proof->residence_address ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="use-field">Use</label>
-                	<input class="form-control" type="text" name="use" id="use-field" value="{{ old('use', $letter_proof->use ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="basis-field">Basis</label>
-                	<input class="form-control" type="text" name="basis" id="basis-field" value="{{ old('basis', $letter_proof->basis ) }}" />
-                </div>
-
-                    <div class="well well-sm">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a class="btn btn-link pull-right" href="{{ route('letter_proofs.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
@@ -73,7 +11,7 @@
                         <a href="{{route('index')}}">系统</a>
                     </li>
                                         <li>
-                        <a href="{{route('letter_proofs.index')}}">死亡证明</a>
+                        <a href="{{route('letter_proofs.index')}}">证明信</a>
                     </li>
                                         <li class="active">添加证明</li>
                                         </ul>

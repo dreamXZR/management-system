@@ -42,7 +42,10 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('handicappeds', 'HandicappedsController', ['only' => ['destroy']]);     //残疾人士
 
 	Route::resource('residents', 'ResidentsController', ['only' => ['destroy','index']]);     //居民
+
+	Route::resource('worker_proofs', 'WorkerProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);    //就业证明
 });
+
 
 
 
