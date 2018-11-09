@@ -33,13 +33,17 @@ class UsersController extends Controller
         $this->validate($request,[
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'role'=>'required'
         ]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+       
+        $user=User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+            ]);
+        
+        $user->assignRole($request->role);    //添加权限
         session()->flash('success','添加人员成功');
         return redirect()->route('users.index');
     }
@@ -51,15 +55,19 @@ class UsersController extends Controller
 
     public function update(User $user, Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:50',
-            'password' => 'required|confirmed|min:6'
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required|max:50',
+        //     'password' => 'required|confirmed|min:6'
+        // ]);
 
         $user->update([
             'name' => $request->name,
-            'password' => bcrypt($request->password),
+            // 'password' => bcrypt($request->password),
         ]);
+        //修改权限
+        \DB::table('model_has_roles')->where('model_id',$user->id)->delete();
+        $user->assignRole($request->role);
+        
         session()->flash('success', '个人资料更新成功！');
         return redirect()->route('users.index');
     }

@@ -49,13 +49,14 @@
                                     <a class="btn btn-xs btn-warning" href="{{ route('letter_proofs.edit', $letter_proof->id) }}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
-
+                                    @can('del_info')
                                     <form action="{{ route('letter_proofs.destroy', $letter_proof->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
+                                    @endcan
                                 </td>
                                 
                                 

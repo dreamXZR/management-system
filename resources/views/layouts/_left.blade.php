@@ -49,12 +49,14 @@
                             <span class="menu-text"> 死亡证明 </span>
                         </a>
                     </li>
+                    @can('del_info')
                     <li>
                         <a href="{{route('users.index')}}">
                             <i class="menu-icon glyphicon glyphicon-tasks"></i>
                             <span class="menu-text"> 人员管理 </span>
                         </a>
                     </li>
+                    @endcan
                     <li>
                         <a href="{{route('tags.index')}}">
                             <i class="menu-icon fa fa-th"></i>

@@ -64,13 +64,14 @@
                                     <a class="btn btn-xs btn-warning" href="{{ route('register_tables.edit', $register_table->id) }}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
-
+                                    @can('del_info')
                                     <form action="{{ route('register_tables.destroy', $register_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
+                                     @endcan
                                 </td>
                                 
                                 

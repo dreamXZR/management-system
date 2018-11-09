@@ -46,18 +46,29 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">密码:</label>
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="password" required="" type="password" value="{{old('password')}}">
+                                <select class="form-control" name="role">
+                                    <option @if($user->hasRole('user'))selected=''@endif  value="user">用户</option>
+                                    <option @if($user->hasRole('user_manager'))selected=''@endif  value="user_manager">管理员</option>
+                                </select>
+                                
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">修改密码:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="password" type="password" value="{{old('password')}}">
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">确认密码:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="password_confirmation" required="" type="password" value="{{old('password_confirmation')}}">
+                                <input class="form-control" placeholder="" name="password_confirmation"  type="password" value="{{old('password_confirmation')}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            
                         </div>
                         <!-- <div class="form-group">
                             <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>

@@ -6,10 +6,10 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                                         <li>
-                        <a href="#">系统</a>
+                        <a href="{{route('index')}}">系统</a>
                     </li>
                                         <li>
-                        <a href="#">用户管理</a>
+                        <a href="{{route('users.index')}}">用户管理</a>
                     </li>
                                         <li class="active">添加用户</li>
                                         </ul>
@@ -45,6 +45,17 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" name="role">
+                                    <option selected="selected" value="user">用户</option>
+                                    <option  value="user_manager">管理员</option>
+                                </select>
+                                
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div> 
+                        <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">密码:</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="" name="password" required="" type="password" value="{{old('password')}}">
@@ -58,14 +69,7 @@
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
-                            <div class="col-sm-6">
-                                <select name="group_id" style="width: 100%;">
-                                                                        <option selected="selected" value="8">测试</option>
-                                                                    </select>
-                            </div>
-                        </div> -->  
+                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">保存信息</button>

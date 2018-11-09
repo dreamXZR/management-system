@@ -50,13 +50,14 @@
                                     <a class="btn btn-xs btn-warning" href="{{ route('drath_proofs.edit', $drath_proof->id) }}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
-
+                                    @can('del_info')
                                     <form action="{{ route('drath_proofs.destroy', $drath_proof->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
+                                    @endcan
                                 </td>
                                 
                                 
