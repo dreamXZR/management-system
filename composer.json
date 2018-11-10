@@ -28,13 +28,13 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "app\\Libs\\": "app/Libs/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "app\\Libs\\": "app/Libs/"
+            "Tests\\": "tests/"
         }
     },
     "extra": {

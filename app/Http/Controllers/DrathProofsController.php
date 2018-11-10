@@ -6,6 +6,7 @@ use App\Models\DrathProof;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DrathProofRequest;
+use App\Libs\ImageUpload;
 
 class DrathProofsController extends Controller
 {
@@ -28,13 +29,21 @@ class DrathProofsController extends Controller
 		return view('drath_proofs.create_and_edit', compact('drath_proof'));
 	}
 
-	public function store(DrathProofRequest $request)
+	public function store(ImageUpload $imgage_upload, DrathProofRequest $request)
 	{
-		$post_data=$request->all();
-		//number
+		
+		$post_data=$request->except('images');
+		//上传图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->save($request->images,'drath_proofs');
+		}
+		
+		//生成编号
 		$post_data['number']=create_number('drath_proofs');
+		
 		$drath_proof = DrathProof::create($post_data);
-		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', 'Created successfully.');
+		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', '添加信息成功');
 	}
 
 	public function edit(DrathProof $drath_proof)

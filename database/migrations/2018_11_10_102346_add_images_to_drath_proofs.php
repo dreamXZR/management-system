@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsFinishToRegisterTables extends Migration
+class AddImagesToDrathProofs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddIsFinishToRegisterTables extends Migration
      */
     public function up()
     {
-        Schema::table('register_tables', function (Blueprint $table) {
-            $table->boolean('is_finish')->default(0)->after('number')->comment('是否完成');
+        Schema::table('drath_proofs', function (Blueprint $table) {
+            $table->text('images')->nullable()->after('other')->comment('上传相关图片');
         });
     }
 
@@ -25,8 +25,8 @@ class AddIsFinishToRegisterTables extends Migration
      */
     public function down()
     {
-        Schema::table('register_tables', function (Blueprint $table) {
-            $table->dropColumn('is_finish');
+        Schema::table('drath_proofs', function (Blueprint $table) {
+            $table->dropColumn('images');
         });
     }
 }

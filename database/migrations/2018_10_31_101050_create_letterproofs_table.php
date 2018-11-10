@@ -9,12 +9,12 @@ class CreateLetterProofsTable extends Migration
 	{
 		Schema::create('letter_proofs', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 20)->index()->comment('证明信姓名');
-            $table->string('community_name', 100);
-            $table->string('present_address', 100)->index()->comment('现住地址');
-            $table->string('residence_address', 100)->index()->comment('户籍地址');
-            $table->string('use', 100)->comment('用途');
-            $table->string('basis', 100)->comment('依据');
+            $table->string('name', 20)->index()->comment('濮撳悕');
+            $table->string('community_name', 100)->comment('绀惧尯鍚嶇О');
+            $table->string('present_address', 100)->index()->comment('灞呬綇鍦板潃');
+            $table->string('residence_address', 100)->index()->comment('鎴风睄鍦板潃');
+            $table->string('use', 100)->comment('鐢ㄥ');
+            $table->string('basis', 100)->comment('渚濇嵁');
             $table->timestamps();
         });
 	}

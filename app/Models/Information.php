@@ -18,4 +18,6 @@ class Information extends Model
     {
     	return $this->hasMany('App\Models\Handicapped');
     }
+
+    // public function set
 }

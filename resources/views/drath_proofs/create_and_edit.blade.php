@@ -30,10 +30,10 @@
                 <div id="horizontal-form">
                      @include('shared._errors')
                      @if($drath_proof->id)
-                        <form class="form-horizontal" action="{{ route('drath_proofs.update', $drath_proof->id) }}" method="POST" accept-charset="UTF-8">
+                        <form class="form-horizontal" action="{{ route('drath_proofs.update', $drath_proof->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                     @else
-                        <form class="form-horizontal" role="form" action="{{route('drath_proofs.store')}}" method="post">
+                        <form class="form-horizontal" role="form" action="{{route('drath_proofs.store')}}" method="post" enctype="multipart/form-data">
                     @endif
                         {{ csrf_field() }}
                         
@@ -150,6 +150,13 @@
                             </div>
                             
                         </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">图片上传:</label>
+                            <div class="col-sm-6">
+                                <input class="file form-control"  placeholder="" name="images[]"  type="file"  id="img" multiple>
+                            </div>
+                            
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -171,6 +178,19 @@
 <script src="{{asset('assets/js/datetime/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript">
     $('.date-picker').datepicker();
+</script>
+{{-- fileput --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
+<script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
+<script src="{{asset('assets/fileput/zh.js')}}"></script>
+<script type="text/javascript">
+    $('#img').fileinput({
+        language: 'zh',
+        showUpload: false,
+        allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
+        maxFileCount: 3,
+        initialPreview: []
+    })
 </script>
 
 @endsection

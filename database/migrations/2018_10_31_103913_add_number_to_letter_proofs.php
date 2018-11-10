@@ -14,7 +14,7 @@ class AddNumberToLetterProofs extends Migration
     public function up()
     {
         Schema::table('letter_proofs', function (Blueprint $table) {
-            $table->string('number', 50)->after('basis')->index();
+            $table->string('number', 50)->after('basis')->index()->comment('编号');
         });
     }
 
