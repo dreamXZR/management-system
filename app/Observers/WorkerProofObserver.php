@@ -9,13 +9,15 @@ use App\Models\WorkerProof;
 
 class WorkerProofObserver
 {
-    public function creating(WorkerProof $worker_proof)
+    public function deleting(WorkerProof $worker_proof)
     {
-        //
+        if($worker_proof->images){
+			foreach (json_decode($worker_proof->images) as $k => $v) {
+				del($v);
+			}
+			
+		}
     }
 
-    public function updating(WorkerProof $worker_proof)
-    {
-        //
-    }
+    
 }

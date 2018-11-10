@@ -9,13 +9,15 @@ use App\Models\DrathProof;
 
 class DrathProofObserver
 {
-    public function creating(DrathProof $drath_proof)
+    public function deleting(DrathProof $drath_proof)
     {
-        //
+        if($drath_proof->images){
+			foreach (json_decode($drath_proof->images) as $k => $v) {
+				del($v);
+			}
+			
+		}
     }
 
-    public function updating(DrathProof $drath_proof)
-    {
-        //
-    }
+    
 }

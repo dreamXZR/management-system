@@ -6,6 +6,7 @@ use App\Models\LetterProof;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LetterProofRequest;
+use App\Libs\ImageUpload;
 
 class LetterProofsController extends Controller
 {
@@ -28,10 +29,16 @@ class LetterProofsController extends Controller
 		return view('letter_proofs.create_and_edit', compact('letter_proof'));
 	}
 
-	public function store(LetterProofRequest $request)
+	public function store(LetterProofRequest $request,ImageUpload $imgage_upload)
 	{
-		$post_data=$request->all();
-		//number
+		$post_data=$request->except('images');
+		//上传图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->save($request->images,'letter_proofs');
+		}
+		
+		//生成编号
 		$post_data['number']=create_number('letter_proofs');
 		
 		$letter_proof = LetterProof::create($post_data);
@@ -44,10 +51,17 @@ class LetterProofsController extends Controller
 		return view('letter_proofs.create_and_edit', compact('letter_proof'));
 	}
 
-	public function update(LetterProofRequest $request, LetterProof $letter_proof)
+	public function update(LetterProofRequest $request, LetterProof $letter_proof,ImageUpload $imgage_upload)
 	{
-		$this->authorize('update', $letter_proof);
-		$letter_proof->update($request->all());
+		// $this->authorize('update', $letter_proof);
+		$post_data=$request->except('images');
+		//更新图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->update($request->images,'letter_proofs',$letter_proof->images);
+		}
+		
+		$letter_proof->update($post_data);
 
 		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('message', 'Updated successfully.');
 	}

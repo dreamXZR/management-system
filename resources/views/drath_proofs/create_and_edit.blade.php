@@ -184,12 +184,22 @@
 <script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
 <script src="{{asset('assets/fileput/zh.js')}}"></script>
 <script type="text/javascript">
+    var images=new Array();
+    @if($drath_proof->images)
+        var ima_arr={!! $drath_proof->images !!};
+        ima_arr.forEach(function(value,index){
+            images[images.length] ="<img src='{!! env('APP_URL') !!}/"+value+"' style='max-width:100%;max-height:100%'>";
+        })
+       
+    @endif
+
     $('#img').fileinput({
         language: 'zh',
         showUpload: false,
         allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
         maxFileCount: 3,
-        initialPreview: []
+        initialPreview: images,
+        showType:'detail',
     })
 </script>
 

@@ -14,3 +14,12 @@ function create_number($table_name)
 		return date('Ymd',time()).'001';
 	}
 }
+
+//删除图片
+function del($file_path)
+{
+	$file_path=public_path() . '/' . $file_path;
+	if(file_exists($file_path)){
+		@unlink($file_path);
+	}
+}

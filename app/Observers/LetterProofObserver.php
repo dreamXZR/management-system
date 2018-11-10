@@ -9,13 +9,15 @@ use App\Models\LetterProof;
 
 class LetterProofObserver
 {
-    public function creating(LetterProof $letter_proof)
+    public function deleting(LetterProof $letter_proof)
     {
-        //
+        if($letter_proof->images){
+			foreach (json_decode($letter_proof->images) as $k => $v) {
+				del($v);
+			}
+			
+		}
     }
 
-    public function updating(LetterProof $letter_proof)
-    {
-        //
-    }
+    
 }

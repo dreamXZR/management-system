@@ -3,8 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Faker\Generator as FakerGenerator;
-use Faker\Factory as FackerFactory;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(FakerGenerator::class,function(){
             return FackerFactory::create('zh_CN');
         });
+        \App\Models\DrathProof::observe('\App\Observers\DrathProofObserver');
+        \App\Models\WorkerProof::observe('\App\Observers\WorkerProofObserver');
+        \App\Models\LetterProof::observe('\App\Observers\LetterProofObserver');
     }
 
     /**

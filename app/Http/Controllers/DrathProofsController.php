@@ -52,12 +52,20 @@ class DrathProofsController extends Controller
 		return view('drath_proofs.create_and_edit', compact('drath_proof'));
 	}
 
-	public function update(DrathProofRequest $request, DrathProof $drath_proof)
+	
+	public function update(ImageUpload $imgage_upload , DrathProofRequest $request, DrathProof $drath_proof)
 	{
-		$this->authorize('update', $drath_proof);
-		$drath_proof->update($request->all());
-
-		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', 'Updated successfully.');
+		// $this->authorize('update', $drath_proof);
+		$post_data=$request->except('images');
+		//更新图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->update($request->images,'drath_proofs',$drath_proof->images);
+		}
+		
+		$drath_proof->update($post_data);
+		
+		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', '信息更新成功');
 	}
 
 	public function destroy(DrathProof $drath_proof)

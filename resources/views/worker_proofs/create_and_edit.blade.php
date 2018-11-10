@@ -31,10 +31,10 @@
                 <div id="horizontal-form">
                      @include('shared._errors')
                      @if($worker_proof->id)
-                        <form class="form-horizontal" action="{{ route('worker_proofs.update', $worker_proof->id) }}" method="POST" accept-charset="UTF-8">
+                        <form class="form-horizontal" action="{{ route('worker_proofs.update', $worker_proof->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                     @else
-                        <form class="form-horizontal" role="form" action="{{route('worker_proofs.store')}}" method="post">
+                        <form class="form-horizontal" role="form" action="{{route('worker_proofs.store')}}" method="post" enctype="multipart/form-data">
                     @endif
                         {{ csrf_field() }}
                         
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="sex" @if($worker_proof->death_relation==0)checked="checked"@endif value="0">
+                                        <input type="radio" name="sex" @if($worker_proof->death_relation=='0')checked="checked"@endif value="0">
                                         <span class="text">女</span>
                                     </label>
                                 </div>
@@ -115,6 +115,13 @@
                                 <input class="form-control"  placeholder="" name="child_id_number" type="text" value="{{old('child_id_number',$worker_proof->child_id_number)}}" >
                             </div>
                            
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">图片上传:</label>
+                            <div class="col-sm-6">
+                                <input class="file form-control"  placeholder="" name="images[]"  type="file"  id="img" multiple>
+                            </div>
+                            
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -132,5 +139,28 @@
                 <!-- /Page Body -->
             </div>
             <!-- /Page Content -->
+{{-- fileput --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
+<script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
+<script src="{{asset('assets/fileput/zh.js')}}"></script>
+<script type="text/javascript">
+    var images=new Array();
+    @if($worker_proof->images)
+        var ima_arr={!! $worker_proof->images !!};
+        ima_arr.forEach(function(value,index){
+            images[images.length] ="<img src='{!! env('APP_URL') !!}/"+value+"' style='max-width:100%;max-height:100%'>";
+        })
+       
+    @endif
+
+    $('#img').fileinput({
+        language: 'zh',
+        showUpload: false,
+        allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
+        maxFileCount: 3,
+        initialPreview: images,
+        showType:'detail',
+    })
+</script>
 
 @endsection

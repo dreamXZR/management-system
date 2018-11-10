@@ -6,6 +6,7 @@ use App\Models\WorkerProof;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkerProofRequest;
+use App\Libs\ImageUpload;
 
 class WorkerProofsController extends Controller
 {
@@ -28,11 +29,17 @@ class WorkerProofsController extends Controller
 		return view('worker_proofs.create_and_edit', compact('worker_proof'));
 	}
 
-	public function store(WorkerProofRequest $request)
+	public function store(WorkerProofRequest $request,ImageUpload $imgage_upload)
 	{
-		$post_data=$request->all();
-		//number
+		$post_data=$request->except('images');
+		//上传图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->save($request->images,'worker_proofs');
+		}
+		//生成编号
 		$post_data['number']=create_number('worker_proofs');
+		
 		$worker_proof = WorkerProof::create($post_data);
 		return redirect()->route('worker_proofs.index', $worker_proof->id)->with('message', 'Created successfully.');
 	}
@@ -43,12 +50,19 @@ class WorkerProofsController extends Controller
 		return view('worker_proofs.create_and_edit', compact('worker_proof'));
 	}
 
-	public function update(WorkerProofRequest $request, WorkerProof $worker_proof)
+	public function update(WorkerProofRequest $request, WorkerProof $worker_proof,ImageUpload $imgage_upload)
 	{
-		$this->authorize('update', $worker_proof);
-		$worker_proof->update($request->all());
+		// $this->authorize('update', $worker_proof);
+		$post_data=$request->except('images');
+		//更新图片
+		if($request->images){
+			
+			$post_data['images']=$imgage_upload->update($request->images,'worker_proofs',$worker_proof->images);
+		}
 
-		return redirect()->route('worker_proofs.index', $worker_proof->id)->with('message', 'Updated successfully.');
+		$worker_proof->update($post_data);
+
+		return redirect()->route('worker_proofs.index')->with('message', 'Updated successfully.');
 	}
 
 	public function destroy(WorkerProof $worker_proof)

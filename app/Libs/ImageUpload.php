@@ -9,9 +9,8 @@ class ImageUpload
 	public function save($file, $folder='default')
 	{
 		$path_arr=[];
-		
 		foreach ($file as $k => $v) {
-			$info=$this->single($v);
+			$info=$this->single($v,$folder);
 			$path_arr[]=$info['path'];
 		}
 		
@@ -21,7 +20,22 @@ class ImageUpload
 
 	}
 
-	
+	public function update($file, $folder='default',$images)
+	{
+		if($images){
+			foreach (json_decode($images) as $k => $v) {
+				$this->del($v);
+			}
+			
+		}
+
+		return $this->save($file,$folder);
+	}
+
+	/*
+
+		上传单张图片
+	*/
 	public function single($single_file,$folder='default')
 	{
 		//文件夹路径
@@ -31,7 +45,7 @@ class ImageUpload
 		//图片后缀
 		$extension = strtolower($single_file->getClientOriginalExtension()) ?: 'jpg';
 		//文件名称
-		$filename=time() . '_' . $single_file->getClientOriginalName() . '.' . $extension;
+		$filename=time() . '_' . $single_file->getClientOriginalName();
 		// 如果上传的不是图片将终止操作
         if ( ! in_array($extension, $this->allowed_ext)) {
             return false;
@@ -43,5 +57,16 @@ class ImageUpload
         return [
             'path' => "$folder_name/$filename"
         ];
+	}
+	/*
+
+		删除图片
+	*/
+	public function del($file_path)
+	{
+		$file_path=public_path() . '/' . $file_path;
+		if(file_exists($file_path)){
+			@unlink($file_path);
+		}
 	}
 }
