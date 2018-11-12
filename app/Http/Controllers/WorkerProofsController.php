@@ -50,14 +50,14 @@ class WorkerProofsController extends Controller
 		return view('worker_proofs.create_and_edit', compact('worker_proof'));
 	}
 
-	public function update(WorkerProofRequest $request, WorkerProof $worker_proof,ImageUpload $imgage_upload)
+	public function update(WorkerProofRequest $request, WorkerProof $worker_proof,ImageUpload $image_upload)
 	{
 		// $this->authorize('update', $worker_proof);
 		$post_data=$request->except('images');
 		//更新图片
 		if($request->images){
 			
-			$post_data['images']=$imgage_upload->update($request->images,'worker_proofs',$worker_proof->images);
+			$post_data['images']=json_merge($image_upload->update($request->images,'worker_proofs'),$worker_proof->images);
 		}
 
 		$worker_proof->update($post_data);

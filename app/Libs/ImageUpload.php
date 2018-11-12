@@ -20,14 +20,9 @@ class ImageUpload
 
 	}
 
-	public function update($file, $folder='default',$images)
+	public function update($file, $folder='default')
 	{
-		if($images){
-			foreach (json_decode($images) as $k => $v) {
-				$this->del($v);
-			}
-			
-		}
+		
 
 		return $this->save($file,$folder);
 	}

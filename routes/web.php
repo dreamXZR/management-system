@@ -44,6 +44,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('residents', 'ResidentsController', ['only' => ['destroy','index']]);     //居民
 
 	Route::resource('worker_proofs', 'WorkerProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);    //就业证明
+
+
+	//图片相关
+	Route::get('images','ImagesController@index')->name('images.index');
+	Route::post('images','ImagesController@destroy')->name('images.destroy');
 });
 
 

@@ -23,3 +23,21 @@ function del($file_path)
 		@unlink($file_path);
 	}
 }
+
+//json合并
+function json_merge($json1,$json2)
+{
+	$arr1=[];
+	$arr2=[];
+	
+	if($json1){
+		$arr1=json_decode($json1);
+	}
+	if($json2){
+		$arr2=json_decode($json2);
+	}
+	
+	
+
+	return json_encode(array_merge($arr1,$arr2));
+}

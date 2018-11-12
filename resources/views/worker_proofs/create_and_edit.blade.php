@@ -143,24 +143,18 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
 <script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
 <script src="{{asset('assets/fileput/zh.js')}}"></script>
+<script src="{{asset('assets/fileput/slef.js')}}"></script>
 <script type="text/javascript">
-    var images=new Array();
-    @if($worker_proof->images)
-        var ima_arr={!! $worker_proof->images !!};
-        ima_arr.forEach(function(value,index){
-            images[images.length] ="<img src='{!! env('APP_URL') !!}/"+value+"' style='max-width:100%;max-height:100%'>";
-        })
-       
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    @if($worker_proof->id)
+       get_images('img',"{{route('images.index',['model'=>'worker_proofs-'.$worker_proof->id])}}");
+    @else
+        init_multiple('img',[],[]);
     @endif
-
-    $('#img').fileinput({
-        language: 'zh',
-        showUpload: false,
-        allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
-        maxFileCount: 3,
-        initialPreview: images,
-        showType:'detail',
-    })
 </script>
 
 @endsection

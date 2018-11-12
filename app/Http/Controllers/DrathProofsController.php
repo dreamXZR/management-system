@@ -53,14 +53,15 @@ class DrathProofsController extends Controller
 	}
 
 	
-	public function update(ImageUpload $imgage_upload , DrathProofRequest $request, DrathProof $drath_proof)
+	public function update(ImageUpload $image_upload , DrathProofRequest $request, DrathProof $drath_proof)
 	{
 		// $this->authorize('update', $drath_proof);
 		$post_data=$request->except('images');
 		//更新图片
 		if($request->images){
 			
-			$post_data['images']=$imgage_upload->update($request->images,'drath_proofs',$drath_proof->images);
+			$post_data['images']=json_merge($image_upload->update($request->images,'drath_proofs'),$drath_proof->images);
+			
 		}
 		
 		$drath_proof->update($post_data);
@@ -75,4 +76,5 @@ class DrathProofsController extends Controller
 
 		return redirect()->route('drath_proofs.index')->with('message', 'Deleted successfully.');
 	}
+
 }

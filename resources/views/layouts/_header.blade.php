@@ -29,44 +29,7 @@
                                 </a>
                                 <!--Messages Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages">
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{asset('assets/img/avatars/divyia.jpg')}}" class="message-avatar" alt="Divyia Austin">
-                                            <div class="message">
-                                                <span class="message-sender">
-                                                    Divyia Austin
-                                                </span>
-                                                <span class="message-time">
-                                                    2 minutes ago
-                                                </span>
-                                                <span class="message-subject">
-                                                    Here's the recipe for apple pie
-                                                </span>
-                                                <span class="message-body">
-                                                    to identify the sending application when the senders image is shown for the main icon
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{asset('assets/img/avatars/bing.png')}}" class="message-avatar" alt="Microsoft Bing">
-                                            <div class="message">
-                                                <span class="message-sender">
-                                                    Bing.com
-                                                </span>
-                                                <span class="message-time">
-                                                    Yesterday
-                                                </span>
-                                                <span class="message-subject">
-                                                    Bing Newsletter: The January Issue‏
-                                                </span>
-                                                <span class="message-body">
-                                                    Discover new music just in time for the Grammy® Awards.
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="#">
                                             <img src="{{asset('assets/img/avatars/adam-jansen.jpg')}}" class="message-avatar">
@@ -94,7 +57,7 @@
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                     <div class="avatar" title="View your public profile">
-                                        <img src="assets/img/avatars/adam-jansen.jpg">
+                                        <img src="{{asset('assets/img/avatars/adam-jansen.jpg')}}">
                                     </div>
                                     <section>
                                         <h2><span class="profile"><span>{{ Auth::user()->name }}</span></span></h2>

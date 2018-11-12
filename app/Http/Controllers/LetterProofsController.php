@@ -51,14 +51,14 @@ class LetterProofsController extends Controller
 		return view('letter_proofs.create_and_edit', compact('letter_proof'));
 	}
 
-	public function update(LetterProofRequest $request, LetterProof $letter_proof,ImageUpload $imgage_upload)
+	public function update(LetterProofRequest $request, LetterProof $letter_proof,ImageUpload $image_upload)
 	{
 		// $this->authorize('update', $letter_proof);
 		$post_data=$request->except('images');
 		//更新图片
 		if($request->images){
 			
-			$post_data['images']=$imgage_upload->update($request->images,'letter_proofs',$letter_proof->images);
+			$post_data['images']=json_merge($image_upload->update($request->images,'letter_proofs'),$letter_proof->images);
 		}
 		
 		$letter_proof->update($post_data);

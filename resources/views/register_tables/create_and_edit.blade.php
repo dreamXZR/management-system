@@ -30,10 +30,10 @@
                 <div id="horizontal-form">
                      @include('shared._errors')
                      @if($register_table->id)
-                        <form class="form-horizontal" action="{{ route('register_tables.update', $register_table->id) }}" method="POST" accept-charset="UTF-8">
+                        <form class="form-horizontal" action="{{ route('register_tables.update', $register_table->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                     @else
-                        <form class="form-horizontal" role="form" action="{{route('register_tables.store')}}" method="post">
+                        <form class="form-horizontal" role="form" action="{{route('register_tables.store')}}" method="post" enctype="multipart/form-data">
                     @endif
                         
 
@@ -109,6 +109,13 @@
                             </div>
                             
                         </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">图片上传:</label>
+                            <div class="col-sm-6">
+                                <input class="file form-control"  placeholder="" name="images[]"  type="file"  id="img" multiple>
+                            </div>
+                            
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -134,6 +141,24 @@
         format: 'YYYY-MM-DD HH:mm',
         
     });
+</script>
+
+{{-- fileput --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
+<script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
+<script src="{{asset('assets/fileput/zh.js')}}"></script>
+<script src="{{asset('assets/fileput/slef.js')}}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    @if($register_table->id)
+       get_images('img',"{{route('images.index',['model'=>'register_tables-'.$register_table->id])}}");
+    @else
+        init_multiple('img',[],[]);
+    @endif
 </script>
 
 @endsection
