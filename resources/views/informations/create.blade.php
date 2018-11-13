@@ -33,14 +33,6 @@
                         <div class="form-horizontal">
                    
                         
-                        
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">现居住地详细地址:</label>
-                            <div class="col-sm-6">
-                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='present_address'>
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍所有地详细地址:</label>
                             <div class="col-sm-6">
@@ -54,13 +46,13 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio"   v-model="residence_status" value="1" checked="">
+                                        <input type="radio"   v-model="residence_status" value="农业" class="colored-blue" checked="">
                                         <span class="text">农业</span>
                                     </label>
                                 </div>
                                <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" v-model="residence_status" value="2">
+                                        <input type="radio" v-model="residence_status" value="非农业" class="colored-blue">
                                         <span class="text">非农业</span>
                                     </label>
                                 </div>
@@ -73,19 +65,19 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" v-model='type1' value="1" checked="">
+                                        <input type="radio" v-model='house_people' value="业主" class="colored-blue" checked="">
                                         <span class="text">业主</span>
                                     </label>
                                 </div>
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" v-model='type1' value="2"  >
+                                        <input type="radio" v-model='house_people' value="租户"  class="colored-blue">
                                         <span class="text">租户</span>
                                     </label>
                                 </div>
                                <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" v-model='type1' value="3"  >
+                                        <input type="radio" v-model='house_people' value="空房"  class="colored-blue">
                                         <span class="text">空房</span>
                                     </label>
                                 </div>
@@ -98,25 +90,25 @@
                             <div class="col-sm-6">
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type2" value="1" class="colored-blue" >
+                                        <input type="checkbox" v-model="house_status" value="户在" class="colored-blue" >
                                         <span class="text" >户在</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type2" value="2"  class="colored-blue" >
+                                        <input type="checkbox" v-model="house_status" value="户不在"  class="colored-blue" >
                                         <span class="text" >户不在</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type2" value="3"  class="colored-blue" >
+                                        <input type="checkbox" v-model="house_status" value="人在"  class="colored-blue" >
                                         <span class="text" >人在</span>
                                     </label>
                                 </div>
                                <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type2" value="4"class="colored-blue" >
+                                        <input type="checkbox" v-model="house_status" value="人不在"class="colored-blue" >
                                         <span class="text" >人不在</span>
                                     </label>
                                 </div>
@@ -129,43 +121,43 @@
                             <div class="col-sm-6">
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="1"  class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="老人空巢"  class="colored-blue">
                                         <span class="text">老人空巢</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="2"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="独居"   class="colored-blue">
                                         <span class="text">独居</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="3"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="复退军人"   class="colored-blue">
                                         <span class="text">复退军人</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="4"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="残疾人"   class="colored-blue">
                                         <span class="text">残疾人</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="5"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="侨属"   class="colored-blue">
                                         <span class="text">侨属</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="6"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="低保户口"   class="colored-blue">
                                         <span class="text">低保户口</span>
                                     </label>
                                 </div>
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="type3" value="7"   class="colored-blue">
+                                        <input type="checkbox" v-model="people" value="特困"   class="colored-blue">
                                         <span class="text">特困</span>
                                     </label>
                                 </div>
@@ -326,12 +318,11 @@
 	var app=new Vue({
 		el:'#app',
 		data:{
-            present_address:'',
             residence_address:'',
             residence_status:'1',
-            type1:'1',
-            type2:[],
-            type3:[],
+            house_people:'1',
+            house_status:[],
+            people:[],
             situation:'',
             other:'',
 
@@ -422,18 +413,17 @@
             add_infomation:function(){
                 //验证
                 var data={
-                     present_address:this.present_address,
                      residence_address:this.residence_address,
                      residence_status:this.residence_status,
-                     type1:this.type1,
-                     type2:this.type2.join(','),
-                     type3:this.type3.join(','),
+                     house_people:this.house_people,
+                     house_status:this.house_status.join(','),
+                     people:this.people.join(','),
                      situation:this.situation,
                      other:this.other,
                      handicappeds:this.handicappeds,
                      residents:this.residents
                 };
-                //console.log(data)
+                console.log(data)
                 $.ajax({
                     type:'POST',
                     url:"{{route('informations.store')}}",
@@ -443,6 +433,7 @@
                     
                     data:data,
                     success:function(res){
+                        console.log(res)
                         if(res.status){
                             window.location.href="{{route('informations.index')}}";
                         }

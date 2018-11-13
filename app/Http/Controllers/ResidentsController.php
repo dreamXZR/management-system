@@ -9,7 +9,7 @@ class ResidentsController extends Controller
 {
     public function index()
     {
-        $residents=Resident::with('information')->paginate(10);
+        $residents=Resident::with('information')->paginate(12);
 
         return view('residents.index',compact('residents'));
     }

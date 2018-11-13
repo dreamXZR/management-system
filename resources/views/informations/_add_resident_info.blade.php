@@ -17,6 +17,10 @@
             <input type="text" class="form-control" v-model='resident.relationship'>
           </div>
           <div class="form-group">
+            <label for="recipient-name" class="control-label">现居住地址:</label>
+            <input type="text" class="form-control" v-model='resident.present_address'>
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="control-label">身份证号码:</label>
             <input type="text" class="form-control" v-model='resident.id_number'>
           </div>
@@ -31,33 +35,33 @@
           <div class="form-group">
             <label for="recipient-name" class="control-label">文化程度:</label>
             <select class="form-control" v-model='resident.culture'>
-                <option value="1">小学以下</option>
-                <option value="2">小学</option>
-                <option value="3">初中</option>
-                <option value="4">高中</option>
-                <option value="5">大专</option>
-                <option value="6">大学</option>
-                <option value="7">大学以上</option>
+                <option value="小学以下">小学以下</option>
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="大专">大专</option>
+                <option value="大学">大学</option>
+                <option value="大学以上">大学以上</option>
             </select>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">政治面貌:</label>
             <select class="form-control" v-model='resident.face'>
-                <option value="1">中共党员</option>
-                <option value="2">群众</option>
-                <option value="3">共青团</option>
-                <option value="4">农工党</option>
-                <option value="5">其他</option>
+                <option value="中共党员">中共党员</option>
+                <option value="群众">群众</option>
+                <option value="共青团">共青团</option>
+                <option value="农工党">农工党</option>
+                <option value="其他">其他</option>
                 
             </select>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">婚姻状况:</label>
             <select class="form-control" v-model='resident.marriage'>
-                <option value="1">已婚</option>
-                <option value="2">未婚</option>
-                <option value="3">离异</option>
-                <option value="4">丧偶</option>
+                <option value="已婚">已婚</option>
+                <option value="未婚">未婚</option>
+                <option value="离异">离异</option>
+                <option value="丧偶">丧偶</option>
                 
                 
             </select>
@@ -65,10 +69,10 @@
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份类别:</label>
             <select class="form-control" v-model='resident.identity'>
-                <option value="1">在职</option>
-                <option value="2">退休</option>
-                <option value="3">学生</option>
-                <option value="4">学龄前</option>
+                <option value="在职">在职</option>
+                <option value="退休">退休</option>
+                <option value="学生">学生</option>
+                <option value="学龄前">学龄前</option>
                 
                 
             </select>

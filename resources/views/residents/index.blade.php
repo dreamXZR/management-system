@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="page-content">
+@include('residents._select')
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
@@ -17,6 +18,8 @@
                 <div class="page-body">
                     
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> 数据筛选
+</button>
+<button type="button" tooltip="导出excel" class="btn btn-sm btn-azure btn-addon" > <i class="fa fa-plus"></i> 导出excel
 </button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -35,15 +38,7 @@
                                 <th scope="col">
                                     户籍性质
                                 </th>
-                                <th scope="col">
-                                    房屋状态
-                                </th>
-                                <th scope="col">
-                                    房屋使用人
-                                </th>
-                                <th scope="col">
-                                    住户情况
-                                </th>
+                                
                                 <th scope="col">
                                     姓名
                                 </th>
@@ -96,7 +91,7 @@
                         	@foreach($residents as $resident)
                             <tr>
                                 <td>
-                                    {{$resident->information->present_address}}
+                                    {{$resident->present_address}}
                                 </td>
                                 <td>
                                     {{$resident->information->residence_address}}
@@ -104,15 +99,7 @@
                                 <td>
                                     {{$resident->information->residence_status}}
                                 </td>
-                                <td>
-                                    {{$resident->information->type2}}
-                                </td>
-                                <td>
-                                    {{$resident->information->type1}}
-                                </td>
-                                <td>
-                                    {{$resident->information->type3}}
-                                </td>
+                                
                                 <td>
                                    {{$resident->name}}
                                 </td>
@@ -162,7 +149,11 @@
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
+                <div style="margin-top: 20px;">
+                        {!! $residents->render() !!}
+                    </div>
             </div>
         </div>
     </div>

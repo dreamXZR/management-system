@@ -26,6 +26,7 @@ class InformationsController extends Controller
     {
         //信息卡数据
         $information_data=$request->except(['handicappeds','residents']);
+
         $information=Information::create($information_data);
         
 

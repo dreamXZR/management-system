@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(RegisterTablesTableSeeder::class);
 		$this->call(LetterProofsTableSeeder::class);
 		$this->call(DrathProofsTableSeeder::class);
-
+        $this->call(InformationsTableSeeder::class);
         Model::reguard();
     }
 }

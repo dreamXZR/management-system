@@ -41,3 +41,26 @@ function json_merge($json1,$json2)
 
 	return json_encode(array_merge($arr1,$arr2));
 }
+
+//number-string
+function num_str($str,$map_arr)
+{
+	$str_arr=[];
+	$num_arr=explode(',', $str);
+	foreach ($num_arr as $k => $v) {
+		$str_arr[]=$map_arr[$v];
+	}
+
+	return implode(',', $str_arr);
+}
+
+function str_num($str,$map_arr)
+{
+	$num_arr=[];
+	$str_arr=explode(',', $str);
+	foreach ($str_arr as $k => $v) {
+		$num_arr[]=array_search($v, $map_arr);
+	}
+
+	return implode(',', $num_arr);
+}
