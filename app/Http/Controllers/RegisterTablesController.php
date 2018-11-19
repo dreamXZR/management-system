@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterTableRequest;
 use App\Libs\ImageUpload;
+use App\Models\Information;
 
 class RegisterTablesController extends Controller
 {
@@ -32,11 +33,13 @@ class RegisterTablesController extends Controller
 
 	public function create(RegisterTable $register_table)
 	{
-		return view('register_tables.create_and_edit', compact('register_table'));
+		$addresses=Information::where('id','>',0)->get(['id','residence_address']);
+		return view('register_tables.create_and_edit', compact('register_table','addresses'));
 	}
 
 	public function store(RegisterTableRequest $request,ImageUpload $image_upload)
 	{
+		dd($request->all());
 		$post_data=$request->except('images');
 		//上传图片
 		if($request->images){

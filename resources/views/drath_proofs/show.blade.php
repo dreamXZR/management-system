@@ -39,7 +39,19 @@
                         <p>死亡时间:{{ $drath_proof->death_date }}</p> 
                         <p>死亡地址:{{ $drath_proof->death_address }}</p> 
                         <p>申请人:{{ $drath_proof->applicant }}</p>
-                        <p>与死者关系:{{ $drath_proof->death_relation}}</p>
+                        <p>与死者关系:
+                            @switch( $drath_proof->death_relation)
+                                @case(1)
+                                    配偶
+                                @break
+                                @case(2)
+                                    子女
+                                @break
+                                @case(3)
+                                    父母
+                                @break
+                            @endswitch
+                        </p>
                         <p>申请人身份证:{{ $drath_proof->applicant_id_number }}</p>
                         <p>代理人:{{ $drath_proof->agent }}</p>
                         <p>代理人与申请人关系:{{ $drath_proof->application_relation }}</p>

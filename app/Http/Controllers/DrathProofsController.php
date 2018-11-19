@@ -43,7 +43,7 @@ class DrathProofsController extends Controller
 		$post_data['number']=create_number('drath_proofs');
 		
 		$drath_proof = DrathProof::create($post_data);
-		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', '添加信息成功');
+		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('success', '添加成功');
 	}
 
 	public function edit(DrathProof $drath_proof)
@@ -66,7 +66,7 @@ class DrathProofsController extends Controller
 		
 		$drath_proof->update($post_data);
 		
-		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('message', '信息更新成功');
+		return redirect()->route('drath_proofs.index', $drath_proof->id)->with('success', '更新成功');
 	}
 
 	public function destroy(DrathProof $drath_proof)
@@ -74,7 +74,7 @@ class DrathProofsController extends Controller
 		$this->authorize('destroy', $drath_proof);
 		$drath_proof->delete();
 
-		return redirect()->route('drath_proofs.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('drath_proofs.index')->with('success', '删除成功');
 	}
 
 }

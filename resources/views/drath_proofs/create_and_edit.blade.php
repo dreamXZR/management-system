@@ -90,7 +90,7 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">死者与配偶关系:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">与死者关系:</label>
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>

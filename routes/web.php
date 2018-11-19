@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function(){
 	//图片相关
 	Route::get('images','ImagesController@index')->name('images.index');
 	Route::post('images','ImagesController@destroy')->name('images.destroy');
+	//导出相关
+	Route::post('export','ResidentsController@export')->name('residents.export');
 });
 
 

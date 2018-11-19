@@ -40,7 +40,7 @@
                                 
                                 
                                 <td align="center">
-                                    <a class="btn btn-xs btn-primary" href="#">
+                                    <a class="btn btn-xs btn-primary" href="{{route('informations.show',$info->id)}}">
                                         <i class="glyphicon glyphicon-eye-open"></i> 
                                     </a>
                                     

@@ -6,36 +6,30 @@ class RegisterTableRequest extends Request
 {
     public function rules()
     {
-        switch($this->method())
-        {
-            // CREATE
-            case 'POST':
-            {
-                return [
-                    // CREATE ROLES
-                ];
-            }
-            // UPDATE
-            case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    // UPDATE ROLES
-                ];
-            }
-            case 'GET':
-            case 'DELETE':
-            default:
-            {
-                return [];
-            };
-        }
+        return [
+            'name'=>'required|max:20',
+            'sex'=>'required',
+            'call_time'=>'required',
+            'address'=>'required|max:100',
+            'phone'=>'required|phone:CN',
+        ];
     }
 
     public function messages()
     {
         return [
             // Validation messages
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name'=>'姓名',
+            'sex'=>'性别',
+            'call_time'=>'来电时间',
+            'address'=>'家庭住址',
+            'phone'=>'电话'
         ];
     }
 }

@@ -32,7 +32,7 @@ Purchase: http://wrapbootstrap.com
     
     
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
-
+    
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{asset('assets/js/skins.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-2.0.3.min.js')}}"></script>
@@ -76,7 +76,6 @@ Purchase: http://wrapbootstrap.com
             @include('layouts._left')
             <!-- /Page Sidebar -->
             <!-- Page Content -->
-            <!-- @include('shared._messages') -->
             @yield('content')
             <!-- /Page Content -->
         </div>
@@ -93,6 +92,7 @@ Purchase: http://wrapbootstrap.com
     <script src="{{asset('assets/js/beyond.min.js')}}"></script>
     
 
+    @include('shared._messages')
 
     <!--Page Related Scripts-->
     <!--Sparkline Charts Needed Scripts-->

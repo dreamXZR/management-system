@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-datetimepicker.min.css')}}">
 <div class="page-content">
@@ -116,6 +115,40 @@
                             </div>
                             
                         </div>
+                        <div class="line_01">相关责任人</div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">主要责任:</label>
+                            <div class="col-sm-6">
+                                <select  class="selectpicker form-control" multiple data-live-search="true" name="main[]">
+                                    @foreach($addresses as $address)
+                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">次要责任:</label>
+                            <div class="col-sm-6">
+                                <select  class="selectpicker form-control" multiple data-live-search="true" name="secondary[]">
+                                    @foreach($addresses as $address)
+                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">参与住户:</label>
+                            <div class="col-sm-6">
+                                <select  class="selectpicker form-control" multiple data-live-search="true" name="join[]">
+                                    @foreach($addresses as $address)
+                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -159,6 +192,24 @@
     @else
         init_multiple('img',[],[]);
     @endif
+</script>
+
+<style type="text/css">
+.line_01{
+    margin: 50px 0;
+    line-height: 1px;
+    border-left: 400px solid #ddd;
+    border-right: 400px solid #ddd;
+    text-align: center;
+}
+</style>
+{{-- select --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/select/bootstrap-select.min.css')}}">
+<script src="{{asset('assets/select/bootstrap-select.min.js')}}"></script>
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        'selectedText': 'cat'
+    });
 </script>
 
 @endsection

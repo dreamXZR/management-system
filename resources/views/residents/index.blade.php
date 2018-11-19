@@ -19,8 +19,12 @@
                     
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> 数据筛选
 </button>
-<button type="button" tooltip="导出excel" class="btn btn-sm btn-azure btn-addon" > <i class="fa fa-plus"></i> 导出excel
-</button>
+<form action="{{route('residents.export')}}" method="POST" style="display: inline-block;">
+    {{csrf_field()}}
+    <button type="submit" tooltip="导出excel" class="btn btn-sm btn-azure btn-addon" > <i class="fa fa-plus"></i> 导出excel
+    </button>
+</form>
+
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
@@ -29,6 +33,7 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
+                                
                                 <th scope="col">
                                     现居住地
                                 </th>
@@ -90,6 +95,7 @@
                         <tbody>
                         	@foreach($residents as $resident)
                             <tr>
+                               
                                 <td>
                                     {{$resident->present_address}}
                                 </td>

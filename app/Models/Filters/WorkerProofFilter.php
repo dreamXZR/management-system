@@ -26,4 +26,9 @@ class WorkerProofFilter extends ModelFilter
     {
     	return $this->whereLike('number',$value);
     }
+
+    public function setup()
+    {
+        return $this->orderBy('created_at','desc');
+    }
 }

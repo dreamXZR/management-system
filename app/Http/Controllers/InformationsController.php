@@ -114,6 +114,13 @@ class InformationsController extends Controller
         return redirect()->route('informations.index')->with('message', 'Deleted successfully.');
     }
 
+    public function show(Information $information)
+    {
+        $handicappeds=$information->handicappeds;
+        $residents=$information->residents;
+        return view('informations.show',compact('information','handicappeds','residents'));
+    }
+
     
     public function getInformation(Request $request)
     {

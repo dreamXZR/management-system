@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resident;
+use Excel;
+use App\Exports\ResidentsExport;
 
 class ResidentsController extends Controller
 {
@@ -23,5 +25,12 @@ class ResidentsController extends Controller
     			'message'=>'删除成功'
     		]);
     	}
+    }
+
+    public function export(Request $request)
+    {
+        
+        return Excel::download(new ResidentsExport(),'居民信息.xlsx');
+        //return $export->download('居民信息.xlsx');
     }
 }

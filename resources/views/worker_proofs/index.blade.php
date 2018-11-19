@@ -17,8 +17,8 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加证明" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('worker_proofs.create')}}'"> <i class="fa fa-plus"></i> 添加证明
-</button>
+{{-- <button type="button" tooltip="添加证明" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('worker_proofs.create')}}'"> <i class="fa fa-plus"></i> 添加证明
+</button> --}}
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> 数据筛选
 </button>
 <div class="row">
@@ -52,7 +52,7 @@
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
                                     @can('del_info')
-                                    <form action="{{ route('worker_proofs.destroy', $worker_proof->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                                    <form action="{{ route('worker_proofs.destroy', $worker_proof->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('是否删除该数据？');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 

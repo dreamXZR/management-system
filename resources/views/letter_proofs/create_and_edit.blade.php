@@ -41,7 +41,11 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">证明人:</label>
                             <div class="col-sm-6">
+                                @if($status=='create')
+                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{$resident->name}}" readonly>
+                                @else
                                 <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('name',$letter_proof->name)}}">
+                                @endif
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -55,16 +59,24 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">居住地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="present_address" type="text" value="{{old('present_address',$letter_proof->present_address)}}" >
+                                @if($status=='create')
+                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$resident->present_address}}" readonly>
+                                @else
+                                <input class="form-control"  placeholder="" name="present_address" type="text" value="{{old('present_address',$letter_proof->present_address)}}" required="">
+                                @endif
                             </div>
-                            
+                            <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                        <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{old('residence_address',$letter_proof->residence_address)}}" >
+                                @if($status=='create')
+                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{$information->residence_address}}" readonly>
+                                @else
+                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{old('residence_address',$letter_proof->residence_address)}}" required="">
+                                @endif
                             </div>
-                            
+                            <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">使用:</label>

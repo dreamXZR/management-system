@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LetterProofRequest;
 use App\Libs\ImageUpload;
+use App\Models\Resident;
 
 class LetterProofsController extends Controller
 {
@@ -24,9 +25,13 @@ class LetterProofsController extends Controller
         return view('letter_proofs.show', compact('letter_proof'));
     }
 
-	public function create(LetterProof $letter_proof)
+	public function create(LetterProof $letter_proof,Request $request)
 	{
-		return view('letter_proofs.create_and_edit', compact('letter_proof'));
+		$resident_id=$request->resident_id;
+		$resident=Resident::find($resident_id);
+		$information=$resident->information;
+		$status='create';
+		return view('letter_proofs.create_and_edit', compact('letter_proof','resident','information','status'));
 	}
 
 	public function store(LetterProofRequest $request,ImageUpload $imgage_upload)
@@ -42,13 +47,14 @@ class LetterProofsController extends Controller
 		$post_data['number']=create_number('letter_proofs');
 		
 		$letter_proof = LetterProof::create($post_data);
-		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('message', 'Created successfully.');
+		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('success', '添加成功');
 	}
 
 	public function edit(LetterProof $letter_proof)
 	{
-        $this->authorize('update', $letter_proof);
-		return view('letter_proofs.create_and_edit', compact('letter_proof'));
+        // $this->authorize('update', $letter_proof);
+        $status='edit';
+		return view('letter_proofs.create_and_edit', compact('letter_proof','status'));
 	}
 
 	public function update(LetterProofRequest $request, LetterProof $letter_proof,ImageUpload $image_upload)
@@ -63,7 +69,7 @@ class LetterProofsController extends Controller
 		
 		$letter_proof->update($post_data);
 
-		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('message', 'Updated successfully.');
+		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('success', '更新成功');
 	}
 
 	public function destroy(LetterProof $letter_proof)
@@ -71,6 +77,6 @@ class LetterProofsController extends Controller
 		$this->authorize('destroy', $letter_proof);
 		$letter_proof->delete();
 
-		return redirect()->route('letter_proofs.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('letter_proofs.index')->with('success', '删除成功');
 	}
 }
