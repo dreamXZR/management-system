@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('drath_proofs', 'DrathProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //死亡证明
 	
 	Route::resource('register_tables', 'RegisterTablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //来访登记
-	Route::put('finished','RegisterTablesController@finished')->name('register_tables.finished');
+	Route::put('register_finished','RegisterTablesController@finished')->name('register_tables.finished');
 	
 	Route::resource('informations', 'InformationsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);      //信息卡
 	
@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::resource('worker_proofs', 'WorkerProofsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);    //就业证明
 
+	Route::resource('above_tables', 'AboveTablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);          //来访登记
+	Route::put('above_finished','AboveTablesController@finished')->name('above_tables.finished');
 
 	//图片相关
 	Route::get('images','ImagesController@index')->name('images.index');
@@ -52,6 +54,7 @@ Route::middleware(['auth'])->group(function(){
 	//导出相关
 	Route::post('export','ResidentsController@export')->name('residents.export');
 });
+
 
 
 

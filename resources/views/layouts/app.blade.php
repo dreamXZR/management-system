@@ -110,7 +110,7 @@ Purchase: http://wrapbootstrap.com
     <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
     <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
  -->
-
+    @yield('afterJavaScript')
 </body>
 <!--  /Body -->
 </html>

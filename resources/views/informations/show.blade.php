@@ -210,7 +210,7 @@
 	                        <div>
 	                        	<button class="btn btn-blue">替换信息卡</button>
 	                        	<button class="btn btn-blue">问题汇总</button>
-	                        	<button class="btn btn-blue">上门登记</button>
+	                        	<a class="btn btn-blue" href="{{route('above_tables.create',['information_id'=>$information->id])}}">上门登记</a>
 	                        	<a class="btn btn-blue" href="{{route('register_tables.create',['information_id'=>$information->id])}}">来访登记</a>
 	                        	<button class="btn btn-blue" onclick="letter_proof()">开证明信</button>
 	                        	<a class="btn btn-blue" href="{{route('worker_proofs.create')}}">就业证明</a>

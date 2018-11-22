@@ -9,7 +9,7 @@
                                         <li>
                         <a href="{{route('index')}}">系统</a>
                     </li>
-                                        <li class="active">来访登记</li>
+                                        <li class="active">上门登记</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -40,32 +40,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($register_tables as $register_table)
+                            @foreach($above_tables as $above_table)
                             <tr>
-                                <td align="center">{{$register_table->number}}</td>
-                                <td align="center">{{$register_table->name}}</td>
-                                <td align="center">{{$register_table->call_time}}</td>
-                                <td align="center">{{$register_table->phone}}</td>
-                                <td align="center">{{$register_table->address}}</td>
+                                <td align="center">{{$above_table->number}}</td>
+                                <td align="center">{{$above_table->name}}</td>
+                                <td align="center">{{$above_table->call_time}}</td>
+                                <td align="center">{{$above_table->phone}}</td>
+                                <td align="center">{{$above_table->address}}</td>
                                 <td align="center">
                                     
                                         <label>
-                                            <input class="checkbox-slider slider-icon colored-blue" type="checkbox" @if($register_table->is_finish==1)checked=""@endif onclick="is_finish('{{$register_table->id}}')" id="checkbox_{{$register_table->id}}">
+                                            <input class="checkbox-slider slider-icon colored-blue" type="checkbox" @if($above_table->is_finish==1)checked=""@endif onclick="is_finish('{{$above_table->id}}')" id="checkbox_{{$above_table->id}}">
                                             <span class="text"></span>
                                         </label>
                                    
                                 </td>
 
                                 <td align="center">
-                                    <a class="btn btn-xs btn-primary" href="{{ route('register_tables.show', $register_table->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('above_tables.show', $above_table->id) }}">
                                         <i class="glyphicon glyphicon-eye-open"></i> 
                                     </a>
                                     
-                                    <a class="btn btn-xs btn-warning" href="{{ route('register_tables.edit', $register_table->id) }}">
+                                    <a class="btn btn-xs btn-warning" href="{{ route('above_tables.edit', $above_table->id) }}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
                                     @can('del_info')
-                                    <form action="{{ route('register_tables.destroy', $register_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('是否删除该数据?');">
+                                    <form action="{{ route('above_tables.destroy', $above_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('是否删除该数据?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
@@ -81,7 +81,7 @@
                         </tbody>
                     </table>
                     <div style="margin-top: 20px;">
-                        {!! $register_tables->appends($select)->render() !!}
+                        {!! $above_tables->appends($select)->render() !!}
                     </div>
                     
                 </div>
@@ -95,37 +95,39 @@
                 </div>
                 <!-- /Page Body -->
             </div>
-@include('register_tables._select')
-
-
+@include('above_tables._select')
+<!--Page Related Scripts-->
 @endsection
 @section('afterJavaScript')
-<!--Page Related Scripts-->
-<script type="text/javascript">
+    <script type="text/javascript">
     
-    //完成访问登记
-    function is_finish(id){
-        var is_finish=0;
-        if($('#checkbox_'+id).prop('checked')){
-            is_finish=1;
-        }
-        $.ajax({
-            type:"PUT",
-            url:"{{route('register_tables.finished')}}",
-            headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data:{
-                id:id,
-                is_finish:is_finish
-            },
-            success:function(res){
-                if(res.status){
-                    window.location.reload();
-                }
+        //完成访问登记
+        function is_finish(id){
+            var is_finish=0;
+            if($('#checkbox_'+id).prop('checked')){
+                is_finish=1;
             }
-        })
-       
-    }
-</script>
+            console.log(is_finish);
+            $.ajax({
+                type:"PUT",
+                url:"{{route('above_tables.finished')}}",
+                headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    id:id,
+                    is_finish:is_finish
+                },
+                success:function(res){
+                    if(res.status){
+                        window.location.reload();
+                    }
+                }
+            })
+           
+        }
+    </script>
 @endsection
+
+
+

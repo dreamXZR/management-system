@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
 		$this->call(WorkerProofsTableSeeder::class);
-		$this->call(RegisterTablesTableSeeder::class);
 		$this->call(LetterProofsTableSeeder::class);
 		$this->call(DrathProofsTableSeeder::class);
         $this->call(InformationsTableSeeder::class);
