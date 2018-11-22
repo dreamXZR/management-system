@@ -31,6 +31,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('problem_tables.index')}}">
+                            <i class="menu-icon fa fa-th"></i>
+                            <span class="menu-text"> 问题汇总 </span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('residents.index')}}">
                             <i class="menu-icon glyphicon glyphicon-tasks"></i>
                             <span class="menu-text"> 人员列表 </span>

@@ -46,7 +46,7 @@ class AboveTablesController extends Controller
 		}
 		
 		//生成编号
-		$post_data['number']=create_number('register_tables');
+		$post_data['number']=create_number('above_tables');
 		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
@@ -68,7 +68,7 @@ class AboveTablesController extends Controller
 		//更新图片
 		if($request->images){
 			
-			$post_data['images']=json_merge($image_upload->update($request->images,'register_tables'),$register_table->images);
+			$post_data['images']=json_merge($image_upload->update($request->images,'above_tables'),$above_table->images);
 			
 		}
 		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';

@@ -209,7 +209,7 @@
 			                <div class="line_01">功能列表</div>
 	                        <div>
 	                        	<button class="btn btn-blue">替换信息卡</button>
-	                        	<button class="btn btn-blue">问题汇总</button>
+	                        	<a class="btn btn-blue" href="{{route('problem_tables.create',['information_id'=>$information->id])}}">问题汇总</a>
 	                        	<a class="btn btn-blue" href="{{route('above_tables.create',['information_id'=>$information->id])}}">上门登记</a>
 	                        	<a class="btn btn-blue" href="{{route('register_tables.create',['information_id'=>$information->id])}}">来访登记</a>
 	                        	<button class="btn btn-blue" onclick="letter_proof()">开证明信</button>
