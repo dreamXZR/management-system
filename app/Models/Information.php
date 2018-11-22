@@ -48,6 +48,11 @@ class Information extends baseModel
     	return $this->hasMany('App\Models\Handicapped');
     }
 
+    public function register_tables()
+    {
+        return $this->hasMany('App\Models\RegisterTable');
+    }
+
     
 
 

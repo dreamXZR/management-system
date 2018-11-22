@@ -31,15 +31,15 @@ class RegisterTablesController extends Controller
         return view('register_tables.show', compact('register_table'));
     }
 
-	public function create(RegisterTable $register_table)
+	public function create(RegisterTable $register_table,Request $request)
 	{
 		$addresses=Information::where('id','>',0)->get(['id','residence_address']);
-		return view('register_tables.create_and_edit', compact('register_table','addresses'));
+		$information_id=$request->information_id;
+		return view('register_tables.create_and_edit', compact('register_table','addresses','information_id'));
 	}
 
-	public function store(RegisterTableRequest $request,ImageUpload $image_upload)
+	public function store(RegisterTableRequest $request,ImageUpload $image_upload,Information $information)
 	{
-		dd($request->all());
 		$post_data=$request->except('images');
 		//上传图片
 		if($request->images){
@@ -49,14 +49,18 @@ class RegisterTablesController extends Controller
 		
 		//生成编号
 		$post_data['number']=create_number('register_tables');
+		$post_data['main']=implode(',', $post_data['main']);
+		$post_data['secondary']=implode(',', $post_data['secondary']);
+		$post_data['join']=implode(',', $post_data['join']);
 		$register_table = RegisterTable::create($post_data);
-		return redirect()->route('register_tables.index', $register_table->id)->with('message', 'Created successfully.');
+		return redirect()->route('register_tables.index', $register_table->id)->with('success', '添加成功');
 	}
 
 	public function edit(RegisterTable $register_table)
 	{
-        $this->authorize('update', $register_table);
-		return view('register_tables.create_and_edit', compact('register_table'));
+        // $this->authorize('update', $register_table);
+        $addresses=Information::where('id','>',0)->get(['id','residence_address']);
+		return view('register_tables.create_and_edit', compact('register_table','addresses'));
 	}
 
 	public function update(ImageUpload $image_upload,RegisterTableRequest $request, RegisterTable $register_table)
@@ -69,9 +73,12 @@ class RegisterTablesController extends Controller
 			$post_data['images']=json_merge($image_upload->update($request->images,'register_tables'),$register_table->images);
 			
 		}
+		$post_data['main']=implode(',', $post_data['main']);
+		$post_data['secondary']=implode(',', $post_data['secondary']);
+		$post_data['join']=implode(',', $post_data['join']);
 		$register_table->update($post_data);
 
-		return redirect()->route('register_tables.index', $register_table->id)->with('message', 'Updated successfully.');
+		return redirect()->route('register_tables.index', $register_table->id)->with('success', '更新成功');
 	}
 
 	public function destroy(RegisterTable $register_table)
@@ -79,7 +86,7 @@ class RegisterTablesController extends Controller
 		$this->authorize('destroy', $register_table);
 		$register_table->delete();
 
-		return redirect()->route('register_tables.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('register_tables.index')->with('success', '删除成功');
 	}
 
 	public function finished(Request $request)
@@ -88,10 +95,12 @@ class RegisterTablesController extends Controller
 		$register->is_finish=$request->is_finish;
 		$res=$register->save();
 		if($res){
+			session()->flash('success','操作成功');
 			return response()->json([
 				'status'=>true,
 			]);
 		}else{
+			session()->flash('danger','操作失败');
 			return response()->json([
 				'status'=>true,
 			]);

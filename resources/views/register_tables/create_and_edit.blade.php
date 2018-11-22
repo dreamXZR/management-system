@@ -37,6 +37,9 @@
                         
 
                         {{ csrf_field() }}
+                        @if(!empty($information_id))
+                            <input type="hidden" name="information_id" value="{{$information_id}}">
+                        @endif
                         
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">来电者姓名:</label>
@@ -121,7 +124,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="main[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $register_table->main))){echo 'selected';}?>>{{$address->residence_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -132,7 +135,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="secondary[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $register_table->secondary))){echo 'selected';}?>>{{$address->residence_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -143,7 +146,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="join[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}">{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $register_table->join))){echo 'selected';}?>>{{$address->residence_address}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -17,8 +17,8 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加登记" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('register_tables.create')}}'"> <i class="fa fa-plus"></i> 添加登记
-</button>
+{{-- <button type="button" tooltip="添加登记" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('register_tables.create')}}'"> <i class="fa fa-plus"></i> 添加登记
+</button> --}}
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> 数据筛选
 </button>
 <div class="row">
@@ -65,7 +65,7 @@
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
                                     @can('del_info')
-                                    <form action="{{ route('register_tables.destroy', $register_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                                    <form action="{{ route('register_tables.destroy', $register_table->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('是否删除该数据?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
