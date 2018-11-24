@@ -19,6 +19,7 @@
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+Route::get('/test','UsersController@test');
 
 
 Route::middleware(['auth'])->group(function(){
@@ -56,6 +57,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('images','ImagesController@destroy')->name('images.destroy');
 	//导出相关
 	Route::post('export','ResidentsController@export')->name('residents.export');
+
+	//未完成
+	Route::get('unfinish','IndexController@unfinish')->name('unfinish');
+	//替换信息
+	Route::get('replace_information','InformationsController@replace_information')->name('replace_information');
 });
 
 

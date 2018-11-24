@@ -11,6 +11,7 @@
 
 </style>
 @section('content')
+
 	<div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
@@ -35,190 +36,65 @@
 	                </a>
 	            </div>
 	            <div class="col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
-	                <div class="widget">
-	                    <div class="widget-header bordered-left bordered-blueberry">
-	                        <span class="widget-caption">详细信息</span>
-	                    </div><!--Widget Header-->
-	                    <div class="widget-body bordered-left bordered-blue">
-	                        
-	                        <p>户籍地址:{{ $information->residence_address }}</p> 
-	                        <p>户籍性质:{{ $information->residence_status }}</p>
-	                        <p>房屋状态:{{ $information->house_status }}</p>
-	                        <p>房屋使用情况:{{ $information->house_people }}</p>
-	                        <p>住户情况:{{ $information->people }}</p>
-	                        <p>家庭状况:{{ $information->situation }}</p>
-	                        <p>备注:{{ $information->other }}</p>
-	                        <p>家庭成员:</p>
-	                        <div class="table-scrollable">
-			                    <table class="table table-striped table-bordered table-hover">
-			                        <thead>
-			                            <tr>
-			                            	<th scope="col">
-			                            		选择
-			                            	</th>
-			                                <th scope="col">
-			                                    现居住地
-			                                </th>
-			                                
-			                                <th scope="col">
-			                                    姓名
-			                                </th>
-			                                <th scope="col">
-			                                    与户主关系
-			                                </th>
-			                                <th scope="col">
-			                                    性别
-			                                </th>
-			                                <th scope="col">
-			                                    民族
-			                                </th>
-			                                <th scope="col">
-			                                    出生年月
-			                                </th>
-			                                <th scope="col">
-			                                    文化程度
-			                                </th>
-			                                <th scope="col">
-			                                    政治面貌
-			                                </th>
-			                                <th scope="col">
-			                                    婚姻状况
-			                                </th>
-			                                <th scope="col">
-			                                    身份类别
-			                                </th>
-			                                <th scope="col">
-			                                    有何特长
-			                                </th>
-			                                <th scope="col">
-			                                    身份证号码
-			                                </th>
-			                                <th scope="col">
-			                                    工作单位及职务
-			                                </th>
-			                                <th scope="col">
-			                                    联系电话
-			                                </th>
-			                                <th scope="col">
-			                                    职位标签
-			                                </th>
-			                                <th scope="col">
-			                                    备注
-			                                </th>
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#detail">
+                                    详细信息
+                                </a>
+                            </li>
 
-			                            </tr>
-			                        </thead>
-			                        <tbody>
-			                        	@foreach($residents as $resident)
-			                        		 <tr>
-			                        		 	<td>
-			                        		 		<input type="radio" name="select" style="position: initial;opacity: 1;" onclick="check({{$resident->id}})">
-			                        		 	</td>
-				                                <td>
-				                                    {{$resident->present_address}}
-				                                </td>
-				                                <td>
-				                                   {{$resident->name}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->relationship}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->sex}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->nation}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->birthday}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->culture}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->face}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->marriage}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->identity}}
-				                                </td>
-				                                <td>
-				                                    {{$resident->hobby}}
-				                                </td>
-				                                <td>
-				                                	{{$resident->id_number}}
-				                                </td>
-				                                <td>
-				                                	{{$resident->unit}}
-				                                </td>
-				                                 <td>
-				                                	{{$resident->phone}}
-				                                </td>
-				                                <td>
-				                                	{{$resident->tag}}
-				                                </td>
-				                                <td>
-				                                	{{$resident->other}}
-				                                </td>
-				                            </tr>
-			                        	@endforeach
-			                        </tbody>
-			                    </table>
-			                </div>
-	                        <p>残疾人员:</p>
-	                        <div class="table-scrollable">
-			                    <table class="table table-striped table-bordered table-hover">
-			                        <thead>
-			                            <tr>
-			                                
-			                                <th scope="col">
-			                                    残疾人姓名
-			                                </th>
-			                                <th scope="col">
-			                                    残疾人证号
-			                                </th>
-			                                <th scope="col">
-			                                    残疾人类别
-			                                </th>
-			                                <th scope="col">
-			                                    残疾人等级
-			                                </th>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    相关记录
+                                    <b class="caret"></b>
+                                </a>
 
-			                            </tr>
-			                        </thead>
-			                        <tbody>
-			                        	@foreach($handicappeds as $handicapped)
-			                        		<tr>
-			                        			<td>{{$handicapped->name}}</td>
-			                        		</tr>
-			                        		<tr>
-			                        			<td>{{$handicapped->number}}</td>
-			                        		</tr>
-			                        		<tr>
-			                        			<td>{{$handicapped->type}}</td>
-			                        		</tr>
-			                        		<tr>
-			                        			<td>{{$handicapped->level}}</td>
-			                        		</tr>
-			                        	@endforeach
-			                        </tbody>
-			                    </table>
-			                </div>
-			                <div class="line_01">功能列表</div>
-	                        <div>
-	                        	<button class="btn btn-blue">替换信息卡</button>
-	                        	<a class="btn btn-blue" href="{{route('problem_tables.create',['information_id'=>$information->id])}}">问题汇总</a>
-	                        	<a class="btn btn-blue" href="{{route('above_tables.create',['information_id'=>$information->id])}}">上门登记</a>
-	                        	<a class="btn btn-blue" href="{{route('register_tables.create',['information_id'=>$information->id])}}">来访登记</a>
-	                        	<button class="btn btn-blue" onclick="letter_proof()">开证明信</button>
-	                        	<a class="btn btn-blue" href="{{route('worker_proofs.create')}}">就业证明</a>
-	                        	<a class="btn btn-blue" href="{{route('drath_proofs.create')}}">死亡证明</a>
-	                        </div>
-	                    </div><!--Widget Body-->
-	                </div><!--Widget-->
-	            </div>
+                                <ul class="dropdown-menu dropdown-blue">
+                                    <li>
+                                        <a data-toggle="tab" href="#register">来访登记</a>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="tab" href="#above">上门登记</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#problem">问题汇总</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="tab-red">
+                                <a data-toggle="tab" href="#profile">
+                                    历史记录
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="detail" class="tab-pane active">
+                                @include('informations._detail')
+                            </div>
+
+                            
+
+                            <div id="register" class="tab-pane">
+                                @include('informations._register')
+                            </div>
+
+                            <div id="above" class="tab-pane">
+                                @include('informations._above')
+                            </div>
+                            <div id="problem" class="tab-pane">
+                                @include('informations._problem')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-space"></div>
+
+                </div>
+	            
+	                
+	            </div> 
 	        </div>
     	</div>
     </div>

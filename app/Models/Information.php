@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model as baseModel;
 
 class Information extends baseModel
 {
-    
+    use Filterable;    
 
 	private $residence_status_map=[
                 1=>'农业',
@@ -35,7 +36,7 @@ class Information extends baseModel
 
     
         
-    protected $fillable=['residence_address','residence_status','house_people','house_status','people','situation','other'];
+    protected $fillable=['residence_address','residence_status','house_people','house_status','people','situation','other','p_id','replace_time'];
     
     
     public function residents()
@@ -53,8 +54,15 @@ class Information extends baseModel
         return $this->hasMany('App\Models\RegisterTable');
     }
 
+    public function above_tables()
+    {
+        return $this->hasMany(AboveTable::class);
+    }
     
-
+    public function problem_tables()
+    {
+        return $this->hasMany(ProblemTable::class);
+    }
 
 
     //数据库插入相关
@@ -91,8 +99,13 @@ class Information extends baseModel
 
     public function getHouseStatusAttribute($value)
     {
-        $str=num_str($value,$this->house_status_map);
-        return $str;
+        if($value){
+            $str=num_str($value,$this->house_status_map);
+            return $str;
+        }else{
+            return $value;
+        }
+        
     }
 
     public function setPeopleAttribute($value)
@@ -103,8 +116,13 @@ class Information extends baseModel
 
     public function getPeopleAttribute($value)
     {
-        $str=num_str($value,$this->people_map);
-        return $str;
+        if($value){
+            $str=num_str($value,$this->people_map);
+            return $str;
+        }else{
+            return $value;
+        }
+        
     }
 
 }

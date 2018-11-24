@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="exampleModalLabel">数据筛选</h4>
       </div>
       <div class="modal-body">
-        <form method="get" action="{{route('residents.index')}}" id="form1">
+        <form method="get" action="{{route('informations.index')}}" id="form1">
           <div class="form-group">
             <label for="recipient-name" class="control-label">姓名:</label>
             <input type="text" class="form-control" name="name">

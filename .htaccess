@@ -1,0 +1,17 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^juweihu.play.chinanet.asia$
+
+
+RewriteCond %{REQUEST_URI} !^/Property/public/
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteRule ^(.*)$ /Property/public/$1
+
+
+RewriteCond %{HTTP_HOST} ^juweihu.play.chinanet.asia$
+RewriteRule ^(/)?$ bbs/index.php [L]

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as baseModel;
+use EloquentFilter\Filterable;
 
 class Resident extends baseModel
 {
+    use Filterable;
 
 	protected $fillable=['name','relationship','sex','nation','birthday','culture','face','marriage','identity','hobby','id_number','unit','present_address'];
     

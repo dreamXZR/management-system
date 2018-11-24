@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Information;
 use App\Models\Handicapped;
 use App\Models\Resident;
+use Exception;
+use DB;
 
 class InformationsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $informations=Information::paginate(10);
+        $informations=Information::filter($request->all())->paginate(10);
     	return view('informations.index',compact('informations'));
     }
 
@@ -111,14 +113,17 @@ class InformationsController extends Controller
     {
         $information->delete();
 
-        return redirect()->route('informations.index')->with('message', 'Deleted successfully.');
+        return redirect()->route('informations.index')->with('success', '删除成功');
     }
 
     public function show(Information $information)
     {
         $handicappeds=$information->handicappeds;
         $residents=$information->residents;
-        return view('informations.show',compact('information','handicappeds','residents'));
+        $register_tables=$information->register_tables()->paginate(10);
+        $above_tables=$information->above_tables()->paginate(10);
+        $problem_tables=$information->problem_tables()->paginate(10);
+        return view('informations.show',compact('information','handicappeds','residents','register_tables','above_tables','problem_tables'));
     }
 
     
@@ -134,6 +139,33 @@ class InformationsController extends Controller
             'handicappeds'=>$handicappeds
         ]);
         
+    }
+
+    public function replace_information(Request $request)
+    {
+        $information_id=$request->information_id;
+        
+        // DB::transaction(function() use($information_id){
+            if($information=Information::find($information_id)){
+                
+                $new_information=Information::create([
+                    'residence_address'=>$information->residence_address
+                ]);
+
+                $information->update([
+                    'p_id'=>$new_information->id,
+                    'replace_time'=>date('Y-m-d H:i:s',time())
+                ]);
+                
+                
+
+            }else{
+                throw new Exception("该户信息已不存在");
+            
+            }
+        // },5);
+
+        return redirect()->route('informations.show',$new_information->id)->with('success','信息卡替换成功');
     }
 
     

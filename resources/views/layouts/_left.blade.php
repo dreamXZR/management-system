@@ -75,6 +75,21 @@
                             <span class="menu-text"> 标签管理 </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('unfinish')}}">
+                            <i class="menu-icon fa fa-th"></i>
+                            <span class="menu-text"> 未完成 <span class="total">0</span> </span>
+                        </a>
+                    </li>
                    
             </div>
-            
+<script type="text/javascript">
+    $(document).ready(function(){
+        var total=<?php
+                    $register=new \App\Models\RegisterTable();
+                    echo $register->getTotal();
+                ?>;
+        $('.total').text(total);
+    });
+    
+</script>

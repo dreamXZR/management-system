@@ -9,11 +9,11 @@ use App\Exports\ResidentsExport;
 
 class ResidentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $residents=Resident::with('information')->paginate(12);
-
-        return view('residents.index',compact('residents'));
+        $residents=Resident::with('information')->filter($request->all())->paginate(12);
+        $select=$request->except('page');
+        return view('residents.index',compact('residents','select'));
     }
     
     public function destroy(Resident $resident)

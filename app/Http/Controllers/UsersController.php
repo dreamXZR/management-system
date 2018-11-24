@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\RegisterTable;
 
 class UsersController extends Controller
 {
@@ -77,6 +78,19 @@ class UsersController extends Controller
         $user->delete();
         session()->flash('success', '成功删除用户！');
         return back();
+    }
+
+    protected $day=10;
+    
+    public function test()
+    {
+        // $start_time=date('Y-m-d H:i:s',strtotime('- '.$this->day.' day'));
+        // $end_time=date('Y-m-d H:i:s',strtotime('+ '.$this->day.' day'));
+        // $registers=RegisterTable::where('is_finish',0)->whereBetween('created_at',[$start_time,$end_time])->pluck('id')->toArray();
+        // $num=count($registers);
+        // var_dump($registers);
+        // var_dump($num);
+        echo \Cache::get('total');
     }
 
 }
