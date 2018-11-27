@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Information;
 use App\Models\Handicapped;
 use App\Models\Resident;
+use App\Models\Tag;
 use Exception;
 use DB;
 
@@ -17,11 +18,11 @@ class InformationsController extends Controller
     	return view('informations.index',compact('informations'));
     }
 
-    public function create()
+    public function create(Information $information,Resident $resident)
     {
     	$mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
-    	
-    	return view('informations.create',compact('mzs'));
+    	$tags=Tag::all()->pluck('title');
+    	return view('informations.create',compact('mzs','information','resident','tags'));
     }
 
     public function store(Request $request)
@@ -51,7 +52,7 @@ class InformationsController extends Controller
                 $information->handicappeds()->save($handicapped);
             }
         }
-
+        session()->flash('success','添加成功');
         return response()->json([
             'status'=>true,
             'message'=>'添加成功'
@@ -59,13 +60,13 @@ class InformationsController extends Controller
         
     }
 
-    public function edit(Information $information)
+    public function edit(Information $information,Resident $resident)
     {
         $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $id=$information->id;
+        $tags=Tag::all()->pluck('title');
         
-        
-        return view('informations.edit',compact('mzs','id'));
+        return view('informations.edit',compact('mzs','id','information','resident','tags'));
     }
 
     public function update(Request $request,Information $information)
@@ -77,7 +78,10 @@ class InformationsController extends Controller
         if($handicapped_data=$request->handicappeds){
             foreach ($handicapped_data as $k => $v) {
                 if(array_key_exists('id', $v)){
-                    Handicapped::where('id',$v['id'])->update($v);
+                    $handicapped=Handicapped::find($v['id']);
+                    if($handicapped){
+                        $handicapped->update($v);
+                    }
                     
                 }else{
                     $handicapped=new \App\Models\Handicapped($v);
@@ -91,8 +95,10 @@ class InformationsController extends Controller
         if($resident_data=$request->residents){
             foreach ($resident_data as $k => $v) {
                 if(array_key_exists('id', $v)){
-                    Resident::where('id',$v['id'])->update($v);
-                    
+                    $resident=Resident::find($v['id']);
+                    if($resident){
+                        $resident->update($v);
+                    }
                 }else{
                     $resident=new \App\Models\Resident($v);
                     $information->residents()->save($resident);
@@ -101,7 +107,7 @@ class InformationsController extends Controller
             }
         }
 
-
+        session()->flash('success','更新成功');
          return response()->json([
             'status'=>true,
             'message'=>'更新成功'

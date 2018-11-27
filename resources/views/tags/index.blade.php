@@ -34,22 +34,22 @@
                         	@foreach($tags as $tag)
                             <tr>
                                 <!-- <td align="center">{{$tag['id']}}</td> -->
-                                <td><?php echo str_repeat('--',$tag['level']*4)?>{{$tag['title']}}</td>
+                                <td align="center"><?php echo str_repeat('--',$tag['level']*4)?>{{$tag['title']}}</td>
                                	
                                 <td align="center">
-                                	@if($tag['is_delete'])
-                                    <a href="{{route('tags.edit',$tag['id'])}}" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 编辑
+                                	<a class="btn btn-xs btn-warning" href="{{route('tags.edit',$tag['id'])}}">
+                                        <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
-                                    <a href="#" onclick="data_delete('{{$tag['id']}}')" class="btn btn-danger btn-sm shiny">
-                                        <i class="fa fa-trash-o"></i> 删除
-                                    </a>
-                                    <form id="id_{{$tag['id']}}" action="{{ route('tags.destroy', $tag['id']) }}" method="post" style="display: none;">
-        								{{ csrf_field() }}
-        								{{ method_field('DELETE') }}
-        
-      								</form>
-      								@endif
+                                    @can('del_info')
+                                    <form action="{{ route('tags.destroy', $tag['id']) }}" method="POST" style="display: inline;" onsubmit="return confirm('是否删除该数据?');">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
+                                    </form>
+                                     @endcan
+                                    
+      								
                                 </td>
                                 
                             </tr>
@@ -72,7 +72,7 @@
                 <!-- /Page Body -->
             </div>
 <!--Page Related Scripts-->
-<script src="{{asset('assets/js/bootbox/bootbox.js')}}"></script>
+{{-- <script src="{{asset('assets/js/bootbox/bootbox.js')}}"></script>
 <script type="text/javascript">
 	function data_delete(id)
 	{
@@ -97,5 +97,5 @@
         });
 	}
 	
-</script>
+</script> --}}
 @stop

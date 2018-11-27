@@ -25,6 +25,10 @@
             <input type="text" class="form-control" v-model='resident.id_number'>
           </div>
           <div class="form-group">
+            <label for="recipient-name" class="control-label">手机号:</label>
+            <input type="text" class="form-control" v-model='resident.phone'>
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="control-label">民族:</label>
             <select class="form-control" v-model='resident.nation'>
               @foreach($mzs as $mz)
@@ -35,45 +39,36 @@
           <div class="form-group">
             <label for="recipient-name" class="control-label">文化程度:</label>
             <select class="form-control" v-model='resident.culture'>
-                <option value="小学以下">小学以下</option>
-                <option value="小学">小学</option>
-                <option value="初中">初中</option>
-                <option value="高中">高中</option>
-                <option value="大专">大专</option>
-                <option value="大学">大学</option>
-                <option value="大学以上">大学以上</option>
+                @foreach($resident->culture_map as $culture)
+                  <option value="{{$culture}}">{{$culture}}</option>
+                @endforeach
             </select>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">政治面貌:</label>
             <select class="form-control" v-model='resident.face'>
-                <option value="中共党员">中共党员</option>
-                <option value="群众">群众</option>
-                <option value="共青团">共青团</option>
-                <option value="农工党">农工党</option>
-                <option value="其他">其他</option>
+                @foreach($resident->face_map as $face)
+                  <option value="{{$face}}">{{$face}}</option>
                 
+                @endforeach
             </select>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">婚姻状况:</label>
             <select class="form-control" v-model='resident.marriage'>
-                <option value="已婚">已婚</option>
-                <option value="未婚">未婚</option>
-                <option value="离异">离异</option>
-                <option value="丧偶">丧偶</option>
+                 @foreach($resident->marriage_map as $marriage)
+                    <option value="{{$marriage}}">{{$marriage}}</option>
                 
+                 @endforeach
                 
             </select>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份类别:</label>
             <select class="form-control" v-model='resident.identity'>
-                <option value="在职">在职</option>
-                <option value="退休">退休</option>
-                <option value="学生">学生</option>
-                <option value="学龄前">学龄前</option>
-                
+                @foreach($resident->identity_map as $identity)
+                  <option value="{{$identity}}">{{$identity}}</option>
+                @endforeach
                 
             </select>
           </div>
@@ -85,16 +80,14 @@
             <label for="recipient-name" class="control-label">工作单位及职务:</label>
             <input type="text" class="form-control" v-model='resident.unit'>
           </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">电话:</label>
-            <input type="text" class="form-control" v-model='resident.phone'>
-          </div>
+          
           <div class="form-group">
             <label for="recipient-name" class="control-label">职务标签:</label>
             <select class="form-control" v-model='resident.tag'>
-                <option value="无">无</option>
-                <option value="楼长">楼长</option>
-                <option value="楼长">街道管理</option>
+                @foreach($tags as $tag)
+                <option value="{{$tag}}">{{$tag}}</option>
+                
+                @endforeach
             </select>
           </div>
           <div class="form-group">

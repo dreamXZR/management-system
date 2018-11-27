@@ -18,13 +18,13 @@ class Information extends baseModel
                 2=>'租户',
                 3=>'空房'
             ];
-    private $house_status_map=[
+    public $house_status_map=[
                 1=>'户在',
                 2=>'户不在',
                 3=>'人在',
                 4=>'人不在'
             ];
-    private $people_map=[
+    public $people_map=[
                 1=>'老人空巢',
                 2=>'独居',
                 3=>'复退军人',

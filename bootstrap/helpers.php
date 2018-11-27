@@ -64,3 +64,11 @@ function str_num($str,$map_arr)
 
 	return implode(',', $num_arr);
 }
+
+//责任
+function getLiabilityStr($ids)
+{
+	$ids=explode(',', $ids);
+	$data=\DB::table('information')->whereIn('id',$ids)->pluck('residence_address')->toArray();
+	return implode(',', $data);
+}

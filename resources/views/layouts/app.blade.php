@@ -21,7 +21,7 @@ Purchase: http://wrapbootstrap.com
 
     <!--Basic Styles-->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-    
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
     <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet" />
  
 
@@ -110,6 +110,16 @@ Purchase: http://wrapbootstrap.com
     <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
     <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
  -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var total=<?php
+                        $register=new \App\Models\RegisterTable();
+                        echo $register->getTotal();
+                    ?>;
+            $('.total').text(total);
+        });
+    
+    </script>
     @yield('afterJavaScript')
 </body>
 <!--  /Body -->

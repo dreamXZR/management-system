@@ -96,13 +96,13 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="sex" @if($worker_proof->sex==1)checked="checked"@endif value="1">
+                                        <input type="radio" name="child_sex" @if($worker_proof->sex==1)checked="checked"@endif value="1">
                                         <span class="text">男</span>
                                     </label>
                                 </div>
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="sex" @if($worker_proof->death_relation=='0')checked="checked"@endif value="0">
+                                        <input type="radio" name="child_sex" @if($worker_proof->death_relation=='0')checked="checked"@endif value="0">
                                         <span class="text">女</span>
                                     </label>
                                 </div>

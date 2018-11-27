@@ -31,33 +31,91 @@
                         <span class="widget-caption">详细信息</span>
                     </div><!--Widget Header-->
                     <div class="widget-body bordered-left bordered-blue">
-                        <p>编号:{{ $drath_proof->number }}</p>
-                        <p>姓名:{{ $drath_proof->name }}</p>
-                        <p>身份证号:{{ $drath_proof->id_number }}</p>
-                        <p>户籍地址:{{ $drath_proof->residence_address }}</p> 
-                        <p>现住地址:{{ $drath_proof->present_address }}</p> 
-                        <p>死亡时间:{{ $drath_proof->death_date }}</p> 
-                        <p>死亡地址:{{ $drath_proof->death_address }}</p> 
-                        <p>申请人:{{ $drath_proof->applicant }}</p>
-                        <p>与死者关系:
-                            @switch( $drath_proof->death_relation)
-                                @case(1)
-                                    配偶
-                                @break
-                                @case(2)
-                                    子女
-                                @break
-                                @case(3)
-                                    父母
-                                @break
-                            @endswitch
-                        </p>
-                        <p>申请人身份证:{{ $drath_proof->applicant_id_number }}</p>
-                        <p>代理人:{{ $drath_proof->agent }}</p>
-                        <p>代理人与申请人关系:{{ $drath_proof->application_relation }}</p>
-                        <p>代理人身份证号:{{ $drath_proof->agent_id_number }}</p>
-                        <p>其他需要说明的情况:{{ $drath_proof->other }}</p>
-                        <p>图片:</p>
+                        <table class="table table-bordered table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>编号:</td>
+                                    <td>{{ $drath_proof->number }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>姓名:</td>
+                                    <td>{{ $drath_proof->name }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>身份证号:</td>
+                                    <td>{{ $drath_proof->id_number }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>户籍地址:</td>
+                                    <td>{{ $drath_proof->residence_address }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>现住地址:</td>
+                                    <td>{{ $drath_proof->present_address }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>死亡时间:</td>
+                                    <td>{{ $drath_proof->death_date }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>死亡地址:</td>
+                                    <td>{{ $drath_proof->death_address }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>申请人:</td>
+                                    <td>{{ $drath_proof->applicant }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>与死者关系:</td>
+                                    <td>
+                                        @switch( $drath_proof->death_relation)
+                                            @case(1)
+                                                配偶
+                                            @break
+                                            @case(2)
+                                                子女
+                                            @break
+                                            @case(3)
+                                                父母
+                                            @break
+                                        @endswitch
+                                    </td>        
+                                </tr>
+                                <tr>
+                                    <td>申请人身份证:</td>
+                                    <td>{{ $drath_proof->applicant_id_number }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>代理人:</td>
+                                    <td>{{ $drath_proof->agent }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>代理人与申请人关系:</td>
+                                    <td>{{ $drath_proof->application_relation }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>代理人身份证号:</td>
+                                    <td>{{ $drath_proof->agent_id_number }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>其他需要说明的情况:</td>
+                                    <td>{{ $drath_proof->other }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>图片:</td>
+                                    <td>
+                                        @if($drath_proof->images)
+                                        @foreach(json_decode($drath_proof->images) as $image)
+                                        <a href="{{env('APP_URL').'/'}}{{$image}}" download="{{substr($image,strripos($image,'/')+1)}}">
+                                            <img src="{{env('APP_URL').'/'}}{{$image}}" width="100px;">
+                                        </a>
+                                        @endforeach
+                                        @endif
+                                    </td>        
+                                </tr>
+                                        
+                            </tbody>
+                        </table>
                         
                     </div><!--Widget Body-->
                 </div><!--Widget-->

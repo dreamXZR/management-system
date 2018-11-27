@@ -1,13 +1,37 @@
 
-	                        
-    <p>户籍地址:{{ $information->residence_address }}</p> 
-    <p>户籍性质:{{ $information->residence_status }}</p>
-    <p>房屋状态:{{ $information->house_status }}</p>
-    <p>房屋使用情况:{{ $information->house_people }}</p>
-    <p>住户情况:{{ $information->people }}</p>
-    <p>家庭状况:{{ $information->situation }}</p>
-    <p>备注:{{ $information->other }}</p>
-    <p>家庭成员:</p>
+	<table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <td>户籍地址:</td>
+                <td>{{ $information->residence_address }}</td>        
+            </tr>
+            <tr>
+                <td>户籍性质:</td>
+                <td>{{ $information->residence_status }}</td>        
+            </tr>
+            <tr>
+                <td>房屋状态:</td>
+                <td>{{ $information->house_status }}</td>        
+            </tr>
+            <tr>
+                <td>房屋使用情况:</td>
+                <td>{{ $information->house_people }}</td>        
+            </tr>
+            <tr>
+                <td>住户情况:</td>
+                <td>{{ $information->people }}</td>        
+            </tr>
+            <tr>
+                <td>家庭状况:</td>
+                <td>{{ $information->situation }}</td>        
+            </tr>
+            <tr>
+                <td>备注:</td>
+                <td>{{ $information->other }}</td>        
+            </tr>                   
+        </tbody>
+    </table>
+    <p></p>
     <div class="table-scrollable">
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -126,7 +150,7 @@
             </tbody>
         </table>
     </div>
-    <p>残疾人员:</p>
+    <p></p>
     <div class="table-scrollable">
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -151,14 +175,11 @@
             	@foreach($handicappeds as $handicapped)
             		<tr>
             			<td>{{$handicapped->name}}</td>
-            		</tr>
-            		<tr>
+            		
             			<td>{{$handicapped->number}}</td>
-            		</tr>
-            		<tr>
+            		
             			<td>{{$handicapped->type}}</td>
-            		</tr>
-            		<tr>
+            		
             			<td>{{$handicapped->level}}</td>
             		</tr>
             	@endforeach

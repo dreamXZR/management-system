@@ -31,7 +31,7 @@
                     <form class="form-horizontal" role="form" action="{{route('tags.update',$tag->id)}}" method="post">
                         {{ csrf_field() }}
                         {{method_field('PATCH')}}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">上级分类:</label>
                             <div class="col-sm-6">
                             	<select class="form-control" name="pid" required="">
@@ -47,7 +47,7 @@
                       
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">标签名称:</label>
                             <div class="col-sm-6">

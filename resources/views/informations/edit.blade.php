@@ -90,30 +90,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">房屋状态:</label>
                             <div class="col-sm-6">
+                                @foreach($information->house_status_map as $home_status)
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="house_status" value="户在" class="colored-blue" >
-                                        <span class="text" >户在</span>
+                                        <input type="checkbox" v-model="house_status" value="{{$home_status}}" class="colored-blue" >
+                                        <span class="text" >{{$home_status}}</span>
                                     </label>
                                 </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="house_status" value="户不在"  class="colored-blue" >
-                                        <span class="text" >户不在</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="house_status" value="人在"  class="colored-blue" >
-                                        <span class="text" >人在</span>
-                                    </label>
-                                </div>
-                               <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="house_status" value="人不在"class="colored-blue" >
-                                        <span class="text" >人不在</span>
-                                    </label>
-                                </div>
+                                @endforeach
                                 
                                 
                             </div>
@@ -121,48 +105,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">住户情况:</label>
                             <div class="col-sm-6">
+                                @foreach($information->people_map as $people)
                                 <div class='checkbox' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="checkbox" v-model="people" value="老人空巢"  class="colored-blue">
-                                        <span class="text">老人空巢</span>
+                                        <input type="checkbox" v-model="people" value="{{$people}}"  class="colored-blue">
+                                        <span class="text">{{$people}}</span>
                                     </label>
                                 </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="独居"   class="colored-blue">
-                                        <span class="text">独居</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="复退军人"   class="colored-blue">
-                                        <span class="text">复退军人</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="残疾人"   class="colored-blue">
-                                        <span class="text">残疾人</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="侨属"   class="colored-blue">
-                                        <span class="text">侨属</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="低保户口"   class="colored-blue">
-                                        <span class="text">低保户口</span>
-                                    </label>
-                                </div>
-                                <div class='checkbox' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="checkbox" v-model="people" value="特困"   class="colored-blue">
-                                        <span class="text">特困</span>
-                                    </label>
-                                </div>
+                                @endforeach
                                 
                             </div>
                         </div>
@@ -346,9 +296,14 @@
             },
             
             add_handicapped_info:function(){
-                this.handicappeds.push(this.handicapped);
-                this.handicapped={};
-                $('#aa_close').click();
+                if(this.handicapped_validate(this.handicapped)){
+                    this.handicappeds.push(this.handicapped);
+                    this.handicapped={};
+                    $('#aa_close').click();
+                }else{
+                    return false;
+                }
+                
             },
             
             del_handicapped_info:function(index){
@@ -378,16 +333,20 @@
             },
 
             edit_handicapped_info:function(index){
-                this.handicapped=this.handicappeds[index];
+                this.handicapped=JSON.parse(JSON.stringify(this.handicappeds[index]));
                 this.handicapped_status=false;
-                // this.handicapped_index=index;
+                this.handicapped_index=index;
                 $('#aa').click();
             },
 
             update_handicapped_info:function(){
-                //验证
-                this.handicappeds[this.handicapped_index]=this.handicapped;
-                $('#aa_close').click();
+                if(this.handicapped_validate(this.handicapped)){
+                    Vue.set(this.handicappeds,this.handicapped_index,this.handicapped);
+                    $('#aa_close').click();
+                }else{
+                    return false;
+                }
+                
             },
 
             resident_info:function(){
@@ -398,13 +357,18 @@
 
             add_resident_info:function(){
                 //验证
-                //获得性别、出生年月
-                var info=this.id_number_format(this.resident.id_number);
-                this.resident.sex=info[0];
-                this.resident.birthday=info[1];
-                this.residents.push(this.resident);
-                this.resident={}
-                $('#bb_close').click();
+                if(this.resident_validate(this.resident)){
+                    //获得性别、出生年月
+                    var info=this.id_number_format(this.resident.id_number);
+                    this.resident.sex=info[0];
+                    this.resident.birthday=info[1];
+                    this.residents.push(this.resident);
+                    this.resident={}
+                    $('#bb_close').click();
+                    console.log(this.residents);
+                }else{
+                    return false;
+                }
             },
             
             del_resident_info:function(index){
@@ -433,20 +397,31 @@
             },
 
             edit_resident_info:function(index){
-                this.resident=this.residents[index];
+                this.resident=JSON.parse(JSON.stringify(this.residents[index]));
                 this.resident_status=false;
                 this.resident_index=index;
                 $('#bb').click();
             },
 
             update_resident_info:function(){
-                //验证
-                this.residents[this.resident_index]=this.resident
-                $('#bb_close').click();
+                if(this.resident_validate(this.resident)){
+                    var info=this.id_number_format(this.resident.id_number);
+                    this.resident.sex=info[0];
+                    this.resident.birthday=info[1];
+                    Vue.set(this.residents,this.resident_index,this.resident);
+                    $('#bb_close').click();
+                }else{
+                    return false;
+                }
+                
             },
 
             edit_infomation:function(){
                 //验证
+                if(this.residence_address==''){
+                    alert('请填写户籍所有地详细地址');
+                    return false;
+                }
                 var data={
                      residence_address:this.residence_address,
                      residence_status:this.residence_status,
@@ -489,6 +464,32 @@
                 }
 
                 return [sex,birthday];
+            },
+
+            handicapped_validate:function(data){
+                if(data.name && data.number && data.type && data.level){
+                    return true;
+                }else{
+                    alert('请填写完整信息');
+                    return false;
+                }
+            },
+
+            resident_validate:function(data){
+                if(data.name && data.relationship && data.present_address && data.id_number && data.nation && data.phone){
+                    if(!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(data.phone)){
+                        alert("手机号码有误，请重填");  
+                        return false; 
+                    }
+                    if(!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(data.id_number)){
+                        alert("身份证号有误，请重填");  
+                        return false; 
+                    }
+                    return true;
+                }else{
+                    alert('请填写完整信息');
+                    return false;
+                }
             }
         },
         

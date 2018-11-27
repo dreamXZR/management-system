@@ -17,7 +17,7 @@ class TagsController extends Controller
 
     public function create(Tag $tag)
     {
-    	$tags=$tag->where('pid',0)->get(['title','id']);
+    	//$tags=$tag->where('pid',0)->get(['title','id']);
     	return view('tags.create',compact('tags'));
     }
 
@@ -31,7 +31,7 @@ class TagsController extends Controller
 
     public function edit(Tag $tag)
     {
-    	$tags=$tag->where('pid',0)->get(['title','id']);
+    	//$tags=$tag->where('pid',0)->get(['title','id']);
     	return view('tags.edit',compact(['tag','tags']));
     }
 
@@ -40,7 +40,7 @@ class TagsController extends Controller
         
 
         $tag->update([
-            'pid' => $request->pid,
+            //'pid' => $request->pid,
             'title' =>$request->title,
         ]);
         session()->flash('success', '标签更新成功！');

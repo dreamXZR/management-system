@@ -12,7 +12,7 @@ trait UnfinishTable
 	protected $cache_expire_in_minutes=60;
 
 	//时间设定
-	protected $day=10;
+	protected $day=3;
 
 	public function getUnfinishTables()
 	{

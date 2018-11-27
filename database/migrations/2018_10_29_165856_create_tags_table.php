@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('title',20)->commit('标题');
             $table->boolean('is_delete')->default(1)->commit('是否删除');
-            $table->integer('pid')->commit('父类id');
+            $table->integer('pid')->default(0)->commit('父类id');
             $table->timestamps();
         });
     }

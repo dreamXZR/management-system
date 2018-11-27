@@ -60,13 +60,13 @@
                             <div class="col-sm-6">
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="sex" @if($above_table->sex==0)checked="checked"@endif value="0">
+                                        <input type="radio" name="sex" @if($above_table->sex==1)checked="checked"@endif value="1">
                                         <span class="text">男</span>
                                     </label>
                                 </div>
                                 <div class='radio' style="float: left;padding-right: 10px;">
                                     <label>
-                                        <input type="radio" name="sex" @if($above_table->sex==1)checked="checked"@endif value="1">
+                                        <input type="radio" name="sex" @if($above_table->sex==0)checked="checked"@endif value="0">
                                         <span class="text">女</span>
                                     </label>
                                 </div>
@@ -97,7 +97,7 @@
                             
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">来电主要内容:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">办理结果:</label>
                             <div class="col-sm-6">
                                 <textarea class="form-control" name="back_content" style="height: 100px;">{{old('back_content',$above_table->back_content)}}</textarea>
                                 <!-- <input class="form-control"  placeholder="" name="back_content" required="" type="text" value="{{old('back_content',$above_table->back_content)}}"> -->

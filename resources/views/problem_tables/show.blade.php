@@ -1,74 +1,112 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>ProblemTable / Show #{{ $problem_table->id }}</h1>
-            </div>
-
-            <div class="panel-body">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ route('problem_tables.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                        </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('problem_tables.edit', $problem_table->id) }}">
-                                <i class="glyphicon glyphicon-edit"></i> Edit
-                            </a>
-                        </div>
-                    </div>
+<div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{{route('index')}}">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{{route('problem_tables.index')}}">问题汇总</a>
+                    </li>
+                                        <li class="active">详细信息</li>
+                                        </ul>
                 </div>
-
-                <label>Name</label>
-<p>
-	{{ $problem_table->name }}
-</p> <label>Information_id</label>
-<p>
-	{{ $problem_table->information_id }}
-</p> <label>Sex</label>
-<p>
-	{{ $problem_table->sex }}
-</p> <label>Call_time</label>
-<p>
-	{{ $problem_table->call_time }}
-</p> <label>Address</label>
-<p>
-	{{ $problem_table->address }}
-</p> <label>Phone</label>
-<p>
-	{{ $problem_table->phone }}
-</p> <label>Call_content</label>
-<p>
-	{{ $problem_table->call_content }}
-</p> <label>Back_content</label>
-<p>
-	{{ $problem_table->back_content }}
-</p> <label>Other</label>
-<p>
-	{{ $problem_table->other }}
-</p> <label>Images</label>
-<p>
-	{{ $problem_table->images }}
-</p> <label>Main</label>
-<p>
-	{{ $problem_table->main }}
-</p> <label>Secondary</label>
-<p>
-	{{ $problem_table->secondary }}
-</p> <label>Join</label>
-<p>
-	{{ $problem_table->join }}
-</p> <label>Is_finish</label>
-<p>
-	{{ $problem_table->is_finish }}
-</p>
+        <div class="page-body">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-link" href="{{ route('problem_tables.index') }}"><i class="glyphicon glyphicon-backward"></i> 返回</a>
+            </div>
+            <div class="col-md-6">
+                 <a class="btn btn-sm btn-warning pull-right" href="{{ route('problem_tables.edit', $problem_table->id) }}">
+                    <i class="glyphicon glyphicon-edit"></i> 修改
+                </a>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                <div class="widget">
+                    <div class="widget-header bordered-left bordered-blueberry">
+                        <span class="widget-caption">详细信息</span>
+                    </div><!--Widget Header-->
+                    <div class="widget-body bordered-left bordered-blue">
+                        <table class="table table-bordered table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>编号:</td>
+                                    <td>{{ $problem_table->number }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>来电者姓名:</td>
+                                    <td>{{ $problem_table->name }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>来电时间:</td>
+                                    <td>{{ $problem_table->call_time }}</td>        
+                                </tr>
+                                <tr>
+                                    <td>性别:</td>
+                                    <td>
+                                        @if($problem_table->sex==1)
+                                        男
+                                        @else
+                                        女
+                                        @endif
+                                    </td>        
+                                </tr>
+                                <tr>
+                                    <td>家庭地址:</td>
+                                    <td>{{ $problem_table->address}}</td>        
+                                </tr>
+                                <tr>
+                                    <td>联系电话:</td>
+                                    <td>{{ $problem_table->phone}}</td>        
+                                </tr>
+                                <tr>
+                                    <td>来电主要内容:</td>
+                                    <td>{{ $problem_table->call_content}}</td>        
+                                </tr>
+                                <tr>
+                                    <td>办理结果:</td>
+                                    <td>{{ $problem_table->back_content}}</td>        
+                                </tr>
+                                <tr>
+                                    <td>备注:</td>
+                                    <td>{{ $problem_table->other}}</td>        
+                                </tr>
+                                <tr>
+                                    <td>图片:</td>
+                                    <td>
+                                        @if($problem_table->images)
+                                        @foreach(json_decode($problem_table->images) as $image)
+                                        <a href="{{env('APP_URL').'/'}}{{$image}}" download="{{substr($image,strripos($image,'/')+1)}}">
+                                            <img src="{{env('APP_URL').'/'}}{{$image}}" width="100px;">
+                                        </a>
+                                        @endforeach
+                                        @endif
+                                    </td>        
+                                </tr>
+                                <tr>
+                                    <td>主要责任</td>
+                                    <td>{{getLiabilityStr($problem_table->main)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>次要责任</td>
+                                    <td>{{getLiabilityStr($problem_table->secondary)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>参与住户</td>
+                                    <td>{{getLiabilityStr($problem_table->join)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div><!--Widget Body-->
+                </div><!--Widget-->
             </div>
         </div>
     </div>
 </div>
+
 
 @endsection

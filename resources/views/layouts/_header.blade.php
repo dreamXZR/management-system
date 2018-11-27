@@ -22,36 +22,7 @@
                     <div class="navbar-account">
                         <ul class="account-area">
                             
-                            <li>
-                                <a class="wave in dropdown-toggle" data-toggle="dropdown" title="Help" href="#">
-                                    <i class="icon fa fa-envelope"></i>
-                                    <span class="badge">3</span>
-                                </a>
-                                <!--Messages Dropdown-->
-                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages">
-                                    
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{asset('assets/img/avatars/adam-jansen.jpg')}}" class="message-avatar">
-                                            <div class="message">
-                                                <span class="message-sender">
-                                                    Nicolas
-                                                </span>
-                                                <span class="message-time">
-                                                    Friday, September 22
-                                                </span>
-                                                <span class="message-subject">
-                                                    New 4K Cameras
-                                                </span>
-                                                <span class="message-body">
-                                                    The 4K revolution has come over the horizon and is reaching the general populous
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!--/Messages Dropdown-->
-                            </li>
+                           
 
                             
                             <li>
