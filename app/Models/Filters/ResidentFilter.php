@@ -17,10 +17,10 @@ class ResidentFilter extends ModelFilter
     	return $this->where('name',$value);
     }
 
-    public function phone($value)
-    {
-    	return $this->where('phone',$value);
-    }
+    // public function phone($value)
+    // {
+    // 	return $this->where('phone',$value);
+    // }
 
     public function presentAddress($value)
     {
@@ -30,5 +30,44 @@ class ResidentFilter extends ModelFilter
     public function idNumber($value)
     {
     	return $this->where('id_number',$value);
+    }
+
+    public function nation($value)
+    {
+        return $this->whereIn('nation',$value);
+    }
+
+    public function culture($value)
+    {
+        return $this->whereIn('culture',$value);
+    }
+
+    public function face($value)
+    {
+        return $this->whereIn('face',$value);
+    }
+
+    public function marriage($value)
+    {
+        return $this->whereIn('marriage',$value);
+    }
+
+    public function identity($value)
+    {
+        return $this->whereIn('identity',$value);
+    }
+
+    public function birthday($value)
+    {
+        if($value[0] && $value[1]){
+            return $this->whereBetween('birthday',$value);
+        }else{
+            return $this;
+        }
+    }
+
+    public function setup()
+    {
+        return $this->orderBy('information_id','asc');
     }
 }

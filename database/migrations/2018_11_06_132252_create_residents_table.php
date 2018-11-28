@@ -15,7 +15,7 @@ class CreateResidentsTable extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('information_id')->comment('所属住户信息');
+            $table->unsignedInteger('information_id')->comment('所属住户信息');
             $table->string('name',20)->comment('居民姓名');
             $table->string('relationship',20)->comment('与户主关系');
             $table->boolean('sex')->comment('性别');
@@ -29,6 +29,7 @@ class CreateResidentsTable extends Migration
             $table->string('id_number',50)->comment('身份证号');
             $table->string('unit',200)->nullable()->comment('工作单位');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

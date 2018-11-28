@@ -25,6 +25,7 @@ class CreateInformationTable extends Migration
             $table->string('situation')->nullable()->comment('家庭状况');
             $table->string('other')->nullable()->comment('备注');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

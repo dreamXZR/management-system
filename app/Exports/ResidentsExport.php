@@ -12,26 +12,74 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class ResidentsExport implements FromQuery,WithMapping, WithHeadings, WithTitle, ShouldAutoSize
+class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
-	
+	  use Exportable;
 
-	//private $fileName='居民信息.xlsx';
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    // public function collection()
-    // {
-    //     return Resident::all();
-    // }
-    public function withSelect()
+	  private $fileName='居民信息.xlsx';
+
+    protected $select;
+   
+    public function withSelect($select)
     {
-
+      $this->select=$select;
+      return $this;
     }
     
     public function query()
     {
-    	return Resident::where('id','>',1);
+      $build=Resident::query();
+      $select=json_decode($this->select);
+      foreach ($select as $k => $v) {
+        switch ($k) {
+          case 'name':
+            if($v){
+              $build->where('name',$v);
+            }  
+          break;
+          case 'id_number':
+            if($v){
+              $build->where('id_number',$v);
+            }
+          break;
+          case 'present_address':
+            if($v){
+              $build->where('present_address',$v);
+            }
+          break;
+          case 'nation':
+            if($v){
+              $build->whereIn('nation',$v);
+            }
+          break;
+          case 'culture':
+            if($v){
+              $build->whereIn('culture',$v);
+            }
+          break;
+          case 'face':
+            if($v){
+              $build->whereIn('face',$v);
+            }
+          break;
+          case 'marriage':
+            if($v){
+              $build->whereIn('marriage',$v);
+            }
+          break;
+          case 'identity':
+            if($v){
+              $build->whereIn('identity',$v);
+            }
+          break;
+          case 'time_start':
+            if($select['time_start'] && $select['time_end']){
+              $build->whereBetween('birthday',[$select['time_start'],$select['time_end']]);
+            }
+          break;
+        }
+      }
+    	return $build;
     }
 
     public function map($resident): array

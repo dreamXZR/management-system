@@ -9,11 +9,18 @@ use App\Exports\ResidentsExport;
 
 class ResidentsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,Resident $resident)
     {
-        $residents=Resident::with('information')->filter($request->all())->paginate(12);
+        $get_data=$request->all();
+
+        if(array_key_exists('time_start', $get_data) && array_key_exists('time_end', $get_data)){
+            $get_data['birthday']=[$get_data['time_start'],$get_data['time_end']];
+        }
+        
+        $residents=Resident::with('information')->filter($get_data)->paginate(12);
+        $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $select=$request->except('page');
-        return view('residents.index',compact('residents','select'));
+        return view('residents.index',compact('residents','select','mzs','resident'));
     }
     
     public function destroy(Resident $resident)
@@ -27,10 +34,9 @@ class ResidentsController extends Controller
     	}
     }
 
-    public function export(Request $request)
+    public function export(Request $request,ResidentsExport $residentExport)
     {
-        
-        return Excel::download(new ResidentsExport(),'居民信息.xlsx');
+        return $residentExport->withSelect($request->select);
         //return $export->download('居民信息.xlsx');
     }
 }

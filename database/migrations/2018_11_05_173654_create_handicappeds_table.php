@@ -15,12 +15,13 @@ class CreateHandicappedsTable extends Migration
     {
         Schema::create('handicappeds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('information_id')->comment('所属住户信息');
+            $table->unsignedInteger('information_id')->comment('所属住户信息');
             $table->string('name',20)->comment('姓名');
             $table->string('number',50)->comment('残疾人证号');
             $table->string('type',30)->comment('残疾类别');
             $table->string('level',30)->comment('残疾等级');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 
