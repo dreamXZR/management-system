@@ -31,7 +31,7 @@
 	                <a class="btn btn-link" href="{{ route('informations.index') }}"><i class="glyphicon glyphicon-backward"></i> 返回</a>
 	            </div>
 	            <div class="col-md-6">
-	                 <a class="btn btn-sm btn-warning pull-right" href="">
+	                 <a class="btn btn-sm btn-warning pull-right" href="{{ route('informations.edit',$information->id) }}">
 	                    <i class="glyphicon glyphicon-edit"></i> 修改
 	                </a>
 	            </div>
