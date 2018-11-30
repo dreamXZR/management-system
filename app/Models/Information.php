@@ -75,8 +75,13 @@ class Information extends baseModel
 
     public function getResidenceStatusAttribute($value)
     {
-        $str=$this->residence_status_map[$value];
-        return $str;
+        if($value){
+            $str=$this->residence_status_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+        
     }
 
     public function setHousePeopleAttribute($value)
@@ -87,8 +92,13 @@ class Information extends baseModel
 
     public function getHousePeopleAttribute($value)
     {
-        $str=$this->house_people_map[$value];
-        return $str;
+        if($value){
+            $str=$this->house_people_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+        
     }
 
     public function setHouseStatusAttribute($value)
@@ -123,6 +133,26 @@ class Information extends baseModel
             return $value;
         }
         
+    }
+
+    //获取历史记录id
+    public function historyIds($id)
+    {
+        $data=$this->where('p_id','<>',NULL)->get(['id','p_id']);
+        return $this->_childrenids($data,$id);
+    }
+
+    public function _childrenids($data,$id)
+    {
+        static $arr=[];
+        foreach ($data as $k => $v) {
+            if($v['p_id']==$id){
+                $arr[]=$v['id'];
+                $this->_childrenids($data,$v['id']);
+            }
+        }
+
+        return $arr;
     }
 
 }

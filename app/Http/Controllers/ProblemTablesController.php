@@ -50,7 +50,7 @@ class ProblemTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$problem_table = ProblemTable::create($post_data);
-		return redirect()->route('problem_tables.index', $problem_table->id)->with('success', '添加成功');
+		return redirect()->route('problem_tables.show', $problem_table->id)->with('success', '添加成功');
 	}
 
 	public function edit(ProblemTable $problem_table)

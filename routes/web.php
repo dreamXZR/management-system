@@ -61,7 +61,9 @@ Route::middleware(['auth'])->group(function(){
 	//未完成
 	Route::get('unfinish','IndexController@unfinish')->name('unfinish');
 	//替换信息
-	Route::get('replace_information','InformationsController@replace_information')->name('replace_information');
+	Route::post('replace_information','InformationsController@replace_information')->name('replace_information');
+	//历史记录
+	Route::get('history/{information}','HistoryController@show')->name('history.show');
 });
 
 

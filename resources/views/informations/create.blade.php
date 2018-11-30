@@ -400,7 +400,6 @@
                      handicappeds:this.handicappeds,
                      residents:this.residents
                 };
-                console.log(data)
                 $.ajax({
                     type:'POST',
                     url:"{{route('informations.store')}}",
@@ -410,9 +409,8 @@
                     
                     data:data,
                     success:function(res){
-                        console.log(res)
                         if(res.status){
-                            window.location.href="{{route('informations.index')}}";
+                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id;
                         }
                     }
                 })

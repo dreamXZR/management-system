@@ -51,7 +51,7 @@ class AboveTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$above_table = AboveTable::create($post_data);
-		return redirect()->route('above_tables.index', $above_table->id)->with('success', '添加成功');
+		return redirect()->route('above_tables.show', $above_table->id)->with('success', '添加成功');
 	}
 
 	public function edit(AboveTable $above_table)
@@ -78,7 +78,7 @@ class AboveTablesController extends Controller
 		
 		$above_table->update($post_data);
 
-		return redirect()->route('above_tables.index', $above_table->id)->with('success', '更新成功');
+		return redirect()->route('above_tables.show', $above_table->id)->with('success', '更新成功');
 	}
 
 	public function destroy(AboveTable $above_table)

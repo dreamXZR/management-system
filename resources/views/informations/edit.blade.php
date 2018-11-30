@@ -445,7 +445,7 @@
                     success:function(res){
 
                         if(res.status){
-                            window.location.href="{{route('informations.index')}}";
+                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id;
                         }
                     }
                 })

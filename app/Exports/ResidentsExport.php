@@ -79,6 +79,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
           break;
         }
       }
+      $build->where('is_replace',0);
     	return $build;
     }
 

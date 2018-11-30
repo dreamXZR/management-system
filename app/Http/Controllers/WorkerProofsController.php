@@ -41,7 +41,7 @@ class WorkerProofsController extends Controller
 		$post_data['number']=create_number('worker_proofs');
 		
 		$worker_proof = WorkerProof::create($post_data);
-		return redirect()->route('worker_proofs.index', $worker_proof->id)->with('success', '添加成功');
+		return redirect()->route('worker_proofs.show', $worker_proof->id)->with('success', '添加成功');
 	}
 
 	public function edit(WorkerProof $worker_proof)
@@ -62,7 +62,7 @@ class WorkerProofsController extends Controller
 
 		$worker_proof->update($post_data);
 
-		return redirect()->route('worker_proofs.index')->with('success', '更新成功');
+		return redirect()->route('worker_proofs.show')->with('success', '更新成功');
 	}
 
 	public function destroy(WorkerProof $worker_proof)

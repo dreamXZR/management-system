@@ -55,7 +55,8 @@ class InformationsController extends Controller
         session()->flash('success','添加成功');
         return response()->json([
             'status'=>true,
-            'message'=>'添加成功'
+            'message'=>'添加成功',
+            'information_id'=>$information->id,
         ]);
         
     }
@@ -110,7 +111,8 @@ class InformationsController extends Controller
         session()->flash('success','更新成功');
          return response()->json([
             'status'=>true,
-            'message'=>'更新成功'
+            'message'=>'更新成功',
+            'information_id'=>$information->id
         ]);
     }
 
@@ -124,12 +126,20 @@ class InformationsController extends Controller
 
     public function show(Information $information)
     {
+        //残疾信息
         $handicappeds=$information->handicappeds;
+        //居民信息
         $residents=$information->residents;
+        //所属来电登记
         $register_tables=$information->register_tables()->paginate(10);
+        //所属上门登记
         $above_tables=$information->above_tables()->paginate(10);
+        //所属问题汇总
         $problem_tables=$information->problem_tables()->paginate(10);
-        return view('informations.show',compact('information','handicappeds','residents','register_tables','above_tables','problem_tables'));
+        //所属历史记录
+        $historys=Information::whereIn('id',$information->historyIds($information->id))->paginate(10);
+        
+        return view('informations.show',compact('information','handicappeds','residents','register_tables','above_tables','problem_tables','historys'));
     }
 
     
@@ -151,27 +161,43 @@ class InformationsController extends Controller
     {
         $information_id=$request->information_id;
         
-        // DB::transaction(function() use($information_id){
-            if($information=Information::find($information_id)){
-                
-                $new_information=Information::create([
-                    'residence_address'=>$information->residence_address
-                ]);
+        $new_information_id=$this->replace($information_id);
+        if($new_information_id){
+            return redirect()->route('informations.show',$new_information_id)->with('success','信息卡替换成功');
+        }
+        
+    }
 
-                $information->update([
-                    'p_id'=>$new_information->id,
-                    'replace_time'=>date('Y-m-d H:i:s',time())
-                ]);
-                
-                
-
-            }else{
-                throw new Exception("该户信息已不存在");
+    
+    
+    public function replace($information_id)
+    {
+        DB::beginTransaction();
+        if($information=Information::find($information_id)){
             
+            $new_information=Information::create([
+                'residence_address'=>$information->residence_address
+            ]);
+            $information->update([
+                'p_id'=>$new_information->id,
+                'replace_time'=>date('Y-m-d H:i:s',time())
+            ]);
+            $information->residents()->update([
+                'is_replace'=>1
+            ]);
+            $information->handicappeds()->update([
+                'is_replace'=>1
+            ]);
+            if($new_information && $information){
+                DB::commit();
+                return $new_information->id;
+            }else{
+                return false;
             }
-        // },5);
-
-        return redirect()->route('informations.show',$new_information->id)->with('success','信息卡替换成功');
+        }else{
+            throw new Exception("该户信息已不存在");
+        }
+        
     }
 
     

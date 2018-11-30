@@ -68,6 +68,6 @@ class ResidentFilter extends ModelFilter
 
     public function setup()
     {
-        return $this->orderBy('information_id','asc');
+        return $this->where('is_replace',0)->orderBy('information_id','asc');
     }
 }

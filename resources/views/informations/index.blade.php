@@ -48,7 +48,7 @@
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
 
-                                    <form action="{{route('informations.destroy',$info->id)}}" method="POST" style="display: inline;" onsubmit="return confirm('确定删除改数据?');">
+                                    <form action="{{route('informations.destroy',$info->id)}}" method="POST" style="display: inline;" onsubmit="return confirm('确定删除此条数据?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 

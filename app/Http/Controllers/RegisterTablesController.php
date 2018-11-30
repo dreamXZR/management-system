@@ -53,7 +53,7 @@ class RegisterTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$register_table = RegisterTable::create($post_data);
-		return redirect()->route('register_tables.index', $register_table->id)->with('success', '添加成功');
+		return redirect()->route('register_tables.show', $register_table->id)->with('success', '添加成功');
 	}
 
 	public function edit(RegisterTable $register_table)
@@ -78,7 +78,7 @@ class RegisterTablesController extends Controller
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$register_table->update($post_data);
 
-		return redirect()->route('register_tables.index', $register_table->id)->with('success', '更新成功');
+		return redirect()->route('register_tables.show', $register_table->id)->with('success', '更新成功');
 	}
 
 	public function destroy(RegisterTable $register_table)

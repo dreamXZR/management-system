@@ -47,7 +47,7 @@ class LetterProofsController extends Controller
 		$post_data['number']=create_number('letter_proofs');
 		
 		$letter_proof = LetterProof::create($post_data);
-		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('success', '添加成功');
+		return redirect()->route('letter_proofs.show', $letter_proof->id)->with('success', '添加成功');
 	}
 
 	public function edit(LetterProof $letter_proof)
@@ -69,7 +69,7 @@ class LetterProofsController extends Controller
 		
 		$letter_proof->update($post_data);
 
-		return redirect()->route('letter_proofs.index', $letter_proof->id)->with('success', '更新成功');
+		return redirect()->route('letter_proofs.show', $letter_proof->id)->with('success', '更新成功');
 	}
 
 	public function destroy(LetterProof $letter_proof)

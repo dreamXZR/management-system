@@ -1,5 +1,4 @@
-
-	<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover">
         <tbody>
             <tr>
                 <td>户籍地址:</td>
@@ -36,9 +35,6 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                	<th scope="col">
-                		选择
-                	</th>
                     <th scope="col">
                         现居住地
                     </th>
@@ -94,9 +90,6 @@
             <tbody>
             	@foreach($residents as $resident)
             		 <tr>
-            		 	<td>
-            		 		<input type="radio" name="select" style="position: initial;opacity: 1;" onclick="check({{$resident->id}})">
-            		 	</td>
                         <td>
                             {{$resident->present_address}}
                         </td>
@@ -186,17 +179,4 @@
             </tbody>
         </table>
     </div>
-    <div class="line_01">功能列表</div>
-    <div>
-
-        <form action="{{route('replace_information',['information_id'=>$information->id])}}" method="POST" style="display: inline;" onsubmit="return confirm('是否进行信息卡替换?');">
-            {{csrf_field()}}
-    	   <button class="btn btn-blue" type="submit">替换信息卡</button>
-        </form>
-    	<a class="btn btn-blue" href="{{route('problem_tables.create',['information_id'=>$information->id])}}">问题汇总</a>
-    	<a class="btn btn-blue" href="{{route('above_tables.create',['information_id'=>$information->id])}}">上门登记</a>
-    	<a class="btn btn-blue" href="{{route('register_tables.create',['information_id'=>$information->id])}}">来访登记</a>
-    	<button class="btn btn-blue" onclick="letter_proof()">开证明信</button>
-    	<a class="btn btn-blue" href="{{route('worker_proofs.create')}}">就业证明</a>
-    	<a class="btn btn-blue" href="{{route('drath_proofs.create')}}">死亡证明</a>
-    </div>
+    
