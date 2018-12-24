@@ -4,7 +4,7 @@
             <tr>
                 
                {{--  <th class="text-center">编号</th> --}}
-                <th class="text-center">户籍地址</th>
+                <th class="text-center">现居住地址</th>
                 <th class="text-center">替换时间</th>
                 <th class="text-center" width="15%">操作</th>
             </tr>
@@ -13,7 +13,7 @@
             @foreach($historys as $history)
             <tr>
                {{--  <td align="center">{{$problem_table->number}}</td> --}}
-                <td align="center">{{$history->residence_address}}</td>
+                <td align="center">{{$history->present_address}}</td>
                 <td align="center">{{$history->replace_time}}</td>
                
 

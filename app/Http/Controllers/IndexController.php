@@ -12,8 +12,8 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $info_num=Information::where('id','>',0)->count();
-        $resident_num=Resident::where('id','>',0)->count();
+        $info_num=Information::where('id','>',0)->where('p_id',NULL)->count();
+        $resident_num=Resident::where('id','>',0)->where('is_replace',0)->count();
         $letter_num=LetterProof::where('id','>',0)->count();
 
         $start_time=date('Y-m-d',time()).' 00:00:00';

@@ -176,7 +176,7 @@ class InformationsController extends Controller
         if($information=Information::find($information_id)){
             
             $new_information=Information::create([
-                'residence_address'=>$information->residence_address
+                'present_address'=>$information->present_address
             ]);
             $information->update([
                 'p_id'=>$new_information->id,
