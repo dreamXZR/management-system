@@ -10,7 +10,7 @@ class InformationFilter extends ModelFilter
     *
     * @var array
     */
-    public $relations = ['residents'=>['name','id_number','phone','present_address']];
+    public $relations = ['residents'=>['name','id_number','phone']];
 
     // public function name($value)
     // {
@@ -21,7 +21,12 @@ class InformationFilter extends ModelFilter
 
     public function setup()
     {
-    	return $this->where('p_id',NULL)->orderBy('residence_address');
+    	return $this->where('p_id',NULL)->orderBy('present_address');
+    }
+
+    public function presentAddress($value)
+    {
+        return $this->whereLike('present_address',$value);
     }
 
 }

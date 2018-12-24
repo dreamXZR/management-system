@@ -9,7 +9,7 @@ class Resident extends baseModel
 {
     use Filterable;
 
-	protected $fillable=['name','relationship','sex','nation','birthday','culture','face','marriage','identity','hobby','id_number','unit','present_address','phone','tag','other'];
+	protected $fillable=['name','relationship','sex','nation','birthday','culture','face','marriage','identity','hobby','id_number','unit','residence_address','phone','tag','other'];
     
     public function information()
     {

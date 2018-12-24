@@ -2,8 +2,8 @@
 	<table class="table table-bordered table-hover">
         <tbody>
             <tr>
-                <td>户籍地址:</td>
-                <td>{{ $information->residence_address }}</td>        
+                <td>现居住地址:</td>
+                <td>{{ $information->present_address }}</td>        
             </tr>
             <tr>
                 <td>户籍性质:</td>
@@ -40,7 +40,7 @@
                 		选择
                 	</th>
                     <th scope="col">
-                        现居住地
+                        户籍所在地
                     </th>
                     
                     <th scope="col">
@@ -71,17 +71,19 @@
                         身份类别
                     </th>
                     <th scope="col">
-                        有何特长
-                    </th>
-                    <th scope="col">
                         身份证号码
-                    </th>
-                    <th scope="col">
-                        工作单位及职务
                     </th>
                     <th scope="col">
                         联系电话
                     </th>
+                    <th scope="col">
+                        有何特长
+                    </th>
+                    
+                    <th scope="col">
+                        工作单位及职务
+                    </th>
+                    
                     <th scope="col">
                         职位标签
                     </th>
@@ -98,7 +100,7 @@
             		 		<input type="radio" name="select" style="position: initial;opacity: 1;" onclick="check({{$resident->id}})">
             		 	</td>
                         <td>
-                            {{$resident->present_address}}
+                            {{$resident->residence_address}}
                         </td>
                         <td>
                            {{$resident->name}}
@@ -128,17 +130,19 @@
                             {{$resident->identity}}
                         </td>
                         <td>
-                            {{$resident->hobby}}
+                            {{$resident->id_number}}
                         </td>
                         <td>
-                        	{{$resident->id_number}}
+                            {{$resident->phone}}
                         </td>
+                        <td>
+                            {{$resident->hobby}}
+                        </td>
+                        
                         <td>
                         	{{$resident->unit}}
                         </td>
-                         <td>
-                        	{{$resident->phone}}
-                        </td>
+                         
                         <td>
                         	{{$resident->tag}}
                         </td>

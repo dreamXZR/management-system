@@ -17,8 +17,8 @@
             <input type="text" class="form-control" v-model='resident.relationship'>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">现居住地址:</label>
-            <input type="text" class="form-control" v-model='resident.present_address'>
+            <label for="recipient-name" class="control-label">户籍所在地:</label>
+            <input type="text" class="form-control" v-model='resident.residence_address'>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份证号码:</label>

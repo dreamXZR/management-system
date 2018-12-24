@@ -36,9 +36,9 @@
                         
                         
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">户籍所有地详细地址:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">现居住地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='residence_address'>
+                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='present_address'>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -151,21 +151,68 @@
                                     </div>
                                     </div>
                                     
-									<table class="table table-bordered table-hover">
-				                        <thead class="">
+									<table class="table table-striped table-bordered table-hover">
+				                        <thead>
 				                            <tr>
-				                                <!-- <th class="text-center">ID</th> -->
-				                                <th class="text-center">姓名</th>
-				                                <th class="text-center">身份证号</th>
-				                                <th class="text-center" width="10%">操作</th>
-				                            </tr>
+                                                <th scope="col">
+                                                    姓名
+                                                </th>
+                                                <th scope="col">
+                                                    户主关系
+                                                </th>
+                                                <th scope="col">
+                                                    民族
+                                                </th>
+                                                <th scope="col">
+                                                    政治面貌
+                                                </th>
+                                                <th scope="col">
+                                                    身份证号
+                                                </th>
+                                                 <th scope="col">
+                                                    手机号
+                                                </th>
+                                                <th scope="col">
+                                                    身份标签
+                                                </th>
+                                                <th scope="col">
+                                                    备注
+                                                </th>
+                                                <th scope="col">
+                                                    操作
+                                                </th>
+                                                {{-- <th class="text-center">姓名</th>
+                                                <th class="text-center">身份证号</th>
+                                                <th class="text-center" width="10%">操作</th> --}}
+                                            </tr>
 				                        </thead>
 				                        <tbody>
 				                            
 				                            <tr v-for='(item,index) in residents'>
-				                                <td align="center">@{{item.name}}</td>
-				                                
-				                                <td align="center">@{{item.id_number}}</td>
+				                                <td>
+                                                    @{{item.name}}
+                                                </td>
+                                                <td>
+                                                    @{{item.relationship}}
+                                                </td>
+                                                <td>
+                                                    @{{item.nation}}
+                                                </td>
+                                                <td>
+                                                    @{{item.face}}
+                                                </td>
+                                                <td>
+                                                    @{{item.id_number}}
+                                                </td>
+                                                <td>
+                                                    @{{item.phone}}
+                                                </td>
+                                                <td>
+                                                    @{{item.tag}}
+                                                </td>
+                                                <td>
+                                                    @{{item.other}}
+                                                </td>
 				                                <td align="center">
 				                                    
 				                                    
@@ -205,25 +252,43 @@
                                        
                                     </div>
                                     
-									<table class="table table-bordered table-hover">
-				                        <thead class="">
+									<table class="table table-striped table-bordered table-hover">
+				                        <thead>
 				                            <tr>
 				                                <!-- <th class="text-center">ID</th> -->
-				                                <th class="text-center">姓名</th>
-				                                <th class="text-center">证号</th>
-				                                <th class="text-center">类别</th>
-				                                <th class="text-center">等级</th>
-				                                <th class="text-center" width="10%">操作</th>
+				                                <th scope="col">
+                                                    姓名
+                                                </th>
+                                                <th scope="col">
+                                                    证号
+                                                </th>
+                                                <th scope="col">
+                                                    类别
+                                                </th>
+                                                <th scope="col">
+                                                    等级
+                                                </th>
+                                                <th scope="col">
+                                                    操作
+                                                </th>
 				                            </tr>
 				                        </thead>
 				                        <tbody>
 				                            
 				                            <tr v-for='(item,index) in handicappeds'>
-				                                <td align="center">@{{item.name}}</td>
-				                                
-				                                <td align="center">@{{item.number}}</td>
-				                                <td align="center">@{{item.type}}</td>
-				                                <td align="center">@{{item.level}}</td>
+				                                <td>
+                                                    @{{item.name}}
+                                                </td>
+                                                
+                                                <td >
+                                                    @{{item.number}}
+                                                </td>
+                                                <td >
+                                                    @{{item.type}}
+                                                </td>
+                                                <td>
+                                                    @{{item.level}}
+                                                </td>
 				                                <td align="center">
 				                                    
 				                                    
@@ -270,7 +335,7 @@
 	var vm=new Vue({
         el:'#vue',
         data:{
-            residence_address:'',
+            present_address:'',
             residence_status:'',
             house_people:'',
             house_status:[],
@@ -418,12 +483,12 @@
 
             edit_infomation:function(){
                 //验证
-                if(this.residence_address==''){
-                    alert('请填写户籍所有地详细地址');
+                if(this.present_address==''){
+                    alert('请填写现居住地地详细地址');
                     return false;
                 }
                 var data={
-                     residence_address:this.residence_address,
+                     present_address:this.present_address,
                      residence_status:this.residence_status,
                      house_people:this.house_people,
                      house_status:this.house_status.join(','),
@@ -455,14 +520,16 @@
             id_number_format:function(idCard){
                 let birthday='';
                 let sex=0;
+
                 if(idCard.length==15){
-                    birthday=`19${idCard.substring(6,8)}-${idCard.substring(9,10)}-${idCard.substring(11,12)}`;
+                    birthday = "19"+idCard.substr(6,6); 
                     sex=(idCard[14]%2 === 0)?'0':'1';
                 }else{
-                    birthday=`${idCard.substring(6,10)}-${idCard.substring(11,12)}-${idCard.substring(13,14)}`;
+                    birthday = idCard.substr(6,8);
                     sex=(idCard[16]%2 === 0)?'0':'1';
                 }
-
+                birthday = birthday.replace(/(.{4})(.{2})/,"$1-$2-"); 
+                
                 return [sex,birthday];
             },
 
@@ -476,7 +543,7 @@
             },
 
             resident_validate:function(data){
-                if(data.name && data.relationship && data.present_address && data.id_number && data.nation && data.phone){
+                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone){
                     if(!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(data.phone)){
                         alert("手机号码有误，请重填");  
                         return false; 
@@ -502,7 +569,7 @@
                 success:function(res){
                     
                     let info=res.information;
-                    that.residence_address=info.residence_address;
+                    that.present_address=info.present_address;
                     that.residence_status=info.residence_status;
                     that.house_people=info.house_people;
                     

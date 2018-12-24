@@ -73,17 +73,19 @@
                                     身份类别
                                 </th>
                                 <th scope="col">
-                                    有何特长
-                                </th>
-                                <th scope="col">
                                     身份证号码
-                                </th>
-                                <th scope="col">
-                                    工作单位及职务
                                 </th>
                                 <th scope="col">
                                     联系电话
                                 </th>
+                                <th scope="col">
+                                    有何特长
+                                </th>
+                                
+                                <th scope="col">
+                                    工作单位及职务
+                                </th>
+                                
                                 <th scope="col">
                                     职位标签
                                 </th>
@@ -98,10 +100,10 @@
                             <tr>
                                
                                 <td>
-                                    {{$resident->present_address}}
+                                    {{$resident->information->present_address}}
                                 </td>
                                 <td>
-                                    {{$resident->information->residence_address}}
+                                    {{$resident->residence_address}}
                                 </td>
                                 <td>
                                     {{$resident->information->residence_status}}
@@ -135,17 +137,20 @@
                                     {{$resident->identity}}
                                 </td>
                                 <td>
-                                    {{$resident->hobby}}
+                                    {{$resident->id_number}}
                                 </td>
                                 <td>
-                                	{{$resident->id_number}}
+                                    {{$resident->phone}}
                                 </td>
+                                
+                                <td>
+                                    {{$resident->hobby}}
+                                </td>
+                                
                                 <td>
                                 	{{$resident->unit}}
                                 </td>
-                                 <td>
-                                	{{$resident->phone}}
-                                </td>
+                                 
                                 <td>
                                 	{{$resident->tag}}
                                 </td>

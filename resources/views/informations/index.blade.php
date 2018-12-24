@@ -29,14 +29,14 @@
                         <thead class="">
                             <tr>
                                 <!-- <th class="text-center">ID</th> -->
-                                <th class="text-center">户籍地址</th>
+                                <th class="text-center">现居住地址</th>
                                 <th class="text-center" width="30%">操作</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($informations as $info)
                             <tr>
-                                <td align="center">{{$info->residence_address}}</td>
+                                <td align="center">{{$info->present_address}}</td>
                                 
                                 
                                 <td align="center">

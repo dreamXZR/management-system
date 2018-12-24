@@ -60,7 +60,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">居住地址:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$resident->present_address}}" readonly>
+                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$information->present_address}}" readonly>
                                 @else
                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{old('present_address',$letter_proof->present_address)}}" required="">
                                 @endif
@@ -71,7 +71,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍地址:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{$information->residence_address}}" readonly>
+                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{$resident->residence_address}}" readonly>
                                 @else
                                 <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{old('residence_address',$letter_proof->residence_address)}}" required="">
                                 @endif

@@ -22,9 +22,9 @@ class ResidentFilter extends ModelFilter
     // 	return $this->where('phone',$value);
     // }
 
-    public function presentAddress($value)
+    public function residenceAddress($value)
     {
-    	return $this->whereLike('present_address',$value);
+    	return $this->whereLike('residence_address',$value);
     }
 
     public function idNumber($value)

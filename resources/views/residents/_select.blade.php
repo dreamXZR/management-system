@@ -20,8 +20,8 @@
             <input type="text" class="form-control" name="phone">
           </div> --}}
           <div class="form-group">
-            <label for="message-text" class="control-label">现居住地:</label>
-            <input type="text" class="form-control" name="present_address">
+            <label for="message-text" class="control-label">户籍所在地:</label>
+            <input type="text" class="form-control" name="residence_address">
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">民族:</label>

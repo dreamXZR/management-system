@@ -27,16 +27,18 @@ class Information extends baseModel
     public $people_map=[
                 1=>'老人空巢',
                 2=>'独居',
-                3=>'复退军人',
-                4=>'残疾人',
-                5=>'侨属',
-                6=>'低保户口',
-                7=>'特困'
+                3=>'残疾人',
+                4=>'低保户',
+                5=>'特困',
+                6=>'复退',
+                7=>'现役',
+                8=>'侨属',
+                
             ];
 
     
         
-    protected $fillable=['residence_address','residence_status','house_people','house_status','people','situation','other','p_id','replace_time'];
+    protected $fillable=['present_address','residence_status','house_people','house_status','people','situation','other','p_id','replace_time'];
     
     
     public function residents()
