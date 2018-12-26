@@ -33,7 +33,7 @@ class RegisterTablesController extends Controller
 
 	public function create(RegisterTable $register_table,Request $request)
 	{
-		$addresses=Information::where('id','>',0)->get(['id','residence_address']);
+		$addresses=Information::where('id','>',0)->where('p_id',NULL)->get(['id','present_address']);
 		$information_id=$request->information_id;
 		return view('register_tables.create_and_edit', compact('register_table','addresses','information_id'));
 	}
@@ -59,7 +59,7 @@ class RegisterTablesController extends Controller
 	public function edit(RegisterTable $register_table)
 	{
         // $this->authorize('update', $register_table);
-        $addresses=Information::where('id','>',0)->get(['id','residence_address']);
+        $addresses=Information::where('id','>',0)->where('p_id',NULL)->get(['id','present_address']);
 		return view('register_tables.create_and_edit', compact('register_table','addresses'));
 	}
 

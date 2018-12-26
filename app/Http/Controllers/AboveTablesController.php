@@ -31,7 +31,7 @@ class AboveTablesController extends Controller
 
 	public function create(AboveTable $above_table,Request $request)
 	{
-		$addresses=Information::where('id','>',0)->get(['id','residence_address']);
+		$addresses=Information::where('id','>',0)->where('p_id',NULL)->get(['id','present_address']);
 		$information_id=$request->information_id;
 		return view('above_tables.create_and_edit', compact('above_table','addresses','information_id'));
 	}
@@ -57,7 +57,7 @@ class AboveTablesController extends Controller
 	public function edit(AboveTable $above_table)
 	{
         //$this->authorize('update', $above_table);
-        $addresses=Information::where('id','>',0)->get(['id','residence_address']);
+        $addresses=Information::where('id','>',0)->where('p_id',NULL)->get(['id','present_address']);
 		return view('above_tables.create_and_edit', compact('above_table','addresses'));
 	}
 

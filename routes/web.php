@@ -21,6 +21,11 @@ Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
 Route::get('/test','UsersController@test');
 
+//导出
+
+Route::get('export','ExportController@export_pdf')->name('export');
+//
+
 
 Route::middleware(['auth'])->group(function(){
 	Route::get('/', 'IndexController@index')->name('index');       //首页
@@ -64,6 +69,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('replace_information','InformationsController@replace_information')->name('replace_information');
 	//历史记录
 	Route::get('history/{information}','HistoryController@show')->name('history.show');
+
+
 });
 
 

@@ -42,14 +42,14 @@
                         @endif
                         
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">来电者姓名:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">姓名:</label>
                             <div class="col-sm-6">
                                 <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('name',$above_table->name)}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">来电时间:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">上门登记时间:</label>
                             <div class="col-sm-6">
                                 <input class="form-control date-picker"  placeholder="" name="call_time" required="" type="text" value="{{old('call_time',$above_table->call_time)}}">
                             </div>
@@ -89,7 +89,7 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">来电主要内容:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">上门主要内容:</label>
                             <div class="col-sm-6">
                                 <textarea class="form-control" name="call_content" style="height: 100px;">{{old('call_content',$above_table->call_content)}}</textarea>
                                 <!-- <input class="form-control"  placeholder="" name="call_content" required="" type="text" value="{{old('call_content',$above_table->call_content)}}"> -->
@@ -124,7 +124,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="main[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->main))){echo 'selected';}?>>{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->main))){echo 'selected';}?>>{{$address->present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -135,7 +135,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="secondary[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->secondary))){echo 'selected';}?>>{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->secondary))){echo 'selected';}?>>{{$address->present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,7 +146,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="join[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->join))){echo 'selected';}?>>{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->join))){echo 'selected';}?>>{{$address->present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>

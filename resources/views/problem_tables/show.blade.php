@@ -32,16 +32,16 @@
                     <div class="widget-body bordered-left bordered-blue">
                         <table class="table table-bordered table-hover">
                             <tbody>
-                                <tr>
+                                {{-- <tr>
                                     <td>编号:</td>
                                     <td>{{ $problem_table->number }}</td>        
-                                </tr>
+                                </tr> --}}
                                 <tr>
-                                    <td>来电者姓名:</td>
+                                    <td>姓名:</td>
                                     <td>{{ $problem_table->name }}</td>        
                                 </tr>
                                 <tr>
-                                    <td>来电时间:</td>
+                                    <td>时间:</td>
                                     <td>{{ $problem_table->call_time }}</td>        
                                 </tr>
                                 <tr>
@@ -63,7 +63,7 @@
                                     <td>{{ $problem_table->phone}}</td>        
                                 </tr>
                                 <tr>
-                                    <td>来电主要内容:</td>
+                                    <td>主要内容:</td>
                                     <td>{{ $problem_table->call_content}}</td>        
                                 </tr>
                                 <tr>

@@ -72,6 +72,9 @@
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
                                      @endcan
+                                     <a class="btn btn-xs btn-success" target="_blank" href="{{ route('export', ['type'=>'register_table','id'=>$register_table->id]) }}">
+                                        <i class="glyphicon glyphicon-download"></i> 
+                                    </a>
                                 </td>
                                 
                                 

@@ -69,6 +69,6 @@ function str_num($str,$map_arr)
 function getLiabilityStr($ids)
 {
 	$ids=explode(',', $ids);
-	$data=\DB::table('information')->whereIn('id',$ids)->pluck('residence_address')->toArray();
+	$data=\DB::table('information')->whereIn('id',$ids)->pluck('present_address')->toArray();
 	return implode(',', $data);
 }
