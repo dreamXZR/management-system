@@ -5,10 +5,10 @@
     <title>居民信息卡</title>
     <style>
         html,body{
-            width: 595px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
             margin: 0 auto;
-            margin-top: 30px;
+            margin-top: 60px;
         }
         *{
             margin:0;
@@ -17,8 +17,8 @@
             /*font-style: 12px;*/
         }
         .box{
-            width: 575px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
 
             /*border-right: 1px solid #000;*/
             padding: 0 10px;
@@ -55,7 +55,7 @@
 
         }
         .one{
-            height: 40px;
+            height: 60px;
             font-size: 20px;
             font-weight: 700;
             font-style: normal;
@@ -68,12 +68,12 @@
             text-align: center;
         }
         .tow{
-            height: 40px;
-            font-size: 12px;
+            height: 50px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
-            line-height: 15px;
+            /*line-height: 15px;*/
             overflow: hidden;
             box-sizing: border-box;
             text-align: center;
@@ -82,21 +82,21 @@
             padding: 5px 0;
         }
         .three{
-            font-size: 12px;
-            height: 40px;
+            font-size: 16px;
+            height: 50px;
         }
         .tow_1{
             text-align: center;
-            width: 130px;
+            width: 180px;
         }
         .four{
-            font-size: 12px;
+            font-size: 16px;
             text-align: center;
 
         }
         .xx{
-            width: 35px;
-            height: 32px;
+            width: 45px;
+            height: 50px;
             border-right: 1px solid #000;
             border-bottom: 1px solid #000;
 
@@ -114,7 +114,7 @@
             border-bottom: 1px solid #000;
         }
         .w145{
-            width: 140px;
+            width: 180px;
             border-right: 1px solid #000;
             border-bottom: 1px solid #000;
         }
@@ -128,13 +128,13 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             display: -webkit-box;
-            height: 32px;
+            height: 50px;
             line-height: 32px;
 
 
         }
         .footer{
-            font-size: 12px;
+            font-size: 16px;
             text-align: center;
         }
         .bor{
@@ -146,7 +146,7 @@
             border-bottom: 1px solid #000;
         }
         .six{
-            font-size: 12px;
+            font-size: 16px;
             text-align: center;
             height: 32px;
         }
@@ -157,13 +157,13 @@
     <table style="border: 1px solid #000;">
 
         <tr class="one" style="border: 1px solid #000;">
-            <th class="one_1" colspan="10">二号桥街道社区居民基本情况信息卡</th>
+            <th class="one_1" colspan="10" style="border-right: 1px solid #000;">二号桥街道社区居民基本情况信息卡</th>
         </tr>
 
         <tr class="tow">
             <td class="tow_1" style="border: 1px solid #000;">现居住地详细地址</th>
-            <td class="tow_2" style="border: 1px solid #000;">
-                <input style="width: 160px;" class="tow_2_input" name="address" type="text" value="{{$info['present_address']}}" />
+            <td class="tow_2" style="border: 1px solid #000; padding: 0 10px;">
+                <input style="width: 100%;" class="tow_2_input" name="address" type="text" value="{{$info['present_address']}}" />
             </td>
             <td class="tow_3" style="border: 1px solid #000;">户籍性质</td>
             <td class="tow_4" style="border: 1px solid #000;">
@@ -178,17 +178,17 @@
             <td class="tow_1" style="border: 1px solid #000;">
                 <input style="width: 100px;" type="text" value="{{$info['house_people']}}">
             </td>
-            <td class="three_1" colspan="4" style="text-align: center; border: 1px solid #000;">
-                <input style="width: 410px;" type="text" value="{{$info['people']}}">
+            <td class="three_1" colspan="4" style="text-align: center; border: 1px solid #000; padding: 0 10px;">
+                <input style="width: 100%;" type="text" value="{{$info['people']}}">
             </td>
         </tr>
 
         <tr class="four">
             <table class="six" style="border-left: 1px solid #000">
                 <tr>
-                    <td class="xm" style="width: 40px; height: 32px; ">姓名</td>
-                    <td class="relation " style="width: 40px; ">与户主关系</td>
-                    <td class="sex" style="width: 35px; ">性别</td>
+                    <td class="xm" style="width: 60px; height: 32px; ">姓名</td>
+                    <td class="relation " style="width: 90px; ">与户主关系</td>
+                    <td class="sex" style="width: 50px; ">性别</td>
                     <td class="xx">民族</td>
                     <td class="xx">出生年月</td>
                     <td class="xx">文化程度</td>
@@ -241,11 +241,12 @@
                 </tr>
                 ';
                  }?>
+                
             </table>
         </tr>
         <tr class="footer">
             <table>
-                <table style="width: 60%; height: 254px; font-size: 12px; text-align: center; border-left: 1px solid #000; float: left;">
+                <table style="width: 60%; height: 294px; font-size: 16px; text-align: center; border-left: 1px solid #000; float: left;">
                     <tr>
                         <td class="footer_1 bor" style="height: 50px; width: 75px;">残疾人姓名</td>
                         <td class="footer_2 bor" style="height: 50px; width: 95px;">残疾人证号</td>
@@ -254,57 +255,45 @@
                     </tr>
                     @foreach($handicappeds as $v)
                     <tr>
-                        <td class="footer_1 bor" style="height: 50px; width: 75px;">
+                        <td class="footer_1 bor" style="height: 60px; width: 75px;">
                             {{$v->name}}
                         </td>
-                        <td class="footer_2 bor" style="height: 50px; width: 95px;">
+                        <td class="footer_2 bor" style="height: 60px; width: 95px;">
                             {{$v->number}}
                         </td>
-                        <td class="footer_3 bor" style="height: 50px; width: 65px;">
+                        <td class="footer_3 bor" style="height: 60px; width: 65px;">
                             {{$v->type}}
                         </td>
-                        <td class="footer_5 br bor" style="height: 50px; width: 65px;">
+                        <td class="footer_5 br bor" style="height: 60px; width: 65px;">
                             {{$v->level}}
                         </td>
                     </tr>
                     @endforeach
                     <?php for($i=0;$i<$fill[1];$i++){
-                    echo '<tr><td class="footer_1 bor" style="height: 50px; width: 75px;"></td>
-                        <td class="footer_2 bor" style="height: 50px; width: 95px;"></td>
-                        <td class="footer_3 bor" style="height: 50px; width: 65px;"></td>
-                        <td class="footer_5 br bor" style="height: 50px; width: 65px;"></td>
+                    echo '<tr><td class="footer_1 bor" style="height: 60px; width: 75px;"></td>
+                        <td class="footer_2 bor" style="height: 60px; width: 95px;"></td>
+                        <td class="footer_3 bor" style="height: 60px; width: 65px;"></td>
+                        <td class="footer_5 br bor" style="height: 60px; width: 65px;"></td>
                     </tr>';
                 }?>
                 </table>
-                <table style="width: 40%; height: 254px;  float: left; font-size: 12px; text-align: center;">
+                <table style="width: 40%; height: 294px;  float: left; font-size: 16px; text-align: center;">
                     <tr style="height: 40%;">
-                        <td class="bor_1" style="width: 70px;">家庭状况</td>
+                        <td class="bor_1" style="border-right: 1px solid #000;">家庭状况</td>
                         <td   style="border-bottom: 1px solid #000; border-right: 1px solid #000;">
-                                <textarea class="condition" style="border: none; outline: none; resize:none;height: 90px; " >
-                                    {{$info['situation']}}
-                                 </textarea>
-                                   
+                                <textarea class="condition" style="border: none; outline: none; resize:none; " > {{$info['situation']}}</textarea>
                         </td>
                     </tr>
                     <tr style="height: 60%;">
-                        <td class="bor_1" style="width: 70px;">备注</td>
+                        <td class="bor_1" >备注</td>
                         <td   style="border-bottom: 1px solid #000; border-right: 1px solid #000;">
-                            <textarea class="condition" style="border: none; outline: none; resize:none;height: 90px;" >
-                                {{$info['other']}}
-                             </textarea>
+                            <textarea class="condition" style="border: none; outline: none; resize:none; " >{{$info['other']}} </textarea>
                         </td>
                     </tr>
                 </table>
                 <div class="clear"></div>
             </table>
-
         </tr>
-
-
-
-
-        
-
     </table>
 </div>
 </body>

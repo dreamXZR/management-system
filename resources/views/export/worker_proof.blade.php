@@ -5,8 +5,8 @@
     <title>就业证明</title>
     <style>
         html,body{
-            width: 595px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
             margin: 0 auto;
             border: 1px solid #000;
         }
@@ -34,7 +34,7 @@
             outline: none;
         }
         .top{
-            width: 595px;
+            /*width: 595px;*/
             height: 35%;
             border-bottom: 2px dashed #000;
         }
@@ -54,12 +54,12 @@
         .text_1{
             white-space: nowrap;
             text-align: left;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            margin: 3px 0;
+            margin: 15px 0;
         }
         .display{
             display: inline-block;
@@ -69,18 +69,18 @@
             text-align: right;
             position: relative;
             right: 10px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            margin: 25px 0;
+            margin: 15px 0;
         }
         .lump{
             text-align: center;
             display: inline-block;
-            width: 120px;
-            font-size: 12px;
+            width: 220px;
+            font-size: 16px;
             font-weight: 400;
             padding: 0 0;
             margin: 0 5px;
@@ -89,8 +89,8 @@
         }
         .lumpw{
             display: inline-block;
-            width: 170px;
-            font-size: 12px;
+            width: 260px;
+            font-size: 16px;
             font-weight: 400;
             padding: 5px 0;
             margin: 0 10px;
@@ -100,8 +100,8 @@
         }
         .lump_1{
             display: inline-block;
-            width: 300px;
-            font-size: 12px;
+            width: 480px;
+            font-size: 16px;
             font-weight: 400;
             padding: 5px;
             margin: 0 10px;
@@ -112,7 +112,7 @@
         .lump200{
             display: inline-block;
             width: 220px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             padding: 5px 0;
             margin: 0 10px;
@@ -151,6 +151,10 @@
         <p class="text_1 display">
             灵活就业内容<input class="lump_1" type="text" value="{{$worker['worker_content']}}">
         </p>
+        <p style="float: right; ">
+            签字确认:
+            <input class="lump" style="width: 120px;" type="text" value="">
+        </p>
     </div>
 </div>
 <div class="bottom">
@@ -187,7 +191,7 @@
             性别<input class="lump" type="text" value="@if($worker['child_sex']==1)男@else女@endif">
         </p>
         <p class="text_1 display">
-            身份证号<input class="lump_1" type="text" value="{{$worker['child_id_number']}}" maxlength="18">
+            身份证号<input class="lump_1" type="text" value="{{$worker['child_id_number']}}" >
         </p>
         <p class="text_1 display">与居住证持有人希望申请河东区义务教育学位，特此证明，以备申请学位材料所用。</p>
     </div>

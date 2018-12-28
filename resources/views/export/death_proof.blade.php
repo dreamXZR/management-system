@@ -5,14 +5,14 @@
     <title>死亡证明</title>
     <style>
         html,body{
-            width: 595px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
             margin: 0 auto;
         }
         *{
             margin:0;
             padding:0;
-            /*font-family: "微软雅黑";*/
+           /* font-family: "微软雅黑";*/
         }
         a{
             text-decoration:none;
@@ -54,7 +54,7 @@
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            margin: 8px 0;
+            margin: 20px 0;
         }
         .display{
             display: inline-block;
@@ -62,7 +62,7 @@
         .lump{
             text-align: left;
             display: inline-block;
-            width: 100px;
+            width: 200px;
             font-size: 12px;
             font-weight: 400;
             padding: 4px 5px;
@@ -74,7 +74,7 @@
             width: 200px;
         }
         .lump_2{
-            width: 400px;
+            width: 550px;
         }
         .lump_3{
             margin: 0 28px;
@@ -148,6 +148,7 @@
         其他需要说明的情况
         <input class="lump lump_2" type="text" value="{{$death['other']}}">
     </p>
+    <!--<textarea class="left" style="margin-left: 15px; margin-top: 8px;" name="" id="" cols="60" ></textarea>-->
     <p class="text_1 display" style="margin-top: 35px;">特此证明</p>
     <div class="right" style="margin-top: 30px; ">
         <div style="text-align: center;">

@@ -5,8 +5,8 @@
     <title>证明信</title>
     <style>
         html,body{
-            width: 595px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
             margin: 0 auto;
             border: 1px solid #000;
         }
@@ -31,7 +31,7 @@
             float: right;
         }
         .top{
-            width: 595px;
+            /*width: 595px;*/
             height: 50%;
             border-bottom: 2px dashed #000;
         }
@@ -51,12 +51,12 @@
         .text_1{
             white-space: nowrap;
             text-align: left;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            margin: 12px 0;
+            margin: 18px 0;
         }
         .display{
             display: inline-block;
@@ -65,7 +65,7 @@
             text-align: center;
             display: inline-block;
             width: 120px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             padding: 0 0;
             margin: 0 5px;
@@ -75,7 +75,7 @@
         .lump_1{
             display: inline-block;
             width: 270px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             padding: 0 5px;
             margin: 0 10px;
@@ -91,7 +91,7 @@
         .number{
             white-space: nowrap;
             text-align: right;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -127,7 +127,7 @@
 </head>
 <body>
 <div class="top">
-    <h1>证明存银</h1>
+    <h1>证明存根</h1>
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
         <p class="text_1 display">
@@ -157,6 +157,10 @@
             <div class="clear"></div>
             <p class="text_1 display m10"><input class="lump lump50" type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
+        <p>
+            签字确认:
+            <input class="lump" type="text" value="">
+        </p>
     </div>
 </div>
 <div class="bottom">

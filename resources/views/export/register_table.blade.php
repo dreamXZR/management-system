@@ -5,8 +5,8 @@
     <title>来访登记</title>
     <style>
         html,body{
-            width: 595px;
-            height: 842px;
+            width: 794px;
+            height: 1123px;
             margin: 0 auto;
             margin-top: 30px;
         }
@@ -14,7 +14,7 @@
             margin:0;
             padding:0;
            /* font-family: "微软雅黑";*/
-            font-style: 12px;
+            /*font-style: 12px;*/
         }
         a{
             text-decoration:none;
@@ -29,9 +29,10 @@
             float: left;
         }
         table {
-            /*width: 100%;*/
+            width: 730px;
+            height: 1123px;
             box-sizing: border-box;
-            font-family: 微软雅黑;
+           /* font-family: 微软雅黑;*/
             /*cellspacing: 0;*/
             /*cellpadding: 0;*/
             border-collapse:collapse;
@@ -90,7 +91,7 @@
             font-size: 12px;
         }
         .two_2{
-             /*width: 495px;*/
+            /*width: 495px;*/
             border: 1px solid #000;
             height: 285.6px;
             /*line-height: 285.6px;*/
@@ -149,7 +150,7 @@
         }
         .wz2{
             width: 417.5px;
-            height: 244px;
+            height: 262px;
             margin-top: 5px;
             /*text-align: center;*/
             /*line-height: 280px;*/
