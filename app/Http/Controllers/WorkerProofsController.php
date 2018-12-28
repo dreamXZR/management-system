@@ -21,6 +21,7 @@ class WorkerProofsController extends Controller
 
     public function show(WorkerProof $worker_proof)
     {
+
         return view('worker_proofs.show', compact('worker_proof'));
     }
 
@@ -46,7 +47,7 @@ class WorkerProofsController extends Controller
 
 	public function edit(WorkerProof $worker_proof)
 	{
-        $this->authorize('update', $worker_proof);
+        //$this->authorize('update', $worker_proof);
 		return view('worker_proofs.create_and_edit', compact('worker_proof'));
 	}
 
@@ -62,7 +63,7 @@ class WorkerProofsController extends Controller
 
 		$worker_proof->update($post_data);
 
-		return redirect()->route('worker_proofs.show')->with('success', '更新成功');
+		return redirect()->route('worker_proofs.show',$worker_proof->id)->with('success', '更新成功');
 	}
 
 	public function destroy(WorkerProof $worker_proof)

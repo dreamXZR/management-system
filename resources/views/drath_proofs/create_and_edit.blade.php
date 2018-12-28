@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">死亡时间:</label>
                             <div class="col-sm-6">
-                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" required="" value="{{old('death_date',$drath_proof->death_date)}}" name="death_date">
+                                <input class="form-control date-picker" id="id-date-picker-1" type="text"  data-date-format="yyyy-mm-dd" required="" value="{{old('death_date',$drath_proof->death_date)}}" name="death_date">
                                 
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -175,9 +175,11 @@
             </div>
             <!-- /Page Content -->
 <!--Bootstrap Date Picker-->
+
 <script src="{{asset('assets/js/datetime/bootstrap-datepicker.js')}}"></script>
+
 <script type="text/javascript">
-    $('.date-picker').datepicker();
+    $('.date-picker').datepicker({});
 </script>
 {{-- fileput --}}
 <link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">

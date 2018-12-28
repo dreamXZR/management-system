@@ -54,6 +54,9 @@
 
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
+                                    <a class="btn btn-xs btn-success" target="_blank" href="{{ route('export', ['type'=>'information','id'=>$info->id]) }}">
+                                        <i class="glyphicon glyphicon-download"></i> 
+                                    </a>
                                 </td>
                                 
                                 

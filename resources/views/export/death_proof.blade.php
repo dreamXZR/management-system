@@ -12,7 +12,7 @@
         *{
             margin:0;
             padding:0;
-            
+            /*font-family: "微软雅黑";*/
         }
         a{
             text-decoration:none;
@@ -62,7 +62,7 @@
         .lump{
             text-align: left;
             display: inline-block;
-            width: 150px;
+            width: 100px;
             font-size: 12px;
             font-weight: 400;
             padding: 4px 5px;
@@ -74,20 +74,22 @@
             width: 200px;
         }
         .lump_2{
-            width: 300px;
+            width: 400px;
         }
         .lump_3{
             margin: 0 28px;
-        }
-        .lump_4{
-            width: 470px;
-            margin: 0;
         }
         textarea{
             border: none;
             border-bottom: 1px solid #000000;
             outline: none;
             resize:none;
+        }
+        .lump50{
+            width: 50px;
+        }
+        span{
+            font-size: 12px;
         }
     </style>
 </head>
@@ -97,7 +99,7 @@
     <p class="text_1 display">
         死者姓名<input class="lump " type="text" value="{{$death['name']}}">
     </p>
-    <p class="text_1 ">
+    <p class="text_1 display" style="margin-left:20px">
         身份证号<input class="lump lump_1 " type="text" value="{{$death['id_number']}}">
     </p>
     <p class="text_1 display">
@@ -109,11 +111,15 @@
     <p class="text_1 display">
         死亡日期<input class="lump " type="text" value="{{$death['death_date']}}">
     </p>
-    <p class="text_1 ">
-        申请人<input class="lump lump_3" type="text" value="{{$death['applicant']}}">
+    <p class="text_1 display" style="margin-left:20px">
+        死亡地点<input class="lump lump_1 " type="text" value="{{$death['death_address']}}">
     </p>
     <p class="text_1 display">
-        与死者关系<input class="lump lump_1 " type="text" value="@switch($death['death_relation'])
+        申请人<input class="lump lump_3" type="text" value="{{$death['applicant']}}">
+    </p>
+    <p class="text_1 display" style="margin-left:6px;">
+        与死者关系<input class="lump lump_1" type="text" value="
+        @switch($death['death_relation'])
         @case(1)
         配偶
         @break
@@ -126,29 +132,34 @@
         @endswitch
         ">
     </p>
-    <p class="text_1 ">
-        死亡地点<input class="lump lump_1 " type="text" value="{{$death['death_address']}}">
-    </p>
     <p class="text_1 display">
         申请人身份证号<input class="lump lump_2" type="text" value="{{$death['applicant_id_number']}}">
     </p>
     <p class="text_1 display">
         委托代理人<input class="lump " type="text" value="{{$death['agent']}}">
     </p>
-    <p class="text_1 ">
+    <p class="text_1 display" style="margin-left:7px">
         与申请人关系（请注明）<input class="lump " type="text" value="{{$death['application_relation']}}">
     </p>
     <p class="text_1 display">
         委托代理人身份证号<input class="lump lump_2" type="text" value="{{$death['agent_id_number']}}">
     </p>
-    <p class="text_1 left">其他需要说明的情况
-
+    <p class="text_1 display left">
+        其他需要说明的情况
+        <input class="lump lump_2" type="text" value="{{$death['other']}}">
     </p>
-    <textarea class="left" style="margin-left: 15px; margin-top: 8px;" name="" id="" cols="60" >
-        {{$death['other']}}
-    </textarea>
-
+    <p class="text_1 display" style="margin-top: 35px;">特此证明</p>
+    <div class="right" style="margin-top: 30px; ">
+        <div style="text-align: center;">
+            <p class="text_1 display">居委会盖章</p>
+        </div>
+        <p class="text_1 display" style="margin-top:10px;"><input class="lump lump50" type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text" value=""><span>日</span>&nbsp;&nbsp;</p>
+    </div>
+    <div class="clear"></div>
+    <p class="text_1 display" style="margin-left:-15px;margin-top:50px ">提示：</p>
+    <p style="margin-top:15px"><span>1.申请签发《死亡证》的申请人应为对死者情况知情的第一顺位继承人或委托人</span></p>
+    <p><span>2.申请签发《死亡证》携带材料：死者户口簿（外地户籍不能提供户口薄的必须提供身份证明）、身份证及复印件，办理者的身份证及复印件，死者居住地居委会证明。</span></p>
+    <p><span>3.签发单位：为死者户籍地所属的社区卫生服务中心（或卫生院）。</span></p>
 </div>
-
 </body>
 </html>

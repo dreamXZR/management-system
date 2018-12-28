@@ -37,7 +37,7 @@ Purchase: http://wrapbootstrap.com
     <script src="{{asset('assets/js/skins.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-2.0.3.min.js')}}"></script>
     
-
+    <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->

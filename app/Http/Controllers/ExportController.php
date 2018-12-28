@@ -21,7 +21,18 @@ class ExportController extends Controller
     {
         switch ($request->type) {
             case 'information':
+                $info=Information::find($request->id);
+                $handicappeds=$info->handicappeds;
+                $residents=$info->residents;
                 
+                $fill=[
+                    10-count($residents),
+                    4-count($handicappeds)
+                ];
+                
+                
+                //return view('export.information',compact('info','handicappeds','residents','fill'));
+                return PDF::loadView('export.information',compact('info','handicappeds','residents','fill'))->inline('信息卡'.$info->present_address .'.pdf');
             break;
             
             case 'death_proof':

@@ -41,7 +41,7 @@
             width: 87.5px;
             border: 1px solid #000;
             height: 40px;
-            line-height: 40px;
+            /*line-height: 40px;*/
             text-align: center;
             font-size: 12px;
         }
@@ -149,7 +149,7 @@
         }
         .wz2{
             width: 417.5px;
-            height: 262px;
+            height: 244px;
             margin-top: 5px;
             /*text-align: center;*/
             /*line-height: 280px;*/
@@ -184,7 +184,7 @@
             </td>
             <td class="one">上门时间</td>
             <td class="one">
-                <input class="wz" type="text" value="{{$above['call_time']}}">
+                {{$above['call_time']}}
             </td>
         </tr>
         <tr>
@@ -200,17 +200,13 @@
         <tr class="b">
             <td class="one_1">上门主要内容</td>
             <td class="two_2" colspan="5">
-                <textarea class="wz2" >
-                    {{$above['call_content']}}
-                </textarea>
+                <textarea class="wz2" >{{$above['call_content']}}</textarea>
             </td>
         </tr>
         <tr class="b">
             <td class="one_1">办理结果</td>
             <td class="two_2" colspan="5">
-                <textarea class="wz2" >
-                    {{$above['back_content']}}
-                </textarea>
+                <textarea class="wz2" >{{$above['back_content']}}</textarea>
             </td>
         </tr>
         <tr>

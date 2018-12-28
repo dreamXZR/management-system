@@ -41,7 +41,7 @@
             width: 87.5px;
             border: 1px solid #000;
             height: 40px;
-            line-height: 40px;
+            /*line-height: 40px;*/
             text-align: center;
             font-size: 12px;
         }
@@ -90,7 +90,7 @@
             font-size: 12px;
         }
         .two_2{
-            /*width: 495px;*/
+             /*width: 495px;*/
             border: 1px solid #000;
             height: 285.6px;
             /*line-height: 285.6px;*/
@@ -149,7 +149,7 @@
         }
         .wz2{
             width: 417.5px;
-            height: 262px;
+            height: 244px;
             margin-top: 5px;
             /*text-align: center;*/
             /*line-height: 280px;*/
@@ -183,9 +183,7 @@
                 <input class="wz" type="text" value="@if($register['sex']==1)男@else女@endif">
             </td>
             <td class="one">来电时间</td>
-            <td class="one">
-                <input class="wz" type="text" value="{{$register['call_time']}}">
-            </td>
+            <td class="one">{{$register['call_time']}}</td>
         </tr>
         <tr>
             <td class="one">家庭住址</td>
@@ -194,25 +192,22 @@
             </td>
             <td class="one">联系电话</td>
             <td class="one">
-                <input class="wz" type="number" maxlength="11" value="{{$register['phone']}}">
+                <input class="wz" type="text"  value="{{$register['phone']}}">
             </td>
         </tr>
-        <tr class="b">
+         <tr class="b">
             <td class="one_1">来电主要内容</td>
             <td class="two_2" colspan="5">
-                <textarea class="wz2" >
-                    {{$register['call_content']}}
-                </textarea>
+                <textarea class="wz2" >{{$register['call_content']}}</textarea>
             </td>
         </tr>
         <tr class="b">
             <td class="one_1">办理结果</td>
             <td class="two_2" colspan="5">
-                <textarea class="wz2" >
-                    {{$register['back_content']}}
-                </textarea>
+                <textarea class="wz2" >{{$register['back_content']}}</textarea>
             </td>
         </tr>
+       
         <tr>
             <td class="one">备注</td>
             <td class="two_3" colspan="5">
