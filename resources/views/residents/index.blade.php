@@ -34,6 +34,9 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th scope="col">
+                                    姓名
+                                </th>
                                 
                                 <th scope="col">
                                     现居住地
@@ -45,9 +48,7 @@
                                     户籍性质
                                 </th>
                                 
-                                <th scope="col">
-                                    姓名
-                                </th>
+                               
                                 <th scope="col">
                                     与户主关系
                                 </th>
@@ -98,6 +99,9 @@
                         <tbody>
                         	@foreach($residents as $resident)
                             <tr>
+                                <td>
+                                   {{$resident->name}}
+                                </td>
                                
                                 <td>
                                     {{$resident->information->present_address}}
@@ -109,9 +113,7 @@
                                     {{$resident->information->residence_status}}
                                 </td>
                                 
-                                <td>
-                                   {{$resident->name}}
-                                </td>
+                                
                                 <td>
                                     {{$resident->relationship}}
                                 </td>

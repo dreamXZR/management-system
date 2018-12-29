@@ -87,8 +87,8 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
     {
         return [
            $resident->name,
-           $resident->id_number,
-           $resident->present_address,
+           ' '.$resident->id_number,
+           $resident->information->present_address,
            $resident->sex,
            $resident->nation,
            $resident->birthday,

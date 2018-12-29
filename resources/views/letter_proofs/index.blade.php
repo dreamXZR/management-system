@@ -30,7 +30,7 @@
                         <thead class="">
                             <tr>
                                 <!-- <th class="text-center">ID</th> -->
-                                <th class="text-center">户籍地址</th>
+                                <th class="text-center">现居住地址</th>
                                 <th class="text-center">编号</th>
                                 <th class="text-center" width="30%">操作</th>
                             </tr>
@@ -38,7 +38,7 @@
                         <tbody>
                             @foreach($letter_proofs as $letter_proof)
                             <tr>
-                                <td align="center">{{$letter_proof->residence_address}}</td>
+                                <td align="center">{{$letter_proof->present_address}}</td>
                                 
                                 <td align="center">{{$letter_proof->number}}</td>
                                 <td align="center">

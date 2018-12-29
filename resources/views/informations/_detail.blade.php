@@ -2,31 +2,31 @@
 	<table class="table table-bordered table-hover">
         <tbody>
             <tr>
-                <td>现居住地址:</td>
+                <td width="20%">现居住地址:</td>
                 <td>{{ $information->present_address }}</td>        
             </tr>
             <tr>
-                <td>户籍性质:</td>
+                <td width="20%">户籍性质:</td>
                 <td>{{ $information->residence_status }}</td>        
             </tr>
             <tr>
-                <td>房屋状态:</td>
+                <td width="20%">房屋状态:</td>
                 <td>{{ $information->house_status }}</td>        
             </tr>
             <tr>
-                <td>房屋使用情况:</td>
+                <td width="20%">房屋使用情况:</td>
                 <td>{{ $information->house_people }}</td>        
             </tr>
             <tr>
-                <td>住户情况:</td>
+                <td width="20%">住户情况:</td>
                 <td>{{ $information->people }}</td>        
             </tr>
             <tr>
-                <td>家庭状况:</td>
+                <td width="20%">家庭状况:</td>
                 <td>{{ $information->situation }}</td>        
             </tr>
             <tr>
-                <td>备注:</td>
+                <td width="20%">备注:</td>
                 <td>{{ $information->other }}</td>        
             </tr>                   
         </tbody>

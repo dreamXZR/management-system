@@ -24,6 +24,9 @@
                  <a class="btn btn-sm btn-warning pull-right" href="{{ route('worker_proofs.edit', $worker_proof->id) }}">
                     <i class="glyphicon glyphicon-edit"></i> 修改
                 </a>
+                <a class="btn btn-sm btn-success pull-right" href="{{ route('export', ['type'=>'worker_proof','id'=>$worker_proof->id]) }}" style="margin-right:15px;">
+                        <i class="glyphicon glyphicon-export"></i> 导出
+                    </a>
             </div>
             <div class="col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
                 <div class="widget">
