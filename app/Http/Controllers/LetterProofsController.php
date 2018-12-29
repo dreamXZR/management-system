@@ -44,7 +44,7 @@ class LetterProofsController extends Controller
 		}
 		
 		//生成编号
-		$post_data['number']=create_number('letter_proofs');
+		$post_data['number']=create_number();
 		
 		$letter_proof = LetterProof::create($post_data);
 		return redirect()->route('letter_proofs.show', $letter_proof->id)->with('success', '添加成功');

@@ -315,7 +315,7 @@
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default" @click="edit_infomation">保存信息</button>
+                                <button type="submit" class="btn btn-lg btn-primary" @click="edit_infomation">保存信息</button>
                                 
                             </div>
                         </div>

@@ -4,15 +4,29 @@
 /*
 	@param $table_name 表名
 */
-function create_number($table_name)
+function create_number()
 {
 	$today=date('Ymd',time());
-	$data=\DB::table($table_name)->where('number','like',$today.'%')->max('number');
-	if($data){
-		return $data+1;
+	$number=\Cache::get('number');
+	if($number)
+	{
+		if($number[0]!=$today){
+			$new_number=date('Ymd',time()).'001';
+		}else{
+			$new_number=$number[1]+1;
+		}
+
 	}else{
-		return date('Ymd',time()).'001';
+		$new_number=date('Ymd',time()).'001';
 	}
+	\Cache::forever('number',[$today,$new_number]);
+	return $new_number;
+	// $data=\DB::table($table_name)->where('number','like',$today.'%')->max('number');
+	// if($data){
+	// 	return $data+1;
+	// }else{
+	// 	return date('Ymd',time()).'001';
+	// }
 }
 
 //删除图片

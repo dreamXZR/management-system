@@ -48,7 +48,7 @@ class RegisterTablesController extends Controller
 		}
 		
 		//生成编号
-		$post_data['number']=create_number('register_tables');
+		$post_data['number']=create_number();
 		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';

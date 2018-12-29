@@ -155,7 +155,7 @@
                         
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">保存信息</button>
+                                <button type="submit" class="btn btn-lg btn-primary">保存信息</button>
                             </div>
                         </div>
                     </form>

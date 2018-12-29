@@ -40,7 +40,7 @@ class DrathProofsController extends Controller
 		}
 		
 		//生成编号
-		$post_data['number']=create_number('drath_proofs');
+		$post_data['number']=create_number();
 		
 		$drath_proof = DrathProof::create($post_data);
 		return redirect()->route('drath_proofs.show', $drath_proof->id)->with('success', '添加成功');
