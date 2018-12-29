@@ -44,7 +44,7 @@
             height: 40px;
             /*line-height: 40px;*/
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         .two{
             width: 262.5px;
@@ -52,7 +52,7 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         .one_1{
             width: 87.5px;
@@ -60,35 +60,35 @@
             height: 285.6px;
             line-height: 285.6px;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         .one_2{
             width: 87.5px;
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         .one_3{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 5px;
-            font-size: 12px;
+            font-size: 16px;
         }
         .one_4{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 40px;
-            font-size: 12px;
+            font-size: 16px;
         }
         .one_5{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 70px;
-            font-size: 12px;
+            font-size: 16px;
         }
         .two_2{
             /*width: 495px;*/
@@ -96,7 +96,7 @@
             height: 285.6px;
             /*line-height: 285.6px;*/
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         .two_3{
             /*width: 495px;*/
@@ -104,7 +104,7 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
         }
         h1{
             white-space: nowrap;
@@ -119,7 +119,7 @@
         p{
             white-space: nowrap;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -141,7 +141,7 @@
             overflow: hidden;
         }
         .wz1{
-            width: 242.5px;
+            width: 90%;
             height: 40px;
             text-align: left;
             border: none;
@@ -149,8 +149,8 @@
             margin: 0 10px;
         }
         .wz2{
-            width: 417.5px;
-            height: 262px;
+            width: 90%;
+            height: 90%;
             margin-top: 5px;
             /*text-align: center;*/
             /*line-height: 280px;*/
@@ -161,7 +161,7 @@
             margin: 10px 10px;
         }
         .wz5{
-            width: 417.5px;
+            width: 90%;
             height: 40px;
             text-align: left;
             border: none;

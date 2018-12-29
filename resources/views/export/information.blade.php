@@ -5,8 +5,8 @@
     <title>居民信息卡</title>
     <style>
         html,body{
-            width: 794px;
-            height: 1123px;
+            width: 894px;
+            height: 1223px;
             margin: 0 auto;
             margin-top: 60px;
         }
@@ -17,8 +17,9 @@
             /*font-style: 12px;*/
         }
         .box{
-            width: 794px;
-            height: 1123px;
+           
+           	width: 884px;
+            height: 1223px;
 
             /*border-right: 1px solid #000;*/
             padding: 0 10px;
@@ -95,8 +96,8 @@
 
         }
         .xx{
-            width: 45px;
-            height: 50px;
+            width: 77px;
+            height: 60px;
             border-right: 1px solid #000;
             border-bottom: 1px solid #000;
 
@@ -170,19 +171,24 @@
                 <input style="width: 80px;" type="text" value="{{$info['residence_status']}}">
             </td>
             <td class="tow_5" style="border: 1px solid #000;">
-                <input style="width: 80px;" type="text" value="{{$info['house_status']}}">
+                <input style="width: 100px;" type="text" value="{{$info['house_status']}}">
             </td>
         </tr>
-
-        <tr class="three">
-            <td class="tow_1" style="border: 1px solid #000;">
-                <input style="width: 100px;" type="text" value="{{$info['house_people']}}">
+		<table class="three">
+           <tr >
+             <td class="tow_1" style="border: 1px solid #000;">
+                房屋使用情况
+            </td>
+            <td class="tow_1" style="border: 1px solid #000; width: 70px;">
+                <input style="width: 60px; text-align: center;" type="text" value="{{$info['house_people']}}">
             </td>
             <td class="three_1" colspan="4" style="text-align: center; border: 1px solid #000; padding: 0 10px;">
                 <input style="width: 100%;" type="text" value="{{$info['people']}}">
             </td>
         </tr>
-
+        </table>
+       
+		
         <tr class="four">
             <table class="six" style="border-left: 1px solid #000">
                 <tr>
@@ -201,9 +207,9 @@
                 </tr>
                 @foreach($residents as $v)
                 <tr>
-                    <td class="xm" style="width: 40px; height: 32px; ">{{$v->name}}</td>
-                    <td class="relation " style="width: 40px; ">{{$v->relationship}}</td>
-                    <td class="sex" style="width: 35px; ">{{$v->sex}}</td>
+                    <td class="xm" style="width: 60px; height: 32px; ">{{$v->name}}</td>
+                    <td class="relation " style="width: 65px; ">{{$v->relationship}}</td>
+                    <td class="sex" style="width: 60px; ">{{$v->sex}}</td>
                     <td class="xx">{{$v->nation}}</td>
                     <td class="xx">{{$v->birthday}}</td>
                     <td class="xx">{{$v->culture}}</td>
@@ -246,38 +252,38 @@
         </tr>
         <tr class="footer">
             <table>
-                <table style="width: 60%; height: 294px; font-size: 16px; text-align: center; border-left: 1px solid #000; float: left;">
+                <table style="width: 60%; height: 352px; font-size: 16px; text-align: center; border-left: 1px solid #000; float: left;">
                     <tr>
-                        <td class="footer_1 bor" style="height: 50px; width: 75px;">残疾人姓名</td>
-                        <td class="footer_2 bor" style="height: 50px; width: 95px;">残疾人证号</td>
-                        <td class="footer_3 bor" style="height: 50px; width: 65px;">残疾类别</td>
-                        <td class="footer_5 br bor" style="height: 50px; width: 65px;">残疾等级</td>
+                        <td class="footer_1 bor" style="height: 70px; width: 75px;">残疾人姓名</td>
+                        <td class="footer_2 bor" style="height: 70px; width: 95px;">残疾人证号</td>
+                        <td class="footer_3 bor" style="height: 70px; width: 65px;">残疾类别</td>
+                        <td class="footer_5 br bor" style="height: 70px; width: 65px;">残疾等级</td>
                     </tr>
                     @foreach($handicappeds as $v)
                     <tr>
-                        <td class="footer_1 bor" style="height: 60px; width: 75px;">
+                        <td class="footer_1 bor" style="height: 70px; width: 75px;">
                             {{$v->name}}
                         </td>
-                        <td class="footer_2 bor" style="height: 60px; width: 95px;">
+                        <td class="footer_2 bor" style="height: 70px; width: 95px;">
                             {{$v->number}}
                         </td>
-                        <td class="footer_3 bor" style="height: 60px; width: 65px;">
+                        <td class="footer_3 bor" style="height: 70px; width: 65px;">
                             {{$v->type}}
                         </td>
-                        <td class="footer_5 br bor" style="height: 60px; width: 65px;">
+                        <td class="footer_5 br bor" style="height: 70px; width: 65px;">
                             {{$v->level}}
                         </td>
                     </tr>
                     @endforeach
                     <?php for($i=0;$i<$fill[1];$i++){
-                    echo '<tr><td class="footer_1 bor" style="height: 60px; width: 75px;"></td>
-                        <td class="footer_2 bor" style="height: 60px; width: 95px;"></td>
-                        <td class="footer_3 bor" style="height: 60px; width: 65px;"></td>
-                        <td class="footer_5 br bor" style="height: 60px; width: 65px;"></td>
+                    echo '<tr><td class="footer_1 bor" style="height: 70px; width: 75px;"></td>
+                        <td class="footer_2 bor" style="height: 70px; width: 95px;"></td>
+                        <td class="footer_3 bor" style="height: 70px; width: 65px;"></td>
+                        <td class="footer_5 br bor" style="height: 70px; width: 65px;"></td>
                     </tr>';
                 }?>
                 </table>
-                <table style="width: 40%; height: 294px;  float: left; font-size: 16px; text-align: center;">
+                <table style="width: 40%; height: 356px;  float: left; font-size: 16px; text-align: center;">
                     <tr style="height: 40%;">
                         <td class="bor_1" style="border-right: 1px solid #000;">家庭状况</td>
                         <td   style="border-bottom: 1px solid #000; border-right: 1px solid #000;">

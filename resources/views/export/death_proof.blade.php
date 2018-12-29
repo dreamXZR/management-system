@@ -49,7 +49,7 @@
         .text_1{
             white-space: nowrap;
             text-align: left;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -63,7 +63,7 @@
             text-align: left;
             display: inline-block;
             width: 200px;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 400;
             padding: 4px 5px;
             margin: 0 15px;
@@ -89,7 +89,7 @@
             width: 50px;
         }
         span{
-            font-size: 12px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -133,7 +133,7 @@
         ">
     </p>
     <p class="text_1 display">
-        申请人身份证号<input class="lump lump_2" type="text" value="{{$death['applicant_id_number']}}">
+        申请人身份证号<input class="lump lump_2" style="width: 140px;" type="text" value="{{$death['applicant_id_number']}}">
     </p>
     <p class="text_1 display">
         委托代理人<input class="lump " type="text" value="{{$death['agent']}}">
@@ -142,15 +142,16 @@
         与申请人关系（请注明）<input class="lump " type="text" value="{{$death['application_relation']}}">
     </p>
     <p class="text_1 display">
-        委托代理人身份证号<input class="lump lump_2" type="text" value="{{$death['agent_id_number']}}">
+        委托代理人身份证号<input class="lump lump_2" type="text" style="width: 140px;" value="{{$death['agent_id_number']}}">
     </p>
     <p class="text_1 display left">
         其他需要说明的情况
         <input class="lump lump_2" type="text" value="{{$death['other']}}">
     </p>
     <!--<textarea class="left" style="margin-left: 15px; margin-top: 8px;" name="" id="" cols="60" ></textarea>-->
-    <p class="text_1 display" style="margin-top: 35px;">特此证明</p>
+    
     <div class="right" style="margin-top: 30px; ">
+      	<p class="text_1 display" style="margin-top: 35px; loat: left; margin-left: -405px;">特此证明</p>
         <div style="text-align: center;">
             <p class="text_1 display">居委会盖章</p>
         </div>
