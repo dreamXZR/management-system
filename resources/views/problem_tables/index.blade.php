@@ -19,8 +19,12 @@
                     
 {{-- <button type="button" tooltip="添加登记" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('problem_tables.create')}}'"> <i class="fa fa-plus"></i> 添加登记
 </button> --}}
-<button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> 数据筛选
+<button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-filter"></i> 数据筛选
 </button>
+<form style="display: inline-block;">
+    <input type="hidden" name="data">
+    <button type="button" tooltip="导出pdf" class="btn btn-sm btn-azure btn-addon"> <i class="fa fa-download"></i> 导出pdf</button>
+</form>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
@@ -30,7 +34,9 @@
                         <thead class="">
                             <tr>
                                 
-                               {{--  <th class="text-center">编号</th> --}}
+                               <th class="text-center" width="7%">
+                                    <input type="checkbox" id="allcheck" style="opacity: 1; position: initial;">
+                                </th>
                                 <th class="text-center">姓名</th>
                                 <th class="text-center">来电时间</th>
                                 <th class="text-center">联系电话</th>
@@ -42,7 +48,9 @@
                         <tbody>
                             @foreach($problem_tables as $problem_table)
                             <tr>
-                               {{--  <td align="center">{{$problem_table->number}}</td> --}}
+                               <td align="center">
+                                    <input type="checkbox" name="check" style="opacity: 1; position: initial;">
+                                </td>
                                 <td align="center">{{$problem_table->name}}</td>
                                 <td align="center">{{$problem_table->call_time}}</td>
                                 <td align="center">{{$problem_table->phone}}</td>
@@ -130,5 +138,15 @@
         })
        
     }
+
+    $('#allcheck').click(function(){
+        var status=$('#allcheck').prop('checked');
+        if(status){
+            $('input[name="check"]').prop('checked',true);
+        }else{
+            $('input[name="check"]').prop('checked',false);
+        }
+        
+    });
 </script>
 @endsection

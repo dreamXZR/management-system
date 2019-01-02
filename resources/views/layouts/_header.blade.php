@@ -5,15 +5,15 @@
                 <!-- Navbar Barnd -->
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
-                        <small>
-                            <img src="{{asset('assets/img/logo.png')}}" alt="" />
+                        <small style="font-size: 14px;">
+                            <img src="{{asset('assets/img/logo.png')}}" alt="" style="width: 42px;margin-right: 10px;" />陶然庭苑社区服务中心
                         </small>
                     </a>
                 </div>
                 <!-- /Navbar Barnd -->
 
                 <!-- Sidebar Collapse -->
-                <div class="sidebar-collapse" id="sidebar-collapse">
+                <div class="sidebar-collapse" id="sidebar-collapse" style="left: 219px;">
                     <i class="collapse-icon fa fa-bars"></i>
                 </div>
                 <!-- /Sidebar Collapse -->
