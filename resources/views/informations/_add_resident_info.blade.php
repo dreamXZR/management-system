@@ -13,8 +13,16 @@
             <input type="text" class="form-control" v-model='resident.name'>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">与户主关系:</label>
-            <input type="text" class="form-control" v-model='resident.relationship'>
+            <label for="recipient-name" class="control-label">性别:</label><br/>
+            <input type="radio"  v-model='resident.sex' value="男" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">男&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio"  v-model='resident.sex' value="女" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">女
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">与户主关系:</label><br/>
+            {{-- <input type="text" class="form-control" v-model='resident.relationship'> --}}
+            @foreach($resident->relationship_map as $ship)
+              <input type="radio"  v-model='resident.relationship' value="{{$ship}}" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">{{$ship}}&nbsp;&nbsp;&nbsp;&nbsp;
+            @endforeach
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">户籍所在地:</label>

@@ -38,11 +38,33 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">现居住地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder=""  required="" type="text" v-model.trim='present_address'>
+                                <div class='radio' style="float: left;padding-right: 10px;">
+                                    <label>
+                                        <input type="radio"   v-model="present_address" value="陶然" class="colored-blue">
+                                        <span class="text">陶然</span>
+                                    </label>
+                                </div>
+                               <div class='radio' style="float: left;padding-right: 10px;">
+                                    <label>
+                                        <input type="radio" v-model="present_address" value="怡然" class="colored-blue">
+                                        <span class="text">怡然</span>
+                                    </label>
+                                </div>
+                                
+                                
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right"></label>
+                             <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" type="text" v-model="building" style="width: 70px;display: inline-block;margin-left: 20px;">楼&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="form-control"  placeholder="" type="text" v-model="door" style="width: 70px;display: inline-block;">门&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="form-control"  placeholder="" type="text" v-model="no" style="width: 70px;display: inline-block;">户
+                                
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍性质:</label>
                             <div class="col-sm-6">
@@ -336,6 +358,9 @@
         el:'#vue',
         data:{
             present_address:'',
+            building:'',
+            door:'',
+            no:'',
             residence_status:'',
             house_people:'',
             house_status:[],
@@ -425,7 +450,7 @@
                 if(this.resident_validate(this.resident)){
                     //获得性别、出生年月
                     var info=this.id_number_format(this.resident.id_number);
-                    this.resident.sex=info[0];
+                    //this.resident.sex=info[0];
                     this.resident.birthday=info[1];
                     this.residents.push(this.resident);
                     this.resident={}
@@ -471,7 +496,7 @@
             update_resident_info:function(){
                 if(this.resident_validate(this.resident)){
                     var info=this.id_number_format(this.resident.id_number);
-                    this.resident.sex=info[0];
+                    //this.resident.sex=info[0];
                     this.resident.birthday=info[1];
                     Vue.set(this.residents,this.resident_index,this.resident);
                     $('#bb_close').click();
@@ -489,6 +514,9 @@
                 }
                 var data={
                      present_address:this.present_address,
+                     building:this.building,
+                     door:this.door,
+                     no:this.no,
                      residence_status:this.residence_status,
                      house_people:this.house_people,
                      house_status:this.house_status.join(','),
@@ -543,12 +571,13 @@
             },
 
             resident_validate:function(data){
-                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone){
+                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone && data.sex){
                     if(!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(data.phone)){
                         alert("手机号码有误，请重填");  
                         return false; 
                     }
-                    if(!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(data.id_number)){
+                   
+                    if(!/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.id_number)){
                         alert("身份证号有误，请重填");  
                         return false; 
                     }
@@ -570,6 +599,9 @@
                     
                     let info=res.information;
                     that.present_address=info.present_address;
+                    that.building=info.building;
+                    that.door=info.door;
+                    that.no=info.no;
                     that.residence_status=info.residence_status;
                     that.house_people=info.house_people;
                     

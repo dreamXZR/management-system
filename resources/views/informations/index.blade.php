@@ -36,7 +36,7 @@
                         <tbody>
                             @foreach($informations as $info)
                             <tr>
-                                <td align="center">{{$info->present_address}}</td>
+                                <td align="center">{{$info->present_address}}小区{{$info->building}}楼{{$info->door}}门{{$info->no}}</td>
                                 
                                 
                                 <td align="center">

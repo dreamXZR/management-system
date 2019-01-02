@@ -30,6 +30,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
     {
       $build=Resident::query();
       $select=json_decode($this->select);
+      
       foreach ($select as $k => $v) {
         switch ($k) {
           case 'name':
@@ -73,13 +74,14 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
             }
           break;
           case 'time_start':
-            if($select['time_start'] && $select['time_end']){
-              $build->whereBetween('birthday',[$select['time_start'],$select['time_end']]);
+
+            if($select->time_start && $select->time_end){
+              $build->whereBetween('birthday',[$select->time_start,$select->time_end]);
             }
           break;
         }
       }
-      $build->where('is_replace',0);
+      $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no');
     	return $build;
     }
 
@@ -88,7 +90,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
         return [
            $resident->name,
            ' '.$resident->id_number,
-           $resident->information->present_address,
+           $resident->information->present_address.'小区'.$resident->information->building.'楼'.$resident->information->door.'门'.$resident->information->no,
            $resident->sex,
            $resident->nation,
            $resident->birthday,

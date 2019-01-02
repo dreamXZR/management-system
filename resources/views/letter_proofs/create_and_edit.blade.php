@@ -60,7 +60,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">居住地址:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$information->present_address}}" readonly>
+                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$information->present_address}}小区{{$information->building}}楼{{$information->door}}门{{$information->no}}户" readonly>
                                 @else
                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{old('present_address',$letter_proof->present_address)}}" required="">
                                 @endif

@@ -38,7 +38,20 @@ class Information extends baseModel
 
     
         
-    protected $fillable=['present_address','residence_status','house_people','house_status','people','situation','other','p_id','replace_time'];
+    protected $fillable=[
+        'present_address',
+        'building',
+        'door',
+        'no',
+        'residence_status',
+        'house_people',
+        'house_status',
+        'people',
+        'situation',
+        'other',
+        'p_id',
+        'replace_time'
+    ];
     
     
     public function residents()

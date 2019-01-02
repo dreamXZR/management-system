@@ -164,7 +164,7 @@
         <tr class="tow">
             <td class="tow_1" style="border: 1px solid #000;">现居住地详细地址</th>
             <td class="tow_2" style="border: 1px solid #000; padding: 0 10px;">
-                <input style="width: 100%;" class="tow_2_input" name="address" type="text" value="{{$info['present_address']}}" />
+                <input style="width: 100%;" class="tow_2_input" name="address" type="text" value="{{$info['present_address']}}小区{{$info['building']}}楼{{$info['door']}}门{{$info['no']}}" />
             </td>
             <td class="tow_3" style="border: 1px solid #000;">户籍性质</td>
             <td class="tow_4" style="border: 1px solid #000;">

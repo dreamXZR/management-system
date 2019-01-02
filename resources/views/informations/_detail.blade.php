@@ -3,7 +3,7 @@
         <tbody>
             <tr>
                 <td width="20%">现居住地址:</td>
-                <td>{{ $information->present_address }}</td>        
+                <td>{{$information->present_address}}小区{{$information->building}}楼{{$information->door}}门{{$information->no}}</td>        
             </tr>
             <tr>
                 <td width="20%">户籍性质:</td>

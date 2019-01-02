@@ -48,6 +48,12 @@ class Resident extends baseModel
     	4=>'学龄前'
     ];
 
+    public $relationship_map=[
+        1=>'租户',
+        2=>'本人',
+        3=>'空房'
+    ];
+
 
     public function setCultureAttribute($value)
     {
@@ -95,6 +101,18 @@ class Resident extends baseModel
     {
     	$str=$this->identity_map[$value];
     	return $str;
+    }
+
+    public function setRelationshipAttribute($value)
+    {
+        $number=array_search($value,$this->relationship_map);
+        $this->attributes['relationship']=$number;
+    }
+
+    public function getRelationshipAttribute($value)
+    {
+        $str=$this->relationship_map[$value];
+        return $str;
     }
 
     public function getSexAttribute($value)

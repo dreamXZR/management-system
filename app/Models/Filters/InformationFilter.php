@@ -21,7 +21,7 @@ class InformationFilter extends ModelFilter
 
     public function setup()
     {
-    	return $this->where('p_id',NULL)->orderBy('present_address');
+    	return $this->where('p_id',NULL)->orderBy('present_address','desc')->orderBy('building')->orderBy('door')->orderBy('no');
     }
 
     public function presentAddress($value)
