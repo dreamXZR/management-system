@@ -11,6 +11,8 @@ use App\Models\WorkerProof;
 use App\Models\LetterProof;
 use App\Models\Information;
 use PDF;
+use Zipper;
+
 
 class ExportController extends Controller
 {
@@ -72,6 +74,33 @@ class ExportController extends Controller
                 return PDF::loadView('export.letter_proof',compact('letter'))->inline('证明信_'.$letter->name.'.pdf');
             break;
         }
+    }
+
+    public function batch_export(Request $request)
+    {
+        $type=$request->type;
+        $checkID=$request->checkID;
+        
+        $name = 'export'.time().'.zip';
+        $zipper = Zipper::make($name);
+        
+        switch ($type) {
+            case 'death_proof':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $death=DrathProof::find($request->id);
+                    PDF::loadView('export.death_proof',compact('death'))->save('死亡证明_'.$death->name .'.pdf');
+                }
+            break;
+            
+            default:
+                # code...
+            break;
+        }
+        // $name = 'export'.time().'.zip';
+        // $zipper = Zipper::make($name);
+        // $zipper->add('../composer.json');
+        // $zipper->close();
+        // return response()->download(public_path($name))->deleteFileAfterSend(true);
     }
 
    

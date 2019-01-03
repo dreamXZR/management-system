@@ -24,6 +24,7 @@ Route::get('/test','UsersController@test');
 //导出
 
 Route::get('export','ExportController@export_pdf')->name('export');
+Route::post('batch_export','ExportController@batch_export')->name('batch_export');
 //
 
 
