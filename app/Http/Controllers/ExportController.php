@@ -80,27 +80,122 @@ class ExportController extends Controller
     {
         $type=$request->type;
         $checkID=$request->checkID;
+        $dir_name='./export/export'.time();
         
         $name = 'export'.time().'.zip';
         $zipper = Zipper::make($name);
         
         switch ($type) {
+            case 'information':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $info=Information::find($request->id);
+                    if($info){
+                        $pdf_name=$dir_name.'/info_'.$info->id.'.pdf';
+
+                        $handicappeds=$info->handicappeds;
+                        $residents=$info->residents;
+                        
+                        $fill=[
+                            10-count($residents),
+                            4-count($handicappeds)
+                        ];
+                        PDF::loadView('export.information',compact('info','handicappeds','residents','fill'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
+                
+            break;
             case 'death_proof':
                 foreach (explode(',', $checkID) as $k => $v) {
-                    $death=DrathProof::find($request->id);
-                    PDF::loadView('export.death_proof',compact('death'))->save('死亡证明_'.$death->name .'.pdf');
+                    $death=DrathProof::find($v);
+                    if($death){
+                        $pdf_name=$dir_name.'/death_'.$death->id.'.pdf';
+                        PDF::loadView('export.death_proof',compact('death'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+
+                    }
+                    
                 }
             break;
             
-            default:
-                # code...
+            case 'above_table':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $above=AboveTable::find($v);
+                    if($above){
+                        $pdf_name=$dir_name.'/above_table_'.$above->id.'.pdf';
+                        PDF::loadView('export.above_table',compact('above'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
             break;
+
+            case 'register_table':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $register=RegisterTable::find($v);
+                    if($register){
+                        $pdf_name=$dir_name.'/register_table_'.$register->id.'.pdf';
+                        PDF::loadView('export.register_table',compact('register'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
+            break;
+
+            case 'problem_table':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $problem=ProblemTable::find($v);
+                    if($problem){
+                        $pdf_name=$dir_name.'/problem_table_'.$problem->id.'.pdf';
+                        PDF::loadView('export.problem_table',compact('problem'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
+            break;
+
+            case 'worker_proof':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $worker=WorkerProof::find($v);
+                    if($worker){
+                        $pdf_name=$dir_name.'/worker_table_'.$worker->id.'.pdf';
+                        PDF::loadView('export.worker_proof',compact('worker'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
+            break;
+
+            case 'letter_proof':
+                foreach (explode(',', $checkID) as $k => $v) {
+                    $letter=LetterProof::find($v);
+                    if($letter){
+                        $pdf_name=$dir_name.'/letter_table_'.$letter->id.'.pdf';
+                        PDF::loadView('export.letter_proof',compact('letter'))->save($pdf_name);
+                        $zipper->add($pdf_name);
+                    }
+                }
+            break;
+
+
         }
-        // $name = 'export'.time().'.zip';
-        // $zipper = Zipper::make($name);
-        // $zipper->add('../composer.json');
-        // $zipper->close();
-        // return response()->download(public_path($name))->deleteFileAfterSend(true);
+        
+        $zipper->close();
+        //删除
+        $this->deldir($dir_name);
+        return response()->download(public_path($name))->deleteFileAfterSend(true);
+    }
+
+    
+    function deldir($path)
+    {
+        
+        if(is_dir($path)){
+            $p = scandir($path);
+            foreach($p as $val){
+                 
+                @unlink($path.'/'.$val);
+                    
+            }
+        }
+
+        @rmdir($path);
     }
 
    

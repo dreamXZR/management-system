@@ -22,7 +22,7 @@
 <form action="{{route('residents.export')}}" method="POST" style="display: inline-block;">
     {{csrf_field()}}
     <input type="hidden" name="select" value="{{json_encode($select)}}">
-    <button type="submit" tooltip="导出excel" class="btn btn-sm btn-azure btn-addon" > <i class="fa fa-plus"></i> 导出excel
+    <button type="submit" tooltip="导出excel" class="btn btn-sm btn-azure btn-addon" > <i class="fa fa-download"></i> 导出excel
     </button>
 </form>
 

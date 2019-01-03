@@ -21,9 +21,11 @@
 </button> --}}
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-filter"></i> 数据筛选
 </button>
-<form style="display: inline-block;">
-    <input type="hidden" name="data">
-    <button type="button" tooltip="导出pdf" class="btn btn-sm btn-azure btn-addon"> <i class="fa fa-download"></i> 导出pdf</button>
+<form style="display: inline-block;" method="POST" action="{{route('batch_export')}}" id="export_form">
+    {{csrf_field()}}
+    <input type="hidden" name="type" value="problem_table">
+    <input type="hidden" name="checkID" value="" id="checkID">
+    <button type="button" tooltip="导出pdf" class="btn btn-sm btn-azure btn-addon" id="batch_export"> <i class="fa fa-download"></i> 导出pdf</button>
 </form>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -49,7 +51,7 @@
                             @foreach($problem_tables as $problem_table)
                             <tr>
                                <td align="center">
-                                    <input type="checkbox" name="check" style="opacity: 1; position: initial;">
+                                    <input type="checkbox" name="check" style="opacity: 1; position: initial;" value="{{$problem_table->id}}">
                                 </td>
                                 <td align="center">{{$problem_table->name}}</td>
                                 <td align="center">{{$problem_table->call_time}}</td>
@@ -146,6 +148,21 @@
         }else{
             $('input[name="check"]').prop('checked',false);
         }
+        
+    });
+
+    $('#batch_export').click(function(){
+
+        var checkID = [];
+        $('input[name="check"]:checked').each(function(i){
+             checkID[i] =$(this).val();
+        });
+        if(checkID.length==0){
+            alert('请选择导出信息！');
+            return false;
+        }
+        $('#checkID').val(checkID.join(','));
+        $('#export_form').submit();
         
     });
 </script>
