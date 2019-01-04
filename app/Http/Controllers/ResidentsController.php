@@ -17,7 +17,7 @@ class ResidentsController extends Controller
             $get_data['birthday']=[$get_data['time_start'],$get_data['time_end']];
         }
         
-        $residents=Resident::with('information')->filter($get_data)->paginate(12);
+        $residents=Resident::with('information')->filter($get_data)->paginate(40);
         $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $select=$request->except('page');
         return view('residents.index',compact('residents','select','mzs','resident'));

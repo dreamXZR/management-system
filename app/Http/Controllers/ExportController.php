@@ -88,7 +88,7 @@ class ExportController extends Controller
         switch ($type) {
             case 'information':
                 foreach (explode(',', $checkID) as $k => $v) {
-                    $info=Information::find($request->id);
+                    $info=Information::find($v);
                     if($info){
                         $pdf_name=$dir_name.'/info_'.$info->id.'.pdf';
 

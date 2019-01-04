@@ -14,7 +14,7 @@ class InformationsController extends Controller
 {
     public function index(Request $request)
     {
-        $informations=Information::filter($request->all())->paginate(10);
+        $informations=Information::filter($request->all())->paginate(30);
     	return view('informations.index',compact('informations'));
     }
 
