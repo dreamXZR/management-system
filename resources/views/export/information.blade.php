@@ -124,13 +124,14 @@
             border-right: 1px solid #000;
         }
         .w133 p{
-            width: 59px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            display: -webkit-box;
+            width: 160px;
+            /*overflow: hidden;*/
+            /*text-overflow: ellipsis;*/
+            /*white-space: nowrap;*/
+            /*display: -webkit-box;*/
             height: 50px;
-            line-height: 32px;
+            /*line-height: 32px;*/
+            margin: 0 auto;
 
 
         }
@@ -201,7 +202,7 @@
                     <td class="xx">政治面貌</td>
                     <td class="xx">婚姻状况</td>
                     <td class="xx">身份类别</td>
-                    <td class="xx">有何特长</td>
+                   
                     <td class="w145">身份证号码</td>
                     <td class="w133">工作单位及职务</td>
                 </tr>
@@ -215,7 +216,7 @@
                     <td class="xx">{{$v->culture}}</td>
                     <td class="xx">{{$v->face}}</td>
                     <td class="xx">{{$v->marriage}}</td>
-                    <td class="xx">{{$v->identity}}</td>
+                  
                     <td class="xx">{{$v->hobby}}</td>
                     <td class="w145">{{$v->id_number}}</td>
                     <td class="w133">
@@ -231,7 +232,6 @@
                     <td class="xm" style="width: 40px; height: 32px; "></td>
                     <td class="relation " style="width: 40px; "></td>
                     <td class="sex" style="width: 35px; "></td>
-                    <td class="xx"></td>
                     <td class="xx"></td>
                     <td class="xx"></td>
                     <td class="xx"></td>

@@ -58,8 +58,10 @@ Purchase: http://wrapbootstrap.com
             
             
         </div>
-        <div class="logobox">
-        </div>
+      	<div style="margin-top:80px;text-align:center;">
+      		津ICP备18010006号
+      </div>
+        
     </div>
 
     <!--Basic Scripts-->

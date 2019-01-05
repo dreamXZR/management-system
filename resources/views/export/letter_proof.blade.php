@@ -8,7 +8,7 @@
             width: 794px;
             height: 1123px;
             margin: 0 auto;
-            border: 1px solid #000;
+           
         }
         *{
             margin:0;
@@ -74,7 +74,7 @@
         }
         .lump_1{
             display: inline-block;
-            width: 270px;
+            width: 600px;
             font-size: 16px;
             font-weight: 400;
             padding: 0 5px;
@@ -143,10 +143,10 @@
             户籍地址:<input class="lump_1" type="text" value="{{$letter['residence_address']}}">
         </p>
         <p class="text_1 display">
-            此证明用于<input class="lump" type="text" value="{{$letter['use']}}"><span>使用。</span>
+            此证明用于<input class="lump" type="text" style="width: 550px;" value="{{$letter['use']}}"><span>使用。</span>
         </p>
         <p class="text_1 display">
-            此证明依据<input class="lump lumpw" type="text" value="{{$letter['basis']}}">
+            此证明依据<input class="lump lumpw" type="text" style="width: 550px;" value="{{$letter['basis']}}">
         </p>
         <div class="right_1">
             <div class="right mar_30">
@@ -172,17 +172,17 @@
             <input class="lump" value="{{$letter['name']}}"><span>同志系我街</span>
             <input class="lump lumpw" value="{{$letter['community_name']}}"><span>社区居民。</span>
         </p>
-        <p class="text_1 display">居住地址:
-            <input class="lump_1" type="text" value="{{$letter['present_address']}}">
+        <p class="text_1 display">
+          	居住地址:<input class="lump_1" type="text" value="{{$letter['present_address']}}">
         </p>
         <p class="text_1 display">
             户籍地址:<input class="lump_1" type="text" value="{{$letter['residence_address']}}">
         </p>
         <p class="text_1 display">
-            此证明用于<input class="lump" type="text" value="{{$letter['use']}}"><span>使用。</span>
+            此证明用于<input class="lump" type="text" style="width: 550px;" value="{{$letter['use']}}"><span>使用。</span>
         </p>
         <p class="text_1 display">
-            此证明依据<input class="lump lumpw" type="text" value="{{$letter['basis']}}">
+            此证明依据<input class="lump lumpw" type="text" style="width: 550px;" value="{{$letter['basis']}}">
         </p>
         <div class="below">
             <p class="text_1 display">
