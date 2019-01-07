@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">生日：</label><br/>
-            <input type="text" class="form-control date-picker" name="time_start"  data-date-format="yyyy-mm-dd" style="width: 247px;display: inline-block;" readonly=""> ------------<input type="text" class="form-control date-picker" name="time_end"  data-date-format="yyyy-mm-dd" style="width: 247px;display: inline-block;" readonly="">
+            <input type="text" class="form-control date-picker" name="time_start"   style="width: 247px;display: inline-block;" > ------------<input type="text" class="form-control date-picker" name="time_end"   style="width: 247px;display: inline-block;" >
           </div>
            <div class="form-group">
             <label for="message-text" class="control-label">文化程度:</label>
@@ -93,7 +93,13 @@
     });
 </script>
 <!--Bootstrap Date Picker-->
-<script src="{{asset('assets/js/datetime/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/locales/zh-cn.js')}}"></script>
 <script type="text/javascript">
-    $('.date-picker').datepicker();
+   $('.date-picker').datetimepicker({
+        locale: moment.locale('zh-cn'),
+        format: 'YYYY-MM-DD',
+        
+    });
 </script>

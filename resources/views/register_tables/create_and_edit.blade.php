@@ -176,8 +176,10 @@
 <!--Bootstrap Date Picker-->
 <script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
 <script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/locales/zh-cn.js')}}"></script>
 <script type="text/javascript">
     $('.date-picker').datetimepicker({
+      	locale: moment.locale('zh-cn'),
         format: 'YYYY-MM-DD HH:mm',
         
     });

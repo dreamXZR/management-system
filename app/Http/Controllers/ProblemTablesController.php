@@ -56,7 +56,7 @@ class ProblemTablesController extends Controller
 	public function edit(ProblemTable $problem_table)
 	{
         //$this->authorize('update', $problem_table);
-        $addresses=Information::where('id','>',0)->get(['id','residence_address']);
+        $addresses=Information::where('id','>',0)->get(['id','present_address']);
 		return view('problem_tables.create_and_edit', compact('problem_table','addresses'));
 	}
 

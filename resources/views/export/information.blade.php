@@ -252,51 +252,52 @@
         </tr>
         <tr class="footer">
             <table>
-                <table style="width: 60%; height: 352px; font-size: 16px; text-align: center; border-left: 1px solid #000; float: left;">
+              <table style="width: 50%; height: 356px;  float: left; font-size: 16px; text-align: center;">
+                    <tr style="height: 40%;">
+                        <td class="bor_1" style="border-left:  1px solid #000;">家庭状况</td>
+                        <td   style="border-bottom: 1px solid #000; border-left: 1px solid #000;">
+                                <textarea class="condition" style="border: none; outline: none; resize:none; " > {{$info['situation']}}</textarea>
+                        </td>
+                    </tr>
+                    <tr style="height: 60%;">
+                        <td class="bor_1" style="border-left:  1px solid #000;" >备注</td>
+                        <td   style="border-bottom: 1px solid #000; border-left: 1px solid #000;">
+                            <textarea class="condition" style="border: none; outline: none; resize:none; " >{{$info['other']}} </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 50%; height: 352px; font-size: 16px; text-align: center; border-left: 1px solid #000; float: left;">
                     <tr>
-                        <td class="footer_1 bor" style="height: 70px; width: 75px;">残疾人姓名</td>
-                        <td class="footer_2 bor" style="height: 70px; width: 95px;">残疾人证号</td>
-                        <td class="footer_3 bor" style="height: 70px; width: 65px;">残疾类别</td>
-                        <td class="footer_5 br bor" style="height: 70px; width: 65px;">残疾等级</td>
+                        <td class="footer_1 bor" style="height: 70px; width: 60px;">残疾人姓名</td>
+                        <td class="footer_2 bor" style="height: 70px; width: 140px;">残疾人证号</td>
+                        <td class="footer_3 bor" style="height: 70px; width: 50px;">残疾类别</td>
+                        <td class="footer_5 br bor" style="height: 70px; width: 50px;">残疾等级</td>
                     </tr>
                     @foreach($handicappeds as $v)
                     <tr>
-                        <td class="footer_1 bor" style="height: 70px; width: 75px;">
+                        <td class="footer_1 bor" style="height: 70px; width: 60px;">
                             {{$v->name}}
                         </td>
-                        <td class="footer_2 bor" style="height: 70px; width: 95px;">
+                        <td class="footer_2 bor" style="height: 70px; width: 140px;">
                             {{$v->number}}
                         </td>
-                        <td class="footer_3 bor" style="height: 70px; width: 65px;">
+                        <td class="footer_3 bor" style="height: 70px; width: 50px;">
                             {{$v->type}}
                         </td>
-                        <td class="footer_5 br bor" style="height: 70px; width: 65px;">
+                        <td class="footer_5 br bor" style="height: 70px; width: 50px;">
                             {{$v->level}}
                         </td>
                     </tr>
                     @endforeach
                     <?php for($i=0;$i<$fill[1];$i++){
-                    echo '<tr><td class="footer_1 bor" style="height: 70px; width: 75px;"></td>
-                        <td class="footer_2 bor" style="height: 70px; width: 95px;"></td>
-                        <td class="footer_3 bor" style="height: 70px; width: 65px;"></td>
-                        <td class="footer_5 br bor" style="height: 70px; width: 65px;"></td>
+                    echo '<tr><td class="footer_1 bor" style="height: 70px; width: 60px;"></td>
+                        <td class="footer_2 bor" style="height: 70px; width: 140px;"></td>
+                        <td class="footer_3 bor" style="height: 70px; width: 50px;"></td>
+                        <td class="footer_5 br bor" style="height: 70px; width: 50px;"></td>
                     </tr>';
                 }?>
                 </table>
-                <table style="width: 40%; height: 356px;  float: left; font-size: 16px; text-align: center;">
-                    <tr style="height: 40%;">
-                        <td class="bor_1" style="border-right: 1px solid #000;">家庭状况</td>
-                        <td   style="border-bottom: 1px solid #000; border-right: 1px solid #000;">
-                                <textarea class="condition" style="border: none; outline: none; resize:none; " > {{$info['situation']}}</textarea>
-                        </td>
-                    </tr>
-                    <tr style="height: 60%;">
-                        <td class="bor_1" >备注</td>
-                        <td   style="border-bottom: 1px solid #000; border-right: 1px solid #000;">
-                            <textarea class="condition" style="border: none; outline: none; resize:none; " >{{$info['other']}} </textarea>
-                        </td>
-                    </tr>
-                </table>
+                
                 <div class="clear"></div>
             </table>
         </tr>

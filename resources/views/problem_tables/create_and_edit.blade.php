@@ -146,7 +146,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="join[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $problem_table->join))){echo 'selected';}?>>{{$address->residence_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $problem_table->join))){echo 'selected';}?>>{{$address->present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -176,8 +176,10 @@
 <!--Bootstrap Date Picker-->
 <script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
 <script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/locales/zh-cn.js')}}"></script>
 <script type="text/javascript">
     $('.date-picker').datetimepicker({
+      	locale: moment.locale('zh-cn'),
         format: 'YYYY-MM-DD HH:mm',
         
     });

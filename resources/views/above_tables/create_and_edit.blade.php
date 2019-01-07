@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">上门登记时间:</label>
                             <div class="col-sm-6">
-                                <input class="form-control date-picker"  placeholder="" name="call_time" required="" type="text" value="{{old('call_time',$above_table->call_time)}}">
+                                <input class="form-control date-picker"  placeholder="" name="call_time" required="" type="text" value="{{old('call_time',$above_table->call_time)}}" >
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -177,8 +177,10 @@
 <!--Bootstrap Date Picker-->
 <script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
 <script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/locales/zh-cn.js')}}"></script>
 <script type="text/javascript">
     $('.date-picker').datetimepicker({
+      	locale: moment.locale('zh-cn'),
         format: 'YYYY-MM-DD HH:mm',
         
     });

@@ -32,18 +32,19 @@
         }
         .top{
             /*width: 595px;*/
-            height: 50%;
+            height: 55%;
             border-bottom: 2px dashed #000;
         }
         h1{
             white-space: nowrap;
             text-align: center;
             margin: 20px 0 20px;
-            font-size: 24px;
+            font-size: 40px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
+          	letter-spacing: 4px;
         }
         .box{
             margin-left: 50px;
@@ -51,7 +52,7 @@
         .text_1{
             white-space: nowrap;
             text-align: left;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -65,7 +66,7 @@
             text-align: center;
             display: inline-block;
             width: 120px;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 400;
             padding: 0 0;
             margin: 0 5px;
@@ -75,7 +76,7 @@
         .lump_1{
             display: inline-block;
             width: 600px;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 400;
             padding: 0 5px;
             margin: 0 10px;
@@ -91,7 +92,7 @@
         .number{
             white-space: nowrap;
             text-align: right;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -118,7 +119,7 @@
             margin-top: 20px;
         }
         .mar_50{
-            margin-left: 100px;
+            margin-left: 170px;
         }
         .mar_50_1{
             margin-left: 120px;
@@ -157,7 +158,7 @@
             <div class="clear"></div>
             <p class="text_1 display m10"><input class="lump lump50" type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
-        <p>
+        <p style=' margin-top: -40px;'>
             签字确认:
             <input class="lump" type="text" value="">
         </p>

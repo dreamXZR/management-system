@@ -153,7 +153,7 @@
           <span>，</span>
             联系电话
         </p>
-     	 <input class="lumpw" style='width: 110px;' type="text" value="{{$worker['phone']}}">
+     	 <input class="lumpw" style='width: 110px; font-size:14px;' type="text" value="{{$worker['phone']}}">
         <p class="text_1 display">
           	<span>，</span>
             灵活就业内容

@@ -44,7 +44,7 @@
             height: 40px;
             /*line-height: 40px;*/
             text-align: center;
-            font-size: 12px;
+           	font-size: 20px;
         }
         .two{
             width: 262.5px;
@@ -52,7 +52,7 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 20px;
         }
         .one_1{
             width: 87.5px;
@@ -60,35 +60,35 @@
             height: 285.6px;
             line-height: 285.6px;
             text-align: center;
-            font-size: 12px;
+           	font-size: 16px;
         }
         .one_2{
             width: 87.5px;
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 20px;
         }
         .one_3{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 5px;
-            font-size: 12px;
+            font-size: 20px;
         }
         .one_4{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 40px;
-            font-size: 12px;
+            font-size: 20px;
         }
         .one_5{
             height: 40px;
             line-height: 40px;
             text-align: left;
             padding-left: 70px;
-            font-size: 12px;
+            font-size: 20px;
         }
         .two_2{
             /*width: 495px;*/
@@ -96,7 +96,7 @@
             height: 285.6px;
             /*line-height: 285.6px;*/
             text-align: center;
-            font-size: 12px;
+            font-size: 20px;
         }
         .two_3{
             /*width: 495px;*/
@@ -104,7 +104,7 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            font-size: 12px;
+            font-size: 20px;
         }
         h1{
             white-space: nowrap;
@@ -119,7 +119,7 @@
         p{
             white-space: nowrap;
             text-align: center;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -159,6 +159,7 @@
             resize:none;
             overflow: hidden;
             margin: 10px 10px;
+          	font-size: 18px;
         }
         .wz5{
             width: 417.5px;
@@ -184,7 +185,7 @@
                 <input class="wz" type="text" value="@if($problem['sex']==1)男@else女@endif">
             </td>
             <td class="one">时间</td>
-            <td class="one">
+            <td class="one" style='font-size: 16px;'>
                 {{$problem['call_time']}}
             </td>
         </tr>
@@ -195,7 +196,7 @@
             </td>
             <td class="one">联系电话</td>
             <td class="one">
-                <input class="wz" type="number" maxlength="11" value="{{$problem['phone']}}">
+                <input class="wz" style='font-size: 14px; width: 100px;' type="number" maxlength="11" value="{{$problem['phone']}}">
             </td>
         </tr>
         <tr class="b">
