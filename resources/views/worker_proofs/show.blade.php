@@ -36,10 +36,10 @@
                     <div class="widget-body bordered-left bordered-blue">
                         <table class="table table-bordered table-hover">
                             <tbody>
-                                <tr>
+                               {{--  <tr>
                                     <td>编号:</td>
                                     <td>{{ $worker_proof->number }}</td>        
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td>姓名:</td>
                                     <td>{{ $worker_proof->name }}</td>        

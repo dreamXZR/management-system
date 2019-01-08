@@ -170,4 +170,15 @@ class Information extends baseModel
         return $arr;
     }
 
+    //默认排序
+    public function scopeDefaultOrder($query)
+    {
+        return $query->orderBy('present_address')->orderBy('building')->orderBy('door')->orderBy('no');
+    }
+
+    public function getAllPresentAddressAttribute()
+    {
+        return $this->attributes['present_address'].'庭苑'.$this->attributes['building'].'-'.$this->attributes['door'].'-'.$this->attributes['no'];
+    }
+
 }

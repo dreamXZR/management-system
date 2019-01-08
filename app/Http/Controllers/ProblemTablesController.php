@@ -32,7 +32,11 @@ class ProblemTablesController extends Controller
 
 	public function create(ProblemTable $problem_table,Request $request)
 	{
-		$addresses=Information::where('id','>',0)->where('p_id',NULL)->get(['id','present_address']);
+		$addresses=Information::where('id','>',0)
+        			->where('p_id',NULL)
+					->defaultOrder()
+					->get(['id','present_address','building','door','no']);
+		
 		$information_id=$request->information_id;
 		return view('problem_tables.create_and_edit', compact('problem_table','addresses','information_id'));
 	}
@@ -56,7 +60,11 @@ class ProblemTablesController extends Controller
 	public function edit(ProblemTable $problem_table)
 	{
         //$this->authorize('update', $problem_table);
-        $addresses=Information::where('id','>',0)->get(['id','present_address']);
+        $addresses=Information::where('id','>',0)
+        			->where('p_id',NULL)
+					->defaultOrder()
+					->get(['id','present_address','building','door','no']);
+		
 		return view('problem_tables.create_and_edit', compact('problem_table','addresses'));
 	}
 

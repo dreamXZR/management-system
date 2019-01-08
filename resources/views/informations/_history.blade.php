@@ -13,7 +13,7 @@
             @foreach($historys as $history)
             <tr>
                {{--  <td align="center">{{$problem_table->number}}</td> --}}
-                <td align="center">{{$history->present_address}}小区{{$history->building}}楼{{$history->door}}门{{$history->no}}户</td>
+                <td align="center">{{$history->present_address}}庭苑&nbsp;&nbsp;{{$history->building}}&nbsp;-&nbsp;{{$history->door}}&nbsp;-&nbsp;{{$history->no}}</td>
                 <td align="center">{{$history->replace_time}}</td>
                
 

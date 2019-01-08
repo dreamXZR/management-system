@@ -137,7 +137,8 @@
         义务教育学位就业证明存根
     </h1>
     <div class="box">
-        <p class="number" style="margin-right: 85px;">编号：{{$worker['number']}}</p>
+        <!--<p class="number" style="margin-right: 85px;">街道第{{$worker['number']}}号</p>-->
+      	<p class="number" style="margin-right: 85px;">街道第<input class='lump' type=' text' style='width: 120px;  border-bottom: none;'>号</p>
         <p class="text_1 display" style="margin-left: 49px;">
             我辖区居住的非本市户籍人员<input class="lump " type="text" style="width: 200px;" value="{{$worker['name']}}"><span>，</span>
         </p>
@@ -175,7 +176,8 @@
         义务教育学位就业证明
     </h1>
     <div class="box">
-        <p class="number" style="margin-right: 65px;">编号：{{$worker['number']}}</p>
+       <!-- <p class="number" style="margin-right: 65px;">街道第{{$worker['number']}}号</p>-->
+     	 <p class="number" style="margin-right: 85px;">街道第<input class='lump' type=' text' style='width: 120px;  border-bottom: none;'>号</p>
         <p class="text_1 display" style="margin-left: 49px;">
             经核实，在我辖区居住的非本市户籍人员<input class="lump200" type="text" style='width: 150px;' value="{{$worker['name']}}">
           <span>（身份</span>

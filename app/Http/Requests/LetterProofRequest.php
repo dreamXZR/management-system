@@ -7,7 +7,7 @@ class LetterProofRequest extends Request
     public function rules()
     {
         return [
-            'name'=>'required|max:20',
+            'name'=>'required|max:100',
             'community_name'=>'required|max:100',
             'present_address'=>'required|max:100',
             'residence_address'=>'required|max:100',

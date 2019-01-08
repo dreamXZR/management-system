@@ -42,7 +42,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">证明人:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{$resident->name}}" readonly>
+                                <input class="form-control"  placeholder="" name="name" required="" type="text" value="@if($length==1){{$resident->name}}@else{{$resident}}@endif" readonly>
                                 @else
                                 <input class="form-control"  placeholder="" name="name" required="" type="text" value="{{old('name',$letter_proof->name)}}">
                                 @endif
@@ -60,7 +60,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">居住地址:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$information->present_address}}小区{{$information->building}}楼{{$information->door}}门{{$information->no}}户" readonly>
+                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{$information->present_address}}庭苑{{$information->building}}-{{$information->door}}-{{$information->no}}" readonly>
                                 @else
                                 <input class="form-control"  placeholder="" name="present_address" type="text" value="{{old('present_address',$letter_proof->present_address)}}" required="">
                                 @endif
@@ -71,7 +71,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍地址:</label>
                             <div class="col-sm-6">
                                 @if($status=='create')
-                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{$resident->residence_address}}" readonly>
+                                <input class="form-control"  placeholder="" name="residence_address" type="text" value="@if($length==1){{$resident->residence_address}}@else{{''}}@endif">
                                 @else
                                 <input class="form-control"  placeholder="" name="residence_address" type="text" value="{{old('residence_address',$letter_proof->residence_address)}}" required="">
                                 @endif

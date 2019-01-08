@@ -40,7 +40,7 @@
                                 </th>
                                 <th class="text-center">姓名</th>
                                 <th class="text-center">身份证号</th>
-                                <th class="text-center">编号</th>
+                                {{-- <th class="text-center">编号</th> --}}
                                 <th class="text-center" width="30%">操作</th>
                             </tr>
                         </thead>
@@ -53,7 +53,7 @@
                                 <td align="center">{{$worker_proof->name}}</td>
                                 
                                 <td align="center">{{$worker_proof->id_number}}</td>
-                                <td align="center">{{$worker_proof->number}}</td>
+                                {{-- <td align="center">{{$worker_proof->number}}</td> --}}
                                 <td align="center">
                                     <a class="btn btn-xs btn-primary" href="{{ route('worker_proofs.show', $worker_proof->id) }}">
                                         <i class="glyphicon glyphicon-eye-open"></i> 

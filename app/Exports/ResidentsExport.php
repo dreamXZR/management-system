@@ -90,7 +90,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
         return [
            $resident->name,
            ' '.$resident->id_number,
-           $resident->information->present_address.'小区'.$resident->information->building.'楼'.$resident->information->door.'门'.$resident->information->no,
+           $resident->information->present_address.'庭苑  '.$resident->information->building.' - '.$resident->information->door.' - '.$resident->information->no,
            $resident->sex,
            $resident->nation,
            $resident->birthday,

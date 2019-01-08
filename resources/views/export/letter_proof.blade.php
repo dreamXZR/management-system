@@ -57,7 +57,7 @@
             font-style: normal;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            margin: 18px 0;
+            margin: 13px 0;
         }
         .display{
             display: inline-block;
@@ -132,10 +132,10 @@
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
         <p class="text_1 display">
-            兹证明<input class="lump " type="text" value="{{$letter['name']}}">
+            兹证明<input class="lump " style='width: 648px;  text-align: left;'  type="text" value="{{$letter['name']}}">
         </p>
         <p class="text_1 display">
-            系我二号桥街<input class="lump lumpw" type="text" value="{{$letter['community_name']}}"><span>社区居民。</span>
+            系我二号桥街<input class="lump lumpw"  style='width: 470px;' type="text" value="{{$letter['community_name']}}"><span>社区居民。</span>
         </p>
         <p class="text_1 display">
             居住地址:<input class="lump_1" type="text" value="{{$letter['present_address']}}">
@@ -158,7 +158,11 @@
             <div class="clear"></div>
             <p class="text_1 display m10"><input class="lump lump50" type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
-        <p style=' margin-top: -40px;'>
+      	 <p style='position: absolute; top: 480px; font-size: 24px;'>
+           	开据人:
+            <input class="lump" type="text" value="{{$letter['charge']}}">
+        </p>
+        <p style=' margin-top: -40px; font-size: 24px;'>
             签字确认:
             <input class="lump" type="text" value="">
         </p>
@@ -168,13 +172,17 @@
     <h1>证明信</h1>
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
-        <p class="text_1 ">兹证明</p>
+       <!--<p class="text_1 ">兹证明</p>-->
+      	<p class="text_1 display"  style='width: 180px; height: 23px; border-bottom: 1px solid #000; float: left;'></p>
+      	<p class="text_1 " style="float: left;">：</p>
+      	<div style="clear: both"></div>
         <p class="text_1 display">
-            <input class="lump" value="{{$letter['name']}}"><span>同志系我街</span>
-            <input class="lump lumpw" value="{{$letter['community_name']}}"><span>社区居民。</span>
+            <input class="lump" style='width: 595px;text-align: left;' value="{{$letter['name']}}"><span>同志系我街</span>
+            
         </p>
+      	<p  class="text_1 display"> <input class="lump lumpw" style='width: 610px;' value="{{$letter['community_name']}}"><span>社区居民。</span></p>
         <p class="text_1 display">
-          	居住地址:<input class="lump_1" type="text" value="{{$letter['present_address']}}">
+          	居住地址:<input class="lump_1"  type="text" value="{{$letter['present_address']}}">
         </p>
         <p class="text_1 display">
             户籍地址:<input class="lump_1" type="text" value="{{$letter['residence_address']}}">

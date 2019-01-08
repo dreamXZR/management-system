@@ -107,17 +107,17 @@
     	</div>
     </div>
 <script type="text/javascript">
-var select=0;
-function check(id){
-	
-	select=id;
-}
+
 function letter_proof(){
-	if(select==0){
-		alert('请选择相应人员');
-		return false;
-	}
-	window.location.href="{{env('APP_URL')}}" + "/letter_proofs/create?resident_id="+select; 
+	var checkID = [];
+    $('input[name="select"]:checked').each(function(i){
+         checkID[i] =$(this).val();
+    });
+    if(checkID.length==0){
+        alert('请选择人员！');
+        return false;
+    }
+	window.location.href="{{env('APP_URL')}}" + "/letter_proofs/create?resident_id="+checkID.join(',')+"&info_id={{$information->id}}"; 
 }
 </script>
 @stop

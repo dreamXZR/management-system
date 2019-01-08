@@ -15,10 +15,10 @@
             <label for="recipient-name" class="control-label">身份证号:</label>
             <input type="text" class="form-control" name="id_number">
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="message-text" class="control-label">编号:</label>
             <input type="text" class="form-control" name="number">
-          </div>
+          </div> --}}
         </form>
       </div>
       <div class="modal-footer">

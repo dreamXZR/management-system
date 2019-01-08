@@ -1,9 +1,10 @@
 <?php
 
+
+use App\Models\Information;
+
 //生成单号
-/*
-	@param $table_name 表名
-*/
+
 function create_number()
 {
 	$today=date('Ymd',time());
@@ -61,8 +62,12 @@ function num_str($str,$map_arr)
 {
 	$str_arr=[];
 	$num_arr=explode(',', $str);
+	
 	foreach ($num_arr as $k => $v) {
-		$str_arr[]=$map_arr[$v];
+		if($v){
+			$str_arr[]=$map_arr[$v];
+		}
+		
 	}
 
 	return implode(',', $str_arr);
@@ -73,7 +78,10 @@ function str_num($str,$map_arr)
 	$num_arr=[];
 	$str_arr=explode(',', $str);
 	foreach ($str_arr as $k => $v) {
-		$num_arr[]=array_search($v, $map_arr);
+		if($v){
+			$num_arr[]=array_search($v, $map_arr);
+		}
+		
 	}
 
 	return implode(',', $num_arr);
@@ -82,7 +90,11 @@ function str_num($str,$map_arr)
 //责任
 function getLiabilityStr($ids)
 {
+	$data=[];
 	$ids=explode(',', $ids);
-	$data=\DB::table('information')->whereIn('id',$ids)->pluck('present_address')->toArray();
+	$datas=Information::whereIn('id',$ids)->get(['id','present_address','building','door','no']);
+	foreach ($datas as $k => $v) {
+		$data[]=$v->all_present_address;
+	}
 	return implode(',', $data);
 }

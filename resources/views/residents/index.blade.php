@@ -104,7 +104,7 @@
                                 </td>
                                
                                 <td>
-                                    {{$resident->information->present_address}}小区{{$resident->information->building}}楼{{$resident->information->door}}门{{$resident->information->no}}
+                                    {{$resident->information->present_address}}庭苑&nbsp;&nbsp;{{$resident->information->building}}&nbsp;-&nbsp;{{$resident->information->door}}&nbsp;-&nbsp;{{$resident->information->no}}
                                 </td>
                                 <td>
                                     {{$resident->residence_address}}

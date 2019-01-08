@@ -124,7 +124,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="main[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->main))){echo 'selected';}?>>{{$address->present_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->main))){echo 'selected';}?>>{{$address->all_present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -135,7 +135,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="secondary[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->secondary))){echo 'selected';}?>>{{$address->present_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->secondary))){echo 'selected';}?>>{{$address->all_present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,7 +146,7 @@
                             <div class="col-sm-6">
                                 <select  class="selectpicker form-control" multiple data-live-search="true" name="join[]">
                                     @foreach($addresses as $address)
-                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->join))){echo 'selected';}?>>{{$address->present_address}}</option>
+                                        <option value="{{$address->id}}" <?php if(in_array($address->id,explode(',', $above_table->join))){echo 'selected';}?>>{{$address->all_present_address}}</option>
                                     @endforeach
                                 </select>
                             </div>

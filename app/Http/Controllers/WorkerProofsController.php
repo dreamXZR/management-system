@@ -39,7 +39,7 @@ class WorkerProofsController extends Controller
 			$post_data['images']=$imgage_upload->save($request->images,'worker_proofs');
 		}
 		//生成编号
-		$post_data['number']=create_number();
+		//$post_data['number']=create_number();
 		
 		$worker_proof = WorkerProof::create($post_data);
 		return redirect()->route('worker_proofs.show', $worker_proof->id)->with('success', '添加成功');

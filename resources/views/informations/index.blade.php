@@ -48,7 +48,7 @@
                                 <td align="center">
                                     <input type="checkbox" name="check" style="opacity: 1; position: initial;" value="{{$info->id}}">
                                 </td>
-                                <td align="center">{{$info->present_address}}小区{{$info->building}}楼{{$info->door}}门{{$info->no}}</td>
+                                <td >{{$info->present_address}}庭苑&nbsp;&nbsp;{{$info->building}}&nbsp;-&nbsp;{{$info->door}}&nbsp;-&nbsp;{{$info->no}}</td>
                                 
                                 
                                 <td align="center">
