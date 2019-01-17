@@ -90,7 +90,12 @@ class ExportController extends Controller
                 foreach (explode(',', $checkID) as $k => $v) {
                     $info=Information::find($v);
                     if($info){
-                        $pdf_name=$dir_name.'/info_'.$info->id.'.pdf';
+                        if($info->present_address=='陶然'){
+                            $pdf_name=$dir_name.'/t_'.$info->building.'-'.$info->door.'-'.$info->no.'.pdf';
+                        }else{
+                            $pdf_name=$dir_name.'/y_'.$info->building.'-'.$info->door.'-'.$info->no.'.pdf';
+                        }
+                        
 
                         $handicappeds=$info->handicappeds;
                         $residents=$info->residents;

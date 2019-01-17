@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('images','ImagesController@index')->name('images.index');
 	Route::post('images','ImagesController@destroy')->name('images.destroy');
 	//导出相关
-	Route::post('export','ResidentsController@export')->name('residents.export');
+	Route::post('excel_export','ResidentsController@export')->name('residents.export');
 
 	//未完成
 	Route::get('unfinish','IndexController@unfinish')->name('unfinish');
