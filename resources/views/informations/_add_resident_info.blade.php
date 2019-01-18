@@ -10,31 +10,37 @@
        
           <div class="form-group">
             <label for="recipient-name" class="control-label">姓名:</label>
-            <input type="text" class="form-control" v-model='resident.name'>
+            <input type="text" class="form-control"  v-model='resident.name'>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">性别:</label><br/>
             <input type="radio"  v-model='resident.sex' value="男" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">男&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio"  v-model='resident.sex' value="女" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">女
+            
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">与户主关系:</label><br/>
             {{-- <input type="text" class="form-control" v-model='resident.relationship'> --}}
             @foreach($resident->relationship_map as $ship)
-              <input type="radio"  v-model='resident.relationship' value="{{$ship}}" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">{{$ship}}&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio"  v-model='resident.relationship' value="{{$ship}}" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;" @click="relationship_radio('{{$ship}}')" name="relationship">{{$ship}}&nbsp;&nbsp;&nbsp;&nbsp;
             @endforeach
+            <input style="width: 15%; display: inline-block;" type="text" class="form-control" v-model='resident.other_relationship' :disabled="resident.relationship!='其它'">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">户籍所在地:</label>
             <input type="text" class="form-control" v-model='resident.residence_address'>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份证号码:</label>
             <input type="text" class="form-control" v-model='resident.id_number'>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">手机号:</label>
             <input type="text" class="form-control" v-model='resident.phone'>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">民族:</label>
@@ -43,6 +49,7 @@
               <option value="{{$mz->mzname}}">{{$mz->mzname}}</option>
               @endforeach
             </select>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">文化程度:</label>
@@ -51,6 +58,7 @@
                   <option value="{{$culture}}">{{$culture}}</option>
                 @endforeach
             </select>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">政治面貌:</label>
@@ -60,6 +68,7 @@
                 
                 @endforeach
             </select>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">婚姻状况:</label>
@@ -70,6 +79,7 @@
                  @endforeach
                 
             </select>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份类别:</label>
@@ -79,6 +89,7 @@
                 @endforeach
                 
             </select>
+            <span class="red">* 必填</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">有何特长:</label>

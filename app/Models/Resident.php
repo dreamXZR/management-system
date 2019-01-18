@@ -51,7 +51,20 @@ class Resident extends baseModel
     public $relationship_map=[
         1=>'租户',
         2=>'本人',
-        3=>'空房'
+        3=>'空房',
+        4=>'之父',
+        5=>'之母',
+        6=>'之妻',
+        7=>'之夫',
+        8=>'之长子',
+        9=>'之次子',
+        10=>'之长女',
+        11=>'之次女',
+        12=>'之岳父',
+        13=>'之岳母',
+        14=>'之公公',
+        15=>'之婆婆',
+        16=>'其它'
     ];
 
 
@@ -103,17 +116,17 @@ class Resident extends baseModel
     	return $str;
     }
 
-    public function setRelationshipAttribute($value)
-    {
-        $number=array_search($value,$this->relationship_map);
-        $this->attributes['relationship']=$number;
-    }
+    // public function setRelationshipAttribute($value)
+    // {
+    //     $number=array_search($value,$this->relationship_map);
+    //     $this->attributes['relationship']=$number;
+    // }
 
-    public function getRelationshipAttribute($value)
-    {
-        $str=$this->relationship_map[$value];
-        return $str;
-    }
+    // public function getRelationshipAttribute($value)
+    // {
+    //     $str=$this->relationship_map[$value];
+    //     return $str;
+    // }
 
     public function getSexAttribute($value)
     {

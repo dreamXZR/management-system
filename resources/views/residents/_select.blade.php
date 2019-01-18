@@ -17,11 +17,12 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">与户主关系:</label>
-            <select class="selectpicker form-control" multiple data-live-search="true" name="relationship[]">
+            {{-- <select class="selectpicker form-control" multiple data-live-search="true" name="relationship[]">
               @foreach($resident->relationship_map as $k=>$v)
               <option value="{{$k}}">{{$v}}</option>
               @endforeach
-            </select>
+            </select> --}}
+            <input type="text" class="form-control" name="relationship">
           </div>
           {{-- <div class="form-group">
             <label for="message-text" class="control-label">手机号:</label>

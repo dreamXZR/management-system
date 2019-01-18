@@ -434,6 +434,11 @@
                     var info=this.id_number_format(this.resident.id_number);
                     //this.resident.sex=info[0];
                     this.resident.birthday=info[1];
+                    
+                    if(this.resident.other_relationship){
+                        this.resident.relationship=this.resident.other_relationship
+                    }
+                    
                     this.residents.push(this.resident);
                     this.resident={}
                     $('#bb_close').click();
@@ -454,7 +459,11 @@
             },
 
             edit_resident_info:function(index){
-                this.resident=JSON.parse(JSON.stringify(this.residents[index]));
+                var edit_json=JSON.parse(JSON.stringify(this.residents[index]));
+                
+                edit_json.other_relationship=edit_json.relationship;
+                
+                this.resident=edit_json;
                 this.resident_status=false;
                 this.resident_index=index;
                 $('#bb').click();
@@ -465,6 +474,11 @@
                     var info=this.id_number_format(this.resident.id_number);
                     //this.resident.sex=info[0];
                     this.resident.birthday=info[1];
+                    
+                    if(this.resident.other_relationship){
+                        this.resident.relationship=this.resident.other_relationship
+                    }
+                    
                     Vue.set(this.residents,this.resident_index,this.resident);
                     $('#bb_close').click();
                 }else{
@@ -550,6 +564,13 @@
                     alert('请填写完整信息');
                     return false;
                 }
+            },
+
+            relationship_radio:function(select){
+                
+                this.resident.other_relationship=select;
+                
+               
             }
 
 		}

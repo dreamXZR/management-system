@@ -68,7 +68,7 @@ class ResidentFilter extends ModelFilter
 
     public function relationship($value)
     {
-        return $this->whereIn('relationship',$value);
+        return $this->where('relationship',$value);
     }
 
     public function setup()
