@@ -93,6 +93,13 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">自定义信息:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="self" type="text" value="{{old('self',$letter_proof->self)}}" required="">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">图片上传:</label>
                             <div class="col-sm-6">
                                 <input class="file form-control"  placeholder="" name="images[]"  type="file"  id="img" multiple>

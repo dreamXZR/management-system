@@ -217,7 +217,7 @@
         <div style="margin-left:70px">
             <p class="text_1 display" style='font-size: 24px;'>街道办事处（盖章）</p>
         </div>
-        <p class="text_1 display" style="margin-top:10px; margin-left: 45px;"><input class="lump lump50" style=' width: 70px;' type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text" value=""><span>日</span>&nbsp;&nbsp;</p>
+        <p class="text_1 display" style="margin-top:10px; margin-left: 45px;"><input class="lump lump50" style=' width: 70px;' type="text" value="{{$worker['date'][0]}}"><span>年</span><input class="lump lump50" type="text" value="{{$worker['date'][1]}}"><span>月</span><input class="lump lump50" type="text" value="{{$worker['date'][2]}}"><span>日</span>&nbsp;&nbsp;</p>
     </div>
     <div class="clear"></div>
 </div>

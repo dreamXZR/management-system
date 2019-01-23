@@ -45,7 +45,9 @@ class Resident extends baseModel
     	1=>'在职',
     	2=>'退休',
     	3=>'学生',
-    	4=>'学龄前'
+    	4=>'学龄前',
+        5=>'无业',
+        6=>'失业'
     ];
 
     public $relationship_map=[

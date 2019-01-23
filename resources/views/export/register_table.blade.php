@@ -219,7 +219,7 @@
         <tr>
             <td class="one_3" colspan="2">接电话人签字:</td>
             <td class="one_4" colspan="2">办理人签字:</td>
-            <td class="one_5" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</td>
+            <td class="one_5" colspan="2">{{$register['date'][0]}}&nbsp;年{{$register['date'][1]}}&nbsp;月{{$register['date'][2]}}&nbsp;日</td>
         </tr>
     </table>
 </body>

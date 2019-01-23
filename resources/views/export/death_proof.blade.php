@@ -160,7 +160,7 @@
         <div style="text-align: center;" >
             <p class="text_1 display" >居委会盖章</p>
         </div>
-        <p class="text_1 display" style="margin-top:10px;"><input class="lump lump50" style="width: 70px; " type="text"><span style="font-size: 24px;">年</span><input class="lump lump50" type="text"><span style="font-size: 24px;">月</span><input class="lump lump50" type="text" value=""><span style="font-size: 24px;">日</span>&nbsp;&nbsp;</p>
+        <p class="text_1 display" style="margin-top:10px;"><input class="lump lump50" style="width: 70px; " type="text" value="{{$death['date'][0]}}"><span style="font-size: 24px;">年</span><input class="lump lump50" type="text" value="{{$death['date'][1]}}"><span style="font-size: 24px;">月</span><input class="lump lump50" type="text" value="{{$death['date'][2]}}"><span style="font-size: 24px;">日</span>&nbsp;&nbsp;</p>
     </div>
     <div class="clear"></div>
    	<p class="text_1 display line-h" style="margin-top:50px; margin-bottom: 0; font-size: 20px;">提示：

@@ -64,6 +64,10 @@
                                     <td>{{ $letter_proof->basis }}</td>        
                                 </tr>
                                 <tr>
+                                    <td>自定义信息：</td>
+                                    <td>{{ $letter_proof->self }}</td>        
+                                </tr>
+                                <tr>
                                     <td>图片：</td>
                                     <td>
                                         @if($letter_proof->images)

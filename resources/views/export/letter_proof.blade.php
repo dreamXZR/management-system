@@ -156,7 +156,7 @@
                 </p>
             </div>
             <div class="clear"></div>
-            <p class="text_1 display m10"><input class="lump lump50" type="text"><span>年</span><input class="lump lump50" type="text"><span>月</span><input class="lump lump50" type="text"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display m10"><input class="lump lump50" type="text" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" type="text" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" type="text" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
       	 <p style='position: absolute; top: 480px; font-size: 24px;'>
            	开据人:
@@ -173,7 +173,7 @@
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
        <!--<p class="text_1 ">兹证明</p>-->
-      	<p class="text_1 display"  style='width: 180px; height: 23px; border-bottom: 1px solid #000; float: left;'></p>
+      	<p class="text_1 display"  style='width: 180px; height: 23px; border-bottom: 1px solid #000; float: left;'>{{$letter['self']}}</p>
       	<p class="text_1 " style="float: left;">：</p>
       	<div style="clear: both"></div>
         <p class="text_1 display">
@@ -198,8 +198,8 @@
                 二号桥街<input class="lump" type="text" value="{{$letter['community_name']}}"><span>社区居委会</span>
             </p>
             <p class="text_1 display mar_50_1">二号桥街道办事处</p>
-            <p class="text_1 display"><input class="lump lump50"><span>年</span><input class="lump lump50"><span>月</span><input class="lump lump50"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
-            <p class="text_1 display mar_50"><input class="lump lump50"><span>年</span><input class="lump lump50"><span>月</span><input class="lump lump50"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display"><input class="lump lump50" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display mar_50"><input class="lump lump50" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
     </div>
 </div>
