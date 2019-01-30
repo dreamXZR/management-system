@@ -103,7 +103,7 @@
             padding: 5px 15px;
             border: none;
             border-bottom: 1px solid #000;
-            text-align: left;
+            text-align: center;
         }
         .lump200{
             display: inline-block;
@@ -138,7 +138,7 @@
     </h1>
     <div class="box">
         <!--<p class="number" style="margin-right: 85px;">街道第{{$worker['number']}}号</p>-->
-      	<p class="number" style="margin-right: 85px;">街道第<input class='lump' type=' text' style='width: 120px;  border-bottom: none;'>号</p>
+      	<p class="number" style="margin-right: 85px;">街道第<input class='lump' type=' text' style='width: 120px;  border-bottom: none; text-align: center;'>号</p>
         <p class="text_1 display" style="margin-left: 49px;">
             我辖区居住的非本市户籍人员<input class="lump " type="text" style="width: 200px;" value="{{$worker['name']}}"><span>，</span>
         </p>

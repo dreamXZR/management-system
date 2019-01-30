@@ -82,6 +82,7 @@
             margin: 0 10px;
             border: none;
             border-bottom: 1px solid #000;
+            text-align: center;
         }
         .lumpw{
             width: 150px;
@@ -132,7 +133,7 @@
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
         <p class="text_1 display">
-            兹证明<input class="lump " style='width: 648px;  text-align: left;'  type="text" value="{{$letter['name']}}">
+            兹证明<input class="lump " style='width: 648px;  '  type="text" value="{{$letter['name']}}">
         </p>
         <p class="text_1 display">
             系我二号桥街<input class="lump lumpw"  style='width: 470px;' type="text" value="{{$letter['community_name']}}"><span>社区居民。</span>
@@ -156,7 +157,7 @@
                 </p>
             </div>
             <div class="clear"></div>
-            <p class="text_1 display m10"><input class="lump lump50" type="text" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" type="text" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" type="text" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display m10"><input class="lump lump50" style="width: 70px; text-align: center;" type="text" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" type="text" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" type="text" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
       	 <p style='position: absolute; top: 480px; font-size: 24px;'>
            	开据人:
@@ -177,7 +178,7 @@
       	<p class="text_1 " style="float: left;">：</p>
       	<div style="clear: both"></div>
         <p class="text_1 display">
-            <input class="lump" style='width: 595px;text-align: left;' value="{{$letter['name']}}"><span>同志系我街</span>
+            <input class="lump" style='width: 595px;text-align: center;' value="{{$letter['name']}}"><span>同志系我街</span>
             
         </p>
       	<p  class="text_1 display"> <input class="lump lumpw" style='width: 610px;' value="{{$letter['community_name']}}"><span>社区居民。</span></p>
@@ -198,8 +199,8 @@
                 二号桥街<input class="lump" type="text" value="{{$letter['community_name']}}"><span>社区居委会</span>
             </p>
             <p class="text_1 display mar_50_1">二号桥街道办事处</p>
-            <p class="text_1 display"><input class="lump lump50" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
-            <p class="text_1 display mar_50"><input class="lump lump50" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display"><input class="lump lump50" style="width: 70px; text-align: center;" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+            <p class="text_1 display mar_50"><input class="lump lump50" style="width: 70px; text-align: center; margin-left: -20px;" value="{{$letter['date'][0]}}"><span>年</span><input class="lump lump50" value="{{$letter['date'][1]}}"><span>月</span><input class="lump lump50" value="{{$letter['date'][2]}}"><span>日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
         </div>
     </div>
 </div>

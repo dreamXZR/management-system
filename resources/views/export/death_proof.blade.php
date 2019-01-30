@@ -61,7 +61,7 @@
             display: inline-block;
         }
         .lump{
-            text-align: left;
+            text-align: center;
             display: inline-block;
             width: 200px;
             font-size: 20px;
@@ -86,7 +86,7 @@
             resize:none;
         }
         .lump50{
-            width: 20px;
+            width: 30px;
             font-size: 24px;
         }
         span{
