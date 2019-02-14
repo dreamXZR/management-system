@@ -455,6 +455,10 @@
                     if(this.resident.other_relationship){
                         this.resident.relationship=this.resident.other_relationship
                     }
+                  	
+                  	if(!this.resident.tag){
+                    	this.resident.tag='无';
+                    }
                     this.residents.push(this.resident);
                     this.resident={}
                     $('#bb_close').click();
@@ -507,6 +511,10 @@
                     this.resident.birthday=info[1];
                     if(this.resident.other_relationship){
                         this.resident.relationship=this.resident.other_relationship
+                    }
+                  	
+                  	if(!this.resident.tag){
+                    	this.resident.tag='无';
                     }
                     Vue.set(this.residents,this.resident_index,this.resident);
                     $('#bb_close').click();
@@ -581,7 +589,7 @@
             },
 
             resident_validate:function(data){
-                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone && data.sex){
+                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone && data.sex  && data.identity && data.culture && data.face && data.marriage){
                     if(!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(data.phone)){
                         alert("手机号码有误，请重填");  
                         return false; 

@@ -103,6 +103,7 @@
           <div class="form-group">
             <label for="recipient-name" class="control-label">职务标签:</label>
             <select class="form-control" v-model='resident.tag'>
+              <option value="无">无</option>
                 @foreach($tags as $tag)
                 <option value="{{$tag}}">{{$tag}}</option>
                 
