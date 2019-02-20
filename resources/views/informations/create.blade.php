@@ -557,7 +557,9 @@
 
             resident_validate:function(data){
                 if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone && data.sex && data.identity && data.culture && data.face && data.marriage){
-                    if(!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(data.phone)){
+                  	var ph= /^[1]([3-9])[0-9]{9}$/;
+                    var mb= /\d{7,8}/;
+                    if(!ph.test(data.phone)&&!mb.test(data.phone)){
                         alert("手机号码有误，请重填");  
                         return false; 
                     }

@@ -59,13 +59,14 @@
                                     <a class="btn btn-xs btn-warning" href="{{route('informations.edit',$info->id)}}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
-
+									 @can('del_info')
                                     <form action="{{route('informations.destroy',$info->id)}}" method="POST" style="display: inline;" onsubmit="return confirm('确定删除此条数据?');">
                                         {{csrf_field()}}
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>
+                                  	 @endcan
                                     <a class="btn btn-xs btn-success" target="_blank" href="{{ route('export', ['type'=>'information','id'=>$info->id]) }}">
                                         <i class="glyphicon glyphicon-download"></i> 
                                     </a>
