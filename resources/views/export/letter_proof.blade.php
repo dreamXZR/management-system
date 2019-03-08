@@ -174,7 +174,7 @@
     <p class="number">编号：{{$letter['number']}}</p>
     <div class="box">
        <!--<p class="text_1 ">兹证明</p>-->
-      	<p class="text_1 display"  style='width: 180px; height: 23px; border-bottom: 1px solid #000; float: left;'>{{$letter['self']}}</p>
+      	<p class="text_1 display"  style=' height: 23px; border-bottom: 1px solid #000; float: left; padding-right: 5px; padding-bottom: 5px;'>{{$letter['self']}}</p>
       	<p class="text_1 " style="float: left;">：</p>
       	<div style="clear: both"></div>
         <p class="text_1 display">

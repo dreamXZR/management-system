@@ -13,6 +13,7 @@ class LetterProofRequest extends Request
             'residence_address'=>'required|max:100',
             'use'=>'required|max:100',
             'basis'=>'required|max:100',
+          	'self'=>'required|max:50'
         ];
     }
 
@@ -31,7 +32,8 @@ class LetterProofRequest extends Request
             'present_address'=>'现居住地址',
             'residence_address'=>'户籍地址',
             'use'=>'用处',
-            'basis'=>'依据'
+            'basis'=>'依据',
+          	'self'=>'抬头'
         ];
     }
 

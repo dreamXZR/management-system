@@ -80,6 +80,11 @@
                     </table>
                     <div style="margin-top: 20px;">
                        {!! $informations->render() !!}
+                        <span style="float: right;">
+                            <input type="text" id="skip_page_num" style="width: 63px;">
+                            <button id="skip_page">跳转到</button>
+                        </span>
+
                     </div>
                     
                 </div>
@@ -123,6 +128,15 @@
         $('#checkID').val(checkID.join(','));
         $('#export_form').submit();
         
+    });
+
+    //跳转
+    $('#skip_page').click(function(){
+        let skip_page_num=$('#skip_page_num').val();
+        if(!skip_page_num){
+            skip_page_num=1;
+        }
+        window.location.href="http://www.juweihuiguanli.top/informations?page="+skip_page_num;
     });
 </script>
 @endsection
