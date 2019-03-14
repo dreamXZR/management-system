@@ -37,7 +37,9 @@ class AboveTablesController extends Controller
 					->get(['id','present_address','building','door','no']);
 		
 		$information_id=$request->information_id;
-		return view('above_tables.create_and_edit', compact('above_table','addresses','information_id'));
+        $information=Information::find($information_id);
+        $status='create';
+		return view('above_tables.create_and_edit', compact('above_table','addresses','information_id','information','status'));
 	}
 
 	public function store(AboveTableRequest $request,ImageUpload $image_upload)

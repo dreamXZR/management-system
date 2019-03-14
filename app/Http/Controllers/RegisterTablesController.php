@@ -33,13 +33,16 @@ class RegisterTablesController extends Controller
 
 	public function create(RegisterTable $register_table,Request $request)
 	{
+
 		$addresses=Information::where('id','>',0)
 					->where('p_id',NULL)
 					->defaultOrder()
 					->get(['id','present_address','building','door','no']);
 		
 		$information_id=$request->information_id;
-		return view('register_tables.create_and_edit', compact('register_table','addresses','information_id'));
+		$information=Information::find($information_id);
+		$status='create';
+		return view('register_tables.create_and_edit', compact('register_table','addresses','information_id','information','status'));
 	}
 
 	public function store(RegisterTableRequest $request,ImageUpload $image_upload)
@@ -57,6 +60,8 @@ class RegisterTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$register_table = RegisterTable::create($post_data);
+		//未完成+1
+        $register_table->total_increment();
 		return redirect()->route('register_tables.show', $register_table->id)->with('success', '添加成功');
 	}
 
@@ -92,6 +97,11 @@ class RegisterTablesController extends Controller
 	public function destroy(RegisterTable $register_table)
 	{
 		$this->authorize('destroy', $register_table);
+        //未完成-1
+        if(!$register_table->is_finish){
+            $register_table->total_decrement();
+        }
+
 		$register_table->delete();
 
 		return redirect()->route('register_tables.index')->with('success', '删除成功');
@@ -103,10 +113,19 @@ class RegisterTablesController extends Controller
 		$register->is_finish=$request->is_finish;
 		$res=$register->save();
 		if($res){
+            //未完成总数计算
+            $register_table=new RegisterTable;
+            if($request->is_finish){
+                $register_table->total_decrement();
+            }else{
+                $register_table->total_increment();
+            }
+
 			session()->flash('success','操作成功');
-			return response()->json([
+            return response()->json([
 				'status'=>true,
 			]);
+
 		}else{
 			session()->flash('danger','操作失败');
 			return response()->json([

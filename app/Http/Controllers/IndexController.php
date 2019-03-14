@@ -24,8 +24,7 @@ class IndexController extends Controller
 
     public function unfinish(RegisterTable $register)
     {
-    	$ids=$register->getUnfinishTables();
-    	$register_tables=RegisterTable::whereIn('id',$ids)->paginate(10);
+    	$register_tables=RegisterTable::where('is_finish',0)->paginate(10);
     	return view('index.unfinish',compact('register_tables'));
     }
 }

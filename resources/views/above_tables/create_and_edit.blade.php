@@ -77,7 +77,12 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">家庭地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{old('address',$above_table->address)}}">
+                                @if($status=='create')
+                                    <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{$information->present_address.'庭苑 '.$information->building.'-'.$information->door.'-'.$information->no}}">
+                                @else
+                                    <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{old('address',$above_table->address)}}">
+                                @endif
+
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

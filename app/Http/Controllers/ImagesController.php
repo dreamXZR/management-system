@@ -20,8 +20,11 @@ class ImagesController extends Controller
         $arr=[];
     	if($images=json_decode(\DB::table($model_arr[0])->where('id',$model_arr[1])->first()->images)){
             foreach ($images as $k => $v) {
-                $arr['images'][]="<img src='".$this->app_url."/".$v."' style='height:auto; max-width: 100%; max-height: 100%; margin-top: 0px;'>";
-                $arr['delete'][]=['url'=>route('images.destroy',['model'=>$model]), 'key'=>$k];
+                if($v){
+                    $arr['images'][]="<img src='".$this->app_url."/".$v."' style='height:auto; max-width: 100%; max-height: 100%; margin-top: 0px;'>";
+                    $arr['delete'][]=['url'=>route('images.destroy',['model'=>$model]), 'key'=>$k];
+                }
+
             }
         }
 
@@ -39,9 +42,9 @@ class ImagesController extends Controller
     	$images=json_decode(\DB::table($model_arr[0])->where('id',$model_arr[1])->first()->images);
     	
     	del($images[$key]);
-    	
 
-    	array_splice($images, $key, 1);
+        $images[$key]='';
+    	//array_splice($images, $key, 1);
     	\DB::table($model_arr[0])->where('id',$model_arr[1])->update(['images'=>json_encode($images)]);
     	return response()->json(['status'=>true],200);
     	

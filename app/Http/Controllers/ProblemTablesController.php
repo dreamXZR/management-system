@@ -38,7 +38,9 @@ class ProblemTablesController extends Controller
 					->get(['id','present_address','building','door','no']);
 		
 		$information_id=$request->information_id;
-		return view('problem_tables.create_and_edit', compact('problem_table','addresses','information_id'));
+        $information=Information::find($information_id);
+        $status='create';
+		return view('problem_tables.create_and_edit', compact('problem_table','addresses','information_id','information','status'));
 	}
 
 	public function store(ProblemTableRequest $request,ImageUpload $image_upload)

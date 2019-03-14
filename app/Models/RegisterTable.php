@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use EloquentFilter\Filterable;
-use App\Models\Traits\UnfinishTable;
+use App\Models\Traits\balanceUnfinish;
 
 class RegisterTable extends Model
 {
-	use Filterable,UnfinishTable;
+	use Filterable,balanceUnfinish;
 	
     protected $fillable = ['name', 'sex', 'call_time', 'address', 'phone', 'call_content', 'back_content', 'other', 'number','images','main','secondary','join','information_id'];
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\RegisterTable;
+use Illuminate\Support\Facades\Cache;
 
 class UsersController extends Controller
 {
@@ -90,7 +91,9 @@ class UsersController extends Controller
         // $num=count($registers);
         // var_dump($registers);
         // var_dump($num);
-        echo \Cache::get('total');
+        //Cache::set('',111);
+        Cache::pull('unfinsish_num',0);
+        //echo
     }
 
 }

@@ -49,7 +49,7 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">来电时间:</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">来电来访:</label>
                             <div class="col-sm-6">
                                 <input class="form-control date-picker"  placeholder="" name="call_time" required="" type="text" value="{{old('call_time',$register_table->call_time)}}">
                             </div>
@@ -77,7 +77,11 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">家庭地址:</label>
                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{old('address',$register_table->address)}}">
+                                @if($status=='create')
+                                    <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{$information->present_address.'庭苑 '.$information->building.'-'.$information->door.'-'.$information->no}}">
+                                @else
+                                    <input class="form-control"  placeholder="" name="address" required="" type="text" value="{{old('address',$register_table->address)}}">
+                                @endif
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
