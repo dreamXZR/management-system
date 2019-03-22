@@ -67,8 +67,8 @@ class AboveTablesController extends Controller
         			->where('p_id',NULL)
 					->defaultOrder()
 					->get(['id','present_address','building','door','no']);
-		
-		return view('above_tables.create_and_edit', compact('above_table','addresses'));
+        $status='edit';
+		return view('above_tables.create_and_edit', compact('above_table','addresses','status'));
 	}
 
 	public function update(AboveTableRequest $request, AboveTable $above_table,ImageUpload $image_upload)

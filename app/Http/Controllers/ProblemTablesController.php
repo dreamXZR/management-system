@@ -66,8 +66,8 @@ class ProblemTablesController extends Controller
         			->where('p_id',NULL)
 					->defaultOrder()
 					->get(['id','present_address','building','door','no']);
-		
-		return view('problem_tables.create_and_edit', compact('problem_table','addresses'));
+        $status='edit';
+		return view('problem_tables.create_and_edit', compact('problem_table','addresses','status'));
 	}
 
 	public function update(ProblemTableRequest $request, ProblemTable $problem_table,ImageUpload $image_upload)

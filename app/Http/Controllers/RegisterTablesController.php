@@ -72,8 +72,8 @@ class RegisterTablesController extends Controller
         			->where('p_id',NULL)
 					->defaultOrder()
 					->get(['id','present_address','building','door','no']);
-		
-		return view('register_tables.create_and_edit', compact('register_table','addresses'));
+        $status='edit';
+		return view('register_tables.create_and_edit', compact('register_table','addresses','status'));
 	}
 
 	public function update(ImageUpload $image_upload,RegisterTableRequest $request, RegisterTable $register_table)
