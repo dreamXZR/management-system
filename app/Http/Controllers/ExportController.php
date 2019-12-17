@@ -195,7 +195,11 @@ class ExportController extends Controller
         $zipper->close();
         //删除
         $this->deldir($dir_name);
-        return response()->download(public_path($name))->deleteFileAfterSend(true);
+        //return response()->download(public_path($name))->deleteFileAfterSend(true);
+        return json_encode([
+                'status'=>true,
+                'url'=>env('APP_URL').'/'.$name
+           ]);
     }
 
     

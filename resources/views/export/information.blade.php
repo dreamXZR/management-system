@@ -217,7 +217,7 @@
                     <td class="xx">{{$v->face}}</td>
                     <td class="xx">{{$v->marriage}}</td>
                   
-                    <td class="xx">{{$v->hobby}}</td>
+                    <td class="xx">{{$v->identity}}</td>
                     <td class="w145">{{$v->id_number}}</td>
                     <td class="w133">
                         <p>

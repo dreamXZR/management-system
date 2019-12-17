@@ -28,7 +28,7 @@
     	<div class="page-body">
 	        <div class="row">
 	            <div class="col-md-6">
-	                <a class="btn btn-link" href="{{ route('informations.index') }}"><i class="glyphicon glyphicon-backward"></i> 返回</a>
+	                <a class="btn btn-link" href="{{ route('informations.index',['page'=>$page]) }}"><i class="glyphicon glyphicon-backward"></i> 返回</a>
 	            </div>
                
 	            <div class="col-md-6">

@@ -32,6 +32,10 @@
             <label for="message-text" class="control-label">户籍所在地:</label>
             <input type="text" class="form-control" name="residence_address">
           </div>
+            <div class="form-group">
+                <label for="message-text" class="control-label">工作单位及职务:</label>
+                <input type="text" class="form-control" name="unit">
+            </div>
           <div class="form-group">
             <label for="message-text" class="control-label">民族:</label>
             <select class="selectpicker form-control" multiple data-live-search="true" name="nation[]">

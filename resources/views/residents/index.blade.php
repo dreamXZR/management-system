@@ -167,9 +167,28 @@
                 </div>
                 <div style="margin-top: 20px;">
                         {!! $residents->appends($select)->render() !!}
-                    </div>
+                    @if(!$select)
+                    <span style="float: right;">
+                        <input type="text" id="skip_page_num" style="width: 63px;">
+                        <button id="skip_page">跳转到</button>
+                    </span>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
 </div>
 @stop
+
+@section('afterJavaScript')
+    <script type="text/javascript">
+        //跳转
+        $('#skip_page').click(function(){
+            let skip_page_num=$('#skip_page_num').val();
+            if(!skip_page_num){
+                skip_page_num=1;
+            }
+            window.location.href="{{env('APP_URL')}}"+"/residents?page="+skip_page_num;
+        });
+    </script>
+@endsection

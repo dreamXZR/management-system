@@ -19,6 +19,7 @@
                     
 {{-- <button type="button" tooltip="添加证明" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('worker_proofs.create')}}'"> <i class="fa fa-plus"></i> 添加证明
 </button> --}}
+                    @include('layouts.export')
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-filter"></i> 数据筛选
 </button>
 <form style="display: inline-block;" method="POST" action="{{route('batch_export')}}" id="export_form">
@@ -123,8 +124,17 @@
             alert('请选择导出信息！');
             return false;
         }
+
+        $('#export_modal_button').click();
         $('#checkID').val(checkID.join(','));
-        $('#export_form').submit();
+        $('#export_form').ajaxSubmit(function(data){
+            var json_data=$.parseJSON(data);
+            if(json_data.status){
+                $('#export_modal_button_close').click();
+                window.location=json_data.url;
+            }
+
+        });
         
     });
 </script>

@@ -2,6 +2,8 @@
 
 namespace App\Libs;
 
+use Illuminate\Http\Request;
+
 class ImageUpload
 {
 	protected $allowed_ext = ["png", "jpg", "gif", 'jpeg'];
@@ -64,4 +66,17 @@ class ImageUpload
 			@unlink($file_path);
 		}
 	}
+
+	//获得存在数据库中的json字符串
+    public function getSaveJson(array $image_path):string
+    {
+        return \json_encode($image_path);
+    }
+
+    //获得更新在数据库中的json字符串
+    public function getUpdateJson(array $image_path,$obj):string
+    {
+
+        return json_merge(\json_encode($image_path),$obj->images);
+    }
 }

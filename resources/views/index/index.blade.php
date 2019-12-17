@@ -86,7 +86,9 @@
                 </div>
             </div>
         </div>
-             
+        <div style="text-align:center;margin: 0 auto; padding-top: 120px;">
+            <img src="{{asset('assets/img/title.png')}}" >
+        </div>
             
         </div>
 

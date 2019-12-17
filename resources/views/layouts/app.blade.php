@@ -36,36 +36,14 @@ Purchase: http://wrapbootstrap.com
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{asset('assets/js/skins.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-2.0.3.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-form.js')}}"></script>
     
     <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
 <body>
-    <!-- Loading Container -->
-    <!-- <div class="loading-container">
-        <div class="loading-progress">
-            <div class="rotator">
-                <div class="rotator">
-                    <div class="rotator colored">
-                        <div class="rotator">
-                            <div class="rotator colored">
-                                <div class="rotator colored"></div>
-                                <div class="rotator"></div>
-                            </div>
-                            <div class="rotator colored"></div>
-                        </div>
-                        <div class="rotator"></div>
-                    </div>
-                    <div class="rotator"></div>
-                </div>
-                <div class="rotator"></div>
-            </div>
-            <div class="rotator"></div>
-        </div>
-    </div> -->
-    <!--  /Loading Container -->
-    <!-- Navbar -->
+
     @include('layouts._header')
     <!-- /Navbar -->
     <!-- Main Container -->
@@ -94,22 +72,7 @@ Purchase: http://wrapbootstrap.com
 
     @include('shared._messages')
 
-    <!--Page Related Scripts-->
-    <!--Sparkline Charts Needed Scripts-->
-   <!--  <script src="assets/js/charts/sparkline/jquery.sparkline.js"></script>
-    <script src="assets/js/charts/sparkline/sparkline-init.js"></script>
- -->
-    <!--Easy Pie Charts Needed Scripts-->
-   <!--  <script src="assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
-    <script src="assets/js/charts/easypiechart/easypiechart-init.js"></script>
- -->
-    <!--Flot Charts Needed Scripts-->
-    <!-- <script src="assets/js/charts/flot/jquery.flot.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.resize.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.pie.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
- -->
+
     <script type="text/javascript">
         $(document).ready(function(){
             var total=<?php
@@ -118,7 +81,72 @@ Purchase: http://wrapbootstrap.com
                     ?>;
             $('.total').text(total);
         });
-    
+
+
+        // 初始化多图上传
+        function init_multiple(id,initialPreview,initialPreviewConfig,folder)
+        {
+
+            $('#'+id).fileinput('destroy');
+            $('#'+id).fileinput({
+                language: 'zh',
+                allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
+                uploadAsync: true, //默认异步上传
+                showUpload: true, //是否显示上传按钮
+                uploadUrl: "{{config('app.url')}}"+"/images_save?folder="+folder,
+                maxFileCount: 10,
+                initialPreview: initialPreview,
+                showType:'detail',
+                overwriteInitial: false,
+                initialPreviewConfig: initialPreviewConfig,
+                showRemove :false,
+                showClose:false,
+                layoutTemplates:{
+                    actionDelete:''
+                }
+
+            });
+        }
+        // 修改初始化多图上传
+        function init_multiple_update(id,initialPreview,initialPreviewConfig,folder)
+        {
+
+            $('#'+id).fileinput('destroy');
+            $('#'+id).fileinput({
+                language: 'zh',
+                allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
+                uploadAsync: true, //默认异步上传
+                showUpload: true, //是否显示上传按钮
+                uploadUrl: "{{config('app.url')}}"+"/images_save?folder="+folder,
+                maxFileCount: 10,
+                initialPreview: initialPreview,
+                showType:'detail',
+                overwriteInitial: false,
+                initialPreviewConfig: initialPreviewConfig,
+                showRemove :false,
+                showClose:false,
+
+            });
+        }
+        //ajax 获得资源初始化多图
+        function get_images(id,url,folder)
+        {
+
+            $.ajax({
+                type:'GET',
+                url:url,
+                success:function(res){
+                    if(res){
+
+                        init_multiple_update(id,res.images,res.delete,folder);
+                    }else{
+                        init_multiple_update(id,[],[],folder);
+                    }
+
+                }
+            })
+        }
+
     </script>
     @yield('afterJavaScript')
 </body>

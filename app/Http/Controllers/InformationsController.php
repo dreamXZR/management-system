@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Models\Information;
 use App\Models\Handicapped;
 use App\Models\Resident;
@@ -14,19 +15,24 @@ class InformationsController extends Controller
 {
     public function index(Request $request)
     {
+        $page=$request->page ?? 1;
         $informations=Information::filter($request->all())->paginate(30);
-    	return view('informations.index',compact('informations'));
+        $select=$request->except('page');
+    	return view('informations.index',compact('informations','page','select'));
     }
 
     public function create(Information $information,Resident $resident)
     {
     	$mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
     	$tags=Tag::all()->pluck('title');
-    	return view('informations.create',compact('mzs','information','resident','tags'));
+    	$page=request('page');
+    	return view('informations.create',compact('mzs','information','resident','tags','page'));
     }
 
     public function store(Request $request)
     {
+        //清除缓存
+        Redis::command('del',['address']);
         //信息卡数据
         $information_data=$request->except(['handicappeds','residents']);
 
@@ -52,26 +58,33 @@ class InformationsController extends Controller
                 $information->handicappeds()->save($handicapped);
             }
         }
+
+        $page=request('page');
         session()->flash('success','添加成功');
         return response()->json([
             'status'=>true,
             'message'=>'添加成功',
             'information_id'=>$information->id,
+            'page'=>$page
         ]);
         
     }
 
     public function edit(Information $information,Resident $resident)
     {
+//        //清除缓存
+//        Redis::command('del',['address']);
         $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $id=$information->id;
         $tags=Tag::all()->pluck('title');
-        
-        return view('informations.edit',compact('mzs','id','information','resident','tags'));
+        $page=request('page');
+        return view('informations.edit',compact('mzs','id','information','resident','tags','page'));
     }
 
     public function update(Request $request,Information $information)
     {
+        //清除缓存
+        Redis::command('del',['address']);
         //信息卡更新
         $information->update($request->except(['handicappeds','residents']));
 
@@ -109,16 +122,20 @@ class InformationsController extends Controller
         }
 
         session()->flash('success','更新成功');
+        $page=request('page');
          return response()->json([
             'status'=>true,
             'message'=>'更新成功',
-            'information_id'=>$information->id
+            'information_id'=>$information->id,
+             'page'=>$page
         ]);
     }
 
     
     public function destroy(Information $information)
     {
+        //清除缓存
+        Redis::command('del',['address']);
         $information->delete();
 
         return redirect()->route('informations.index')->with('success', '删除成功');
@@ -138,8 +155,10 @@ class InformationsController extends Controller
         $problem_tables=$information->problem_tables()->paginate(10);
         //所属历史记录
         $historys=Information::whereIn('id',$information->historyIds($information->id))->paginate(10);
+
+        $page=request('page');
         
-        return view('informations.show',compact('information','handicappeds','residents','register_tables','above_tables','problem_tables','historys'));
+        return view('informations.show',compact('information','handicappeds','residents','register_tables','above_tables','problem_tables','historys','page'));
     }
 
     
@@ -159,6 +178,7 @@ class InformationsController extends Controller
 
     public function replace_information(Request $request)
     {
+
         $information_id=$request->information_id;
         
         $new_information_id=$this->replace($information_id);
@@ -174,6 +194,9 @@ class InformationsController extends Controller
     {
         DB::beginTransaction();
         if($information=Information::find($information_id)){
+
+            //清除缓存
+            Redis::command('del',['address']);
             
             $new_information=Information::create([
                 'present_address'=>$information->present_address,

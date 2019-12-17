@@ -2,6 +2,8 @@
 
 
 use App\Models\Information;
+use App\Models\RegisterTable;
+use Illuminate\Support\Facades\Redis;
 
 //生成单号
 
@@ -46,10 +48,10 @@ function json_merge($json1,$json2)
 	$arr2=[];
 	
 	if($json1){
-		$arr1=json_decode($json1);
+		$arr1=array_filter(json_decode($json1,true));
 	}
 	if($json2){
-		$arr2=json_decode($json2);
+		$arr2=array_filter(json_decode($json2,true));
 	}
 	
 	
@@ -97,4 +99,47 @@ function getLiabilityStr($ids)
 		$data[]=$v->all_present_address;
 	}
 	return implode(',', $data);
+}
+
+//居民类别
+function resident_type_format($value)
+{
+    $data=[];
+    $value=explode(',', $value);
+
+
+
+    foreach ($value as $v){
+        if($v!=''){
+            $data[]=RegisterTable::$resident_type_map[$v];
+        }
+
+    }
+
+    return implode(',', $data);
+}
+
+//获得所有居民地址
+function get_addresses()
+{
+    $data=Redis::get('address');
+    if($data){
+        return json_decode($data,true);
+    }else{
+        $addresses=Information::where('id','>',0)
+            ->where('p_id',NULL)
+            ->defaultOrder()
+            ->get(['id','present_address','building','door','no'])->toArray();
+
+        $data=[];
+        foreach ($addresses as $k=>$v){
+            $data[]=[
+                'id'=>$v['id'],
+                'address'=>$v['present_address'].'庭苑'.$v['building'].'-'.$v['door'].'-'.$v['no']
+            ];
+        }
+        Redis::set('address',json_encode($data));
+        return $data;
+    }
+
 }

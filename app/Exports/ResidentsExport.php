@@ -79,6 +79,11 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
               $build->whereBetween('birthday',[$select->time_start,$select->time_end]);
             }
           break;
+          case 'relationship':
+              if($v){
+                  $build->where('relationship',$v);
+              }
+              break;
         }
       }
       $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no');
@@ -87,13 +92,17 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
 
     public function map($resident): array
     {
+
         return [
            $resident->name,
            ' '.$resident->id_number,
            $resident->information->present_address.'庭苑  '.$resident->information->building.' - '.$resident->information->door.' - '.$resident->information->no,
+            $resident->residence_address,
+            $resident->information->residence_status,
            $resident->sex,
            $resident->nation,
            $resident->birthday,
+           $resident->relationship,
            $resident->culture,
            $resident->face,
            $resident->marriage,
@@ -105,15 +114,20 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
         ];
     }
 
+    
+
     public function headings(): array
     {
         return [
             '姓名',
             '身份证号',
             '现居住地址',
+            '户籍所在地',
+            '户籍性质',
             '性别',
             '民族',
             '生日',
+            '与户主关系',
             '文化程度',
             '政治面貌',
             '婚姻状况',

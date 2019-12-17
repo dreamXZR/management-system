@@ -31,10 +31,7 @@ class AboveTablesController extends Controller
 
 	public function create(AboveTable $above_table,Request $request)
 	{
-		$addresses=Information::where('id','>',0)
-        			->where('p_id',NULL)
-					->defaultOrder()
-					->get(['id','present_address','building','door','no']);
+        $addresses=get_addresses();
 		
 		$information_id=$request->information_id;
         $information=Information::find($information_id);
@@ -45,11 +42,8 @@ class AboveTablesController extends Controller
 	public function store(AboveTableRequest $request,ImageUpload $image_upload)
 	{
 		$post_data=$request->except('images');
-		//上传图片
-		if($request->images){
-			
-			$post_data['images']=$image_upload->save($request->images,'above_tables');
-		}
+        //上传图片
+        $post_data['images']=$image_upload->getSaveJson($request->image_path ?? []);
 		
 		//生成编号
 		$post_data['number']=create_number();
@@ -63,10 +57,7 @@ class AboveTablesController extends Controller
 	public function edit(AboveTable $above_table)
 	{
         //$this->authorize('update', $above_table);
-       $addresses=Information::where('id','>',0)
-        			->where('p_id',NULL)
-					->defaultOrder()
-					->get(['id','present_address','building','door','no']);
+        $addresses=get_addresses();
         $status='edit';
 		return view('above_tables.create_and_edit', compact('above_table','addresses','status'));
 	}
@@ -76,12 +67,10 @@ class AboveTablesController extends Controller
 		//$this->authorize('update', $above_table);
 		$post_data=$request->except('images');
 		//更新图片
-		if($request->images){
-			
-			$post_data['images']=json_merge($image_upload->update($request->images,'above_tables'),$above_table->images);
-			
-		}
-		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
+        //更新图片
+        $post_data['images']=$image_upload->getUpdateJson($request->image_path ?? [],$above_table);
+
+        $post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		

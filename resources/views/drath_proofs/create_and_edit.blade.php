@@ -153,11 +153,17 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">图片上传:</label>
                             <div class="col-sm-6">
-                                <input class="file form-control"  placeholder="" name="images[]"  type="file"  id="img" multiple>
+                                <input class="file form-control"  placeholder="" name="images"  type="file"  id="img" multiple>
                             </div>
                             
                         </div>
-                        
+                        <div class="form-group">
+
+                            <div class="col-sm-6" id="image_paths">
+                                {{--<input name="image_path[]"  type="hidden" >--}}
+                            </div>
+
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-lg btn-primary">保存信息</button>
@@ -187,22 +193,32 @@
         
     });
 </script>
-{{-- fileput --}}
-<link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
-<script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
-<script src="{{asset('assets/fileput/zh.js')}}"></script>
-<script src="{{asset('assets/fileput/slef.js')}}"></script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    @if($drath_proof->id)
-       get_images('img',"{{route('images.index',['model'=>'drath_proofs-'.$drath_proof->id])}}");
-    @else
-        init_multiple('img',[],[]);
-    @endif
-</script>
 
+@endsection
+
+{{-- fileput --}}
+@section('afterJavaScript')
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/fileput/fileinput.min.css')}}">
+    <script src="{{asset('assets/fileput/fileinput.min.js')}}"></script>
+    <script src="{{asset('assets/fileput/zh.js')}}"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        @if($drath_proof->id)
+        get_images('img',"{{route('images.index',['model'=>'drath_proofs-'.$drath_proof->id])}}","death_proofs");
+        @else
+        init_multiple('img',[],[],"death_proofs");
+        @endif
+        $('#img').on("fileuploaded",function(event, data, previewId, index){
+            var path=data.response.path;
+            var html_str='<input name="image_path[]"  type="hidden" value="'+path+'">';
+            $("#image_paths").append(html_str);
+
+
+        });
+    </script>
 @endsection

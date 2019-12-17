@@ -8,6 +8,22 @@
       <div class="modal-body">
         <form method="get" action="{{route('informations.index')}}" id="form1">
           <div class="form-group">
+            <label for="recipient-name" class="control-label">小区名称:</label>
+            <input type="text" class="form-control" name="present_address">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">楼:</label>
+            <input type="text" class="form-control" name="building">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">门:</label>
+            <input type="text" class="form-control" name="door">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">户:</label>
+            <input type="text" class="form-control" name="no">
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="control-label">姓名:</label>
             <input type="text" class="form-control" name="name">
           </div>

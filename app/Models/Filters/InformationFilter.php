@@ -29,4 +29,19 @@ class InformationFilter extends ModelFilter
         return $this->whereLike('present_address',$value);
     }
 
+    public function building($value)
+    {
+        return $this->where('building',$value);
+    }
+
+    public function door($value)
+    {
+        return $this->where('door',$value);
+    }
+
+    public function no($value)
+    {
+        return $this->where('no',$value);
+    }
+
 }

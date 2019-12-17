@@ -30,14 +30,13 @@ class WorkerProofsController extends Controller
 		return view('worker_proofs.create_and_edit', compact('worker_proof'));
 	}
 
-	public function store(WorkerProofRequest $request,ImageUpload $imgage_upload)
+	public function store(WorkerProofRequest $request,ImageUpload $image_upload)
 	{
 		$post_data=$request->except('images');
+
 		//上传图片
-		if($request->images){
-			
-			$post_data['images']=$imgage_upload->save($request->images,'worker_proofs');
-		}
+        $post_data['images']=$image_upload->getSaveJson($request->image_path ?? []);
+
 		//生成编号
 		//$post_data['number']=create_number();
 		
@@ -55,11 +54,11 @@ class WorkerProofsController extends Controller
 	{
 		// $this->authorize('update', $worker_proof);
 		$post_data=$request->except('images');
+
 		//更新图片
-		if($request->images){
-			
-			$post_data['images']=json_merge($image_upload->update($request->images,'worker_proofs'),$worker_proof->images);
-		}
+        $post_data['images']=$image_upload->getUpdateJson($request->image_path ?? [],$worker_proof);
+
+
 
 		$worker_proof->update($post_data);
 

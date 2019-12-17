@@ -32,10 +32,7 @@ class ProblemTablesController extends Controller
 
 	public function create(ProblemTable $problem_table,Request $request)
 	{
-		$addresses=Information::where('id','>',0)
-        			->where('p_id',NULL)
-					->defaultOrder()
-					->get(['id','present_address','building','door','no']);
+        $addresses=get_addresses();
 		
 		$information_id=$request->information_id;
         $information=Information::find($information_id);
@@ -46,11 +43,8 @@ class ProblemTablesController extends Controller
 	public function store(ProblemTableRequest $request,ImageUpload $image_upload)
 	{
 		$post_data=$request->except('images');
-		//上传图片
-		if($request->images){
-			
-			$post_data['images']=$image_upload->save($request->images,'problem_tables');
-		}
+        //上传图片
+        $post_data['images']=$image_upload->getSaveJson($request->image_path ?? []);
 		
 		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
@@ -62,10 +56,7 @@ class ProblemTablesController extends Controller
 	public function edit(ProblemTable $problem_table)
 	{
         //$this->authorize('update', $problem_table);
-        $addresses=Information::where('id','>',0)
-        			->where('p_id',NULL)
-					->defaultOrder()
-					->get(['id','present_address','building','door','no']);
+        $addresses=get_addresses();
         $status='edit';
 		return view('problem_tables.create_and_edit', compact('problem_table','addresses','status'));
 	}
@@ -74,13 +65,10 @@ class ProblemTablesController extends Controller
 	{
 		//$this->authorize('update', $problem_table);
 		$post_data=$request->except('images');
-		//更新图片
-		if($request->images){
-			
-			$post_data['images']=json_merge($image_upload->update($request->images,'problem_tables'),$problem_table->images);
-			
-		}
-		$post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
+        //更新图片
+        $post_data['images']=$image_upload->getUpdateJson($request->image_path ?? [],$problem_table);
+
+        $post_data['main']=!empty($post_data['main']) ? implode(',', $post_data['main']) : '';
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$problem_table->update($post_data);

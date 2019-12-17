@@ -46,14 +46,11 @@ class LetterProofsController extends Controller
 		return view('letter_proofs.create_and_edit', compact('letter_proof','resident','information','status','length'));
 	}
 
-	public function store(LetterProofRequest $request,ImageUpload $imgage_upload)
+	public function store(LetterProofRequest $request,ImageUpload $image_upload)
 	{
 		$post_data=$request->except('images');
 		//上传图片
-		if($request->images){
-			
-			$post_data['images']=$imgage_upload->save($request->images,'letter_proofs');
-		}
+        $post_data['images']=$image_upload->getSaveJson($request->image_path ?? []);
 		
 		//生成编号
 		$post_data['number']=create_number();
@@ -77,10 +74,7 @@ class LetterProofsController extends Controller
 		// $this->authorize('update', $letter_proof);
 		$post_data=$request->except('images');
 		//更新图片
-		if($request->images){
-			
-			$post_data['images']=json_merge($image_upload->update($request->images,'letter_proofs'),$letter_proof->images);
-		}
+        $post_data['images']=$image_upload->getUpdateJson($request->image_path ?? [],$letter_proof);
 
 		
 		

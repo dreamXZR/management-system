@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function(){
 	//图片相关
 	Route::get('images','ImagesController@index')->name('images.index');
 	Route::post('images','ImagesController@destroy')->name('images.destroy');
+	Route::any('images_save','ImagesController@save')->name('images.save');
 	//导出相关
 	Route::post('excel_export','ResidentsController@export')->name('residents.export');
 

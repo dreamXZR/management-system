@@ -71,6 +71,11 @@ class ResidentFilter extends ModelFilter
         return $this->where('relationship',$value);
     }
 
+    public function unit($value)
+    {
+        return $this->whereLike('unit',$value);
+    }
+
     public function setup()
     {
         return $this->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no');

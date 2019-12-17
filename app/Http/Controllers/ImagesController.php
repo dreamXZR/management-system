@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Libs\ImageUpload;
 
 class ImagesController extends Controller
 {
@@ -12,6 +13,12 @@ class ImagesController extends Controller
 	{
 		$this->app_url=env('APP_URL');
 	}
+
+	public function save(Request $request,ImageUpload $imageUpload)
+    {
+        $folder=$request->folder;
+        return $imageUpload->single($request->images,$folder);
+    }
     
     public function index(Request $request)
     {

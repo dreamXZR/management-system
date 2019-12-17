@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
@@ -15,8 +16,8 @@
 
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-<button type="button" tooltip="添加证明" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('informations.create')}}'"> <i class="fa fa-plus"></i> 添加信息
+                    @include('layouts.export')
+<button type="button" tooltip="添加证明" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{{route('informations.create',['page'=>$page])}}'"> <i class="fa fa-plus"></i> 添加信息
 </button>
 <button type="button" tooltip="数据筛选" class="btn btn-sm btn-azure btn-addon"  data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-filter"></i> 数据筛选
 </button>
@@ -52,11 +53,11 @@
                                 
                                 
                                 <td align="center">
-                                    <a class="btn btn-xs btn-primary" href="{{route('informations.show',$info->id)}}">
+                                    <a class="btn btn-xs btn-primary" href="{{route('informations.show',$info->id).'?page='.$page}}">
                                         <i class="glyphicon glyphicon-eye-open"></i> 
                                     </a>
                                     
-                                    <a class="btn btn-xs btn-warning" href="{{route('informations.edit',$info->id)}}">
+                                    <a class="btn btn-xs btn-warning" href="{{route('informations.edit',$info->id).'?page='.$page}}">
                                         <i class="glyphicon glyphicon-edit"></i> 
                                     </a>
 									 @can('del_info')
@@ -79,12 +80,13 @@
                         </tbody>
                     </table>
                     <div style="margin-top: 20px;">
-                       {!! $informations->render() !!}
+                       {!! $informations->appends($select)->render() !!}
+                        @if(!$select)
                         <span style="float: right;">
                             <input type="text" id="skip_page_num" style="width: 63px;">
                             <button id="skip_page">跳转到</button>
                         </span>
-
+                        @endif
                     </div>
                     
                 </div>
@@ -125,8 +127,18 @@
             alert('请选择导出信息！');
             return false;
         }
+
+        $('#export_modal_button').click();
         $('#checkID').val(checkID.join(','));
-        $('#export_form').submit();
+        
+        $('#export_form').ajaxSubmit(function(data){
+            var json_data=$.parseJSON(data);
+            if(json_data.status){
+                $('#export_modal_button_close').click();
+                window.location=json_data.url;
+            }
+
+        });
         
     });
 
@@ -136,7 +148,7 @@
         if(!skip_page_num){
             skip_page_num=1;
         }
-        window.location.href="http://www.juweihuiguanli.top/informations?page="+skip_page_num;
+        window.location.href="{{env('APP_URL')}}"+"/informations?page="+skip_page_num;
     });
 </script>
 @endsection

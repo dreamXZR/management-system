@@ -499,6 +499,7 @@
                     alert('请填写现居住地详细地址');
                     return false;
                 }
+
                 var data={
                      present_address:this.present_address,
                      building:this.building,
@@ -511,7 +512,8 @@
                      situation:this.situation,
                      other:this.other,
                      handicappeds:this.handicappeds,
-                     residents:this.residents
+                     residents:this.residents,
+                     page:{{$page}},
                 };
                 $.ajax({
                     type:'POST',
@@ -523,7 +525,7 @@
                     data:data,
                     success:function(res){
                         if(res.status){
-                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id;
+                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id+'?page='+res.page;
                         }
                     }
                 })

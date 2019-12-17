@@ -36,10 +36,15 @@ Purchase: http://wrapbootstrap.com
 <!--Head Ends-->
 <!--Body-->
 <body>
+    <div style="text-align:center;margin: 0 auto; padding-top: 70px;">
+        <img src="{{asset('assets/img/title.png')}}" >
+    </div>
+
     <div class="login-container animated fadeInDown">
          @include('shared._messages')
          @include('shared._errors')
-        <div class="loginbox bg-white">
+
+        <div class="loginbox bg-white" style="height: 258px!important;">
             <div class="loginbox-title">登陆</div>
             
             <form method="POST" action="{{route('login')}}">

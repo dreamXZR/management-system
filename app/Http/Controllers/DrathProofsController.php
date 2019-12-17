@@ -29,15 +29,12 @@ class DrathProofsController extends Controller
 		return view('drath_proofs.create_and_edit', compact('drath_proof'));
 	}
 
-	public function store(ImageUpload $imgage_upload, DrathProofRequest $request)
+	public function store(ImageUpload $image_upload, DrathProofRequest $request)
 	{
 		
 		$post_data=$request->except('images');
-		//上传图片
-		if($request->images){
-			
-			$post_data['images']=$imgage_upload->save($request->images,'drath_proofs');
-		}
+        //上传图片
+        $post_data['images']=$image_upload->getSaveJson($request->image_path ?? []);
 		
 		//生成编号
 		$post_data['number']=create_number();
@@ -57,12 +54,8 @@ class DrathProofsController extends Controller
 	{
 		// $this->authorize('update', $drath_proof);
 		$post_data=$request->except('images');
-		//更新图片
-		if($request->images){
-			
-			$post_data['images']=json_merge($image_upload->update($request->images,'drath_proofs'),$drath_proof->images);
-			
-		}
+        //更新图片
+        $post_data['images']=$image_upload->getUpdateJson($request->image_path ?? [],$drath_proof);
 		
 		$drath_proof->update($post_data);
 		

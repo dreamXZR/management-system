@@ -44,6 +44,10 @@
                                     <td>{{ $register_table->name }}</td>        
                                 </tr>
                                 <tr>
+                                    <td>居民类别:</td>
+                                    <td>{{resident_type_format($register_table->resident_type) }}</td>
+                                </tr>
+                                <tr>
                                     <td>来电时间:</td>
                                     <td>{{ $register_table->call_time }}</td>        
                                 </tr>
@@ -66,7 +70,7 @@
                                     <td>{{ $register_table->phone}}</td>        
                                 </tr>
                                 <tr>
-                                    <td>来电主要内容:</td>
+                                    <td>来电来访主要内容:</td>
                                     <td>{{ $register_table->call_content}}</td>        
                                 </tr>
                                 <tr>

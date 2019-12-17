@@ -24,7 +24,7 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">修改证明</span>
+                <span class="widget-caption">修改信息卡</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
@@ -35,36 +35,36 @@
                         
                         
                         
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">现居住地址:</label>
-                            <div class="col-sm-6">
-                                <div class='radio' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="radio"   v-model="present_address" value="陶然" class="colored-blue">
-                                        <span class="text">陶然</span>
-                                    </label>
-                                </div>
-                               <div class='radio' style="float: left;padding-right: 10px;">
-                                    <label>
-                                        <input type="radio" v-model="present_address" value="怡然" class="colored-blue">
-                                        <span class="text">怡然</span>
-                                    </label>
-                                </div>
-                                
-                                
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right"></label>
-                             <div class="col-sm-6">
-                                <input class="form-control"  placeholder="" type="text" v-model="building" style="width: 70px;display: inline-block;margin-left: 20px;">楼&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input class="form-control"  placeholder="" type="text" v-model="door" style="width: 70px;display: inline-block;">门&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input class="form-control"  placeholder="" type="text" v-model="no" style="width: 70px;display: inline-block;">户
-                                
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label for="username" class="col-sm-2 control-label no-padding-right">现居住地址:</label>--}}
+                            {{--<div class="col-sm-6">--}}
+                                {{--<div class='radio' style="float: left;padding-right: 10px;">--}}
+                                    {{--<label>--}}
+                                        {{--<input type="radio"   v-model="present_address" value="陶然" class="colored-blue">--}}
+                                        {{--<span class="text">陶然</span>--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
+                               {{--<div class='radio' style="float: left;padding-right: 10px;">--}}
+                                    {{--<label>--}}
+                                        {{--<input type="radio" v-model="present_address" value="怡然" class="colored-blue">--}}
+                                        {{--<span class="text">怡然</span>--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
+                                {{----}}
+                                {{----}}
+                            {{--</div>--}}
+                            {{--<p class="help-block col-sm-4 red">* 必填</p>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label for="username" class="col-sm-2 control-label no-padding-right"></label>--}}
+                             {{--<div class="col-sm-6">--}}
+                                {{--<input class="form-control"  placeholder="" type="text" v-model="building" style="width: 70px;display: inline-block;margin-left: 20px;">楼&nbsp;&nbsp;&nbsp;&nbsp;--}}
+                                {{--<input class="form-control"  placeholder="" type="text" v-model="door" style="width: 70px;display: inline-block;">门&nbsp;&nbsp;&nbsp;&nbsp;--}}
+                                {{--<input class="form-control"  placeholder="" type="text" v-model="no" style="width: 70px;display: inline-block;">户--}}
+                                {{----}}
+                            {{--</div>--}}
+                            {{--<p class="help-block col-sm-4 red">* 必填</p>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">户籍性质:</label>
                             <div class="col-sm-6">
@@ -542,7 +542,8 @@
                      situation:this.situation,
                      other:this.other,
                      handicappeds:this.handicappeds,
-                     residents:this.residents
+                     residents:this.residents,
+                    page:{{$page}},
                 };
                 
                 $.ajax({
@@ -556,7 +557,7 @@
                     success:function(res){
 
                         if(res.status){
-                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id;
+                            window.location.href="{{env('APP_URL')}}" + '/informations/'+res.information_id+'?page='+res.page;
                         }
                     }
                 })
@@ -635,7 +636,7 @@
                     that.house_status=info.house_status.split(',');
                     that.people=info.people.split(',');
                     that.situation=info.situation;
-                    that.other=info.other,
+                    that.other=info.other;
                     
                     that.handicappeds=res.handicappeds;
                     that.residents=res.residents;
