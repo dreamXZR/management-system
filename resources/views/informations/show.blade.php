@@ -33,7 +33,7 @@
                
 	            <div class="col-md-6">
 
-	                 <a class="btn btn-sm btn-warning pull-right" href="{{ route('informations.edit',$information->id) }}">
+	                 <a class="btn btn-sm btn-warning pull-right" href="{{ route('informations.edit',['id'=>$information->id,'page'=>$page]) }}">
 	                    <i class="glyphicon glyphicon-edit"></i> 修改
 	                </a>
                     <a class="btn btn-sm btn-success pull-right" href="{{ route('export', ['type'=>'information','id'=>$information->id]) }}" style="margin-right:15px;">

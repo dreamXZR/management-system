@@ -14,7 +14,7 @@ class ResidentFilter extends ModelFilter
 
     public function name($value)
     {
-    	return $this->where('name',$value);
+    	return $this->whereLike('name',$value);
     }
 
     // public function phone($value)
@@ -69,6 +69,11 @@ class ResidentFilter extends ModelFilter
     public function relationship($value)
     {
         return $this->where('relationship',$value);
+    }
+
+    public function phone($value)
+    {
+        return $this->where('phone',$value);
     }
 
     public function unit($value)

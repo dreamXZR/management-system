@@ -83,6 +83,7 @@ class InformationsController extends Controller
 
     public function update(Request $request,Information $information)
     {
+
         //清除缓存
         Redis::command('del',['address']);
         //信息卡更新

@@ -7,6 +7,7 @@ use App\Models\RegisterTable;
 use App\Models\Information;
 use App\Models\Resident;
 use App\Models\LetterProof;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
@@ -25,6 +26,10 @@ class IndexController extends Controller
     public function unfinish(RegisterTable $register)
     {
     	$register_tables=RegisterTable::where('is_finish',0)->paginate(10);
-    	return view('index.unfinish',compact('register_tables'));
+
+    	$unfinish_count=RegisterTable::where('is_finish',0)->count();
+        Cache::forever('unfinsish_num',$unfinish_count);
+
+        return view('index.unfinish',compact('register_tables'));
     }
 }

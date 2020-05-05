@@ -15,6 +15,10 @@
             <label for="recipient-name" class="control-label">身份证:</label>
             <input type="text" class="form-control" name="id_number">
           </div>
+        <div class="form-group">
+            <label for="recipient-name" class="control-label">电话:</label>
+            <input type="text" class="form-control" name="phone">
+        </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">与户主关系:</label>
             {{-- <select class="selectpicker form-control" multiple data-live-search="true" name="relationship[]">

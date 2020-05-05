@@ -28,8 +28,7 @@ trait balanceUnfinish
      * */
     public function calculateTotal()
     {
-        $registers=RegisterTable::where('is_finish',0)->pluck('id')->toArray();
-        return count($registers);
+        return RegisterTable::where('is_finish',0)->count();
     }
 
     /*

@@ -35,7 +35,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
         switch ($k) {
           case 'name':
             if($v){
-              $build->where('name',$v);
+              $build->where('name','like','%'.$v.'%');
             }  
           break;
           case 'id_number':
@@ -43,6 +43,11 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
               $build->where('id_number',$v);
             }
           break;
+          case 'phone':
+            if($v){
+                $build->where('phone',$v);
+            }
+            break;
           case 'present_address':
             if($v){
               $build->where('present_address',$v);
@@ -86,7 +91,32 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
               break;
         }
       }
-      $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no');
+        $flied = [
+            'residents.id',
+            'residents.information_id',
+            'residents.name',
+            'information.present_address',
+            'information.building',
+            'information.door',
+            'information.no',
+            'residents.residence_address',
+            'information.residence_status',
+            'residents.relationship',
+            'residents.sex',
+            'residents.nation',
+            'residents.birthday',
+            'residents.culture',
+            'residents.face',
+            'residents.marriage',
+            'residents.identity',
+            'residents.id_number',
+            'residents.phone',
+            'residents.hobby',
+            'residents.unit',
+            'residents.tag',
+            'residents.other',
+        ];
+      $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no')->select($flied);
     	return $build;
     }
 
@@ -110,7 +140,8 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
            $resident->unit,
            $resident->phone,
            $resident->hobby,
-           $resident->other
+            $resident->information->other,
+           $resident->other,
         ];
     }
 
@@ -135,7 +166,8 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
             '工作单位',
             '联系电话',
             '特长',
-            '备注'
+            '户备注',
+            '人备注'
 
         ];
     }

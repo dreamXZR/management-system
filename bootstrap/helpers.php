@@ -122,7 +122,7 @@ function resident_type_format($value)
 //获得所有居民地址
 function get_addresses()
 {
-    $data=Redis::get('address');
+    $data=\Illuminate\Support\Facades\Cache::get('address');
     if($data){
         return json_decode($data,true);
     }else{
@@ -138,7 +138,7 @@ function get_addresses()
                 'address'=>$v['present_address'].'庭苑'.$v['building'].'-'.$v['door'].'-'.$v['no']
             ];
         }
-        Redis::set('address',json_encode($data));
+        \Illuminate\Support\Facades\Cache::set('address',json_encode($data));
         return $data;
     }
 
