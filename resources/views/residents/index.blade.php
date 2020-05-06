@@ -37,7 +37,15 @@
                                 <th scope="col">
                                     姓名
                                 </th>
-                                
+                                <th scope="col">
+                                    性别
+                                </th>
+                                <th scope="col">
+                                    年龄
+                                </th>
+                                <th scope="col">
+                                    身份证号码
+                                </th>
                                 <th scope="col">
                                     现居住地
                                 </th>
@@ -52,9 +60,7 @@
                                 <th scope="col">
                                     与户主关系
                                 </th>
-                                <th scope="col">
-                                    性别
-                                </th>
+
                                 <th scope="col">
                                     民族
                                 </th>
@@ -73,9 +79,7 @@
                                 <th scope="col">
                                     身份类别
                                 </th>
-                                <th scope="col">
-                                    身份证号码
-                                </th>
+
                                 <th scope="col">
                                     联系电话
                                 </th>
@@ -102,7 +106,15 @@
                                 <td>
                                    {{$resident->name}}
                                 </td>
-                               
+                                <td>
+                                    {{$resident->sex}}
+                                </td>
+                                <td>
+                                    {{$resident->age}}
+                                </td>
+                                <td>
+                                    {{$resident->id_number}}
+                                </td>
                                 <td>
                                     {{$resident->information->present_address}}庭苑&nbsp;&nbsp;{{$resident->information->building}}&nbsp;-&nbsp;{{$resident->information->door}}&nbsp;-&nbsp;{{$resident->information->no}}
                                 </td>
@@ -117,9 +129,7 @@
                                 <td>
                                     {{$resident->relationship}}
                                 </td>
-                                <td>
-                                    {{$resident->sex}}
-                                </td>
+
                                 <td>
                                     {{$resident->nation}}
                                 </td>
@@ -138,9 +148,7 @@
                                 <td>
                                     {{$resident->identity}}
                                 </td>
-                                <td>
-                                    {{$resident->id_number}}
-                                </td>
+
                                 <td>
                                     {{$resident->phone}}
                                 </td>

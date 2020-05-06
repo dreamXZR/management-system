@@ -9,7 +9,7 @@ Purchase: http://wrapbootstrap.com
 <!--Head-->
 <head>
     <meta charset="utf-8" />
-    <title>系统登陆</title>
+    <title>居委会系统登陆</title>
 
     <meta name="description" content="login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
