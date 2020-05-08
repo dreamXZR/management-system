@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Information;
 use App\Models\Handicapped;
@@ -32,7 +33,7 @@ class InformationsController extends Controller
     public function store(Request $request)
     {
         //清除缓存
-        Redis::command('del',['address']);
+        Cache::pull('address');
         //信息卡数据
         $information_data=$request->except(['handicappeds','residents']);
 
@@ -73,7 +74,7 @@ class InformationsController extends Controller
     public function edit(Information $information,Resident $resident)
     {
 //        //清除缓存
-//        Redis::command('del',['address']);
+//        Cache::pull('address');
         $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $id=$information->id;
         $tags=Tag::all()->pluck('title');
@@ -85,7 +86,7 @@ class InformationsController extends Controller
     {
 
         //清除缓存
-        Redis::command('del',['address']);
+        Cache::pull('address');
         //信息卡更新
         $information->update($request->except(['handicappeds','residents']));
 
@@ -136,7 +137,7 @@ class InformationsController extends Controller
     public function destroy(Information $information)
     {
         //清除缓存
-        Redis::command('del',['address']);
+        Cache::pull('address');
         $information->delete();
 
         return redirect()->route('informations.index')->with('success', '删除成功');
@@ -197,7 +198,7 @@ class InformationsController extends Controller
         if($information=Information::find($information_id)){
 
             //清除缓存
-            Redis::command('del',['address']);
+            Cache::pull('address');
             
             $new_information=Information::create([
                 'present_address'=>$information->present_address,

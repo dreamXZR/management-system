@@ -448,10 +448,13 @@
             add_resident_info:function(){
                 //验证
                 if(this.resident_validate(this.resident)){
-                    //获得性别、出生年月
-                    var info=this.id_number_format(this.resident.id_number);
-                    //this.resident.sex=info[0];
-                    this.resident.birthday=info[1];
+                    if(this.resident.id_number){
+                        //获得性别、出生年月
+                        var info=this.id_number_format(this.resident.id_number);
+                        //this.resident.sex=info[0];
+                        this.resident.birthday=info[1];
+                    }
+
                     if(this.resident.other_relationship){
                         this.resident.relationship=this.resident.other_relationship
                     }
@@ -506,9 +509,12 @@
 
             update_resident_info:function(){
                 if(this.resident_validate(this.resident)){
-                    var info=this.id_number_format(this.resident.id_number);
-                    //this.resident.sex=info[0];
-                    this.resident.birthday=info[1];
+                    if(this.resident.id_number){
+                        var info=this.id_number_format(this.resident.id_number);
+                        //this.resident.sex=info[0];
+                        this.resident.birthday=info[1];
+                    }
+
                     if(this.resident.other_relationship){
                         this.resident.relationship=this.resident.other_relationship
                     }
@@ -590,15 +596,15 @@
             },
 
             resident_validate:function(data){
-                if(data.name && data.relationship && data.residence_address && data.id_number && data.nation && data.phone && data.sex  && data.identity && data.culture && data.face && data.marriage){
-                    var ph= /^[1]([3-9])[0-9]{9}$/;
-                    var mb= /\d{7,8}/;
+                if(data.name && data.relationship  && data.sex && data.phone){
+                    var ph= /^((\+?86)|(\(\+86\)))?(13[012356789][0-9]{8}|15[012356789][0-9]{8}|18[02356789][0-9]{8}|147[0-9]{8}|1349[0-9]{7})$/;
+                    var mb= /^([0-9]{3,4}-)?[0-9]{7,8}$/;
                     if(!ph.test(data.phone)&&!mb.test(data.phone)){
                         alert("手机号码有误，请重填");  
                         return false; 
                     }
                    
-                    if(!/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.id_number)){
+                    if(data.id_number && !/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.id_number)){
                         alert("身份证号有误，请重填");  
                         return false; 
                     }

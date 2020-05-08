@@ -28,20 +28,21 @@
             <input style="width: 15%; display: inline-block;" type="text" class="form-control" v-model='resident.other_relationship' :disabled="resident.relationship!='其它'">
           </div>
           <div class="form-group">
+              <label for="recipient-name" class="control-label">联系方式(手机/座机):</label>
+              <input type="text" class="form-control" v-model='resident.phone'>
+              <span class="red">* 必填</span>
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="control-label">户籍所在地:</label>
             <input type="text" class="form-control" v-model='resident.residence_address'>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份证号码:</label>
             <input type="text" class="form-control" v-model='resident.id_number'>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">手机号:</label>
-            <input type="text" class="form-control" v-model='resident.phone'>
-            <span class="red">* 必填</span>
-          </div>
+
           <div class="form-group">
             <label for="recipient-name" class="control-label">民族:</label>
             <select class="form-control" v-model='resident.nation'>
@@ -49,7 +50,7 @@
               <option value="{{$mz->mzname}}">{{$mz->mzname}}</option>
               @endforeach
             </select>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">文化程度:</label>
@@ -58,7 +59,7 @@
                   <option value="{{$culture}}">{{$culture}}</option>
                 @endforeach
             </select>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">政治面貌:</label>
@@ -68,7 +69,7 @@
                 
                 @endforeach
             </select>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">婚姻状况:</label>
@@ -79,7 +80,7 @@
                  @endforeach
                 
             </select>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">身份类别:</label>
@@ -89,7 +90,7 @@
                 @endforeach
                 
             </select>
-            <span class="red">* 必填</span>
+            <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">有何特长:</label>
