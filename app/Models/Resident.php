@@ -84,8 +84,13 @@ class Resident extends baseModel
 
     public function getCultureAttribute($value)
     {
-    	$str=$this->culture_map[$value];
-    	return $str;
+        if($value){
+            $str=$this->culture_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+
     }
 
     public function setFaceAttribute($value)
@@ -96,8 +101,13 @@ class Resident extends baseModel
 
     public function getFaceAttribute($value)
     {
-    	$str=$this->face_map[$value];
-    	return $str;
+        if($value){
+            $str=$this->face_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+
     }
 
     public function setMarriageAttribute($value)
@@ -108,8 +118,13 @@ class Resident extends baseModel
 
     public function getMarriageAttribute($value)
     {
-    	$str=$this->marriage_map[$value];
-    	return $str;
+        if($value){
+            $str=$this->marriage_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+
     }
 
     public function setIdentityAttribute($value)
@@ -120,8 +135,13 @@ class Resident extends baseModel
 
     public function getIdentityAttribute($value)
     {
-    	$str=$this->identity_map[$value];
-    	return $str;
+        if($value){
+            $str=$this->identity_map[$value];
+            return $str;
+        }else{
+            return '';
+        }
+
     }
 
     // public function setRelationshipAttribute($value)
@@ -160,7 +180,12 @@ class Resident extends baseModel
 
     public function getAgeAttribute()
     {
-        return $this->getAgeByBirthday($this->attributes['birthday']);
+        if($this->attributes['birthday']){
+            return $this->getAgeByBirthday($this->attributes['birthday']);
+        }else{
+            return '';
+        }
+
     }
 
     private function getAgeByBirthday($birthday){
@@ -175,5 +200,14 @@ class Resident extends baseModel
         if((int)($m2.$d2) < (int)($m1.$d1))
             $age -= 1;
         return $age;
+    }
+
+    public function setResidenceAddressAttribute($value)
+    {
+        if(is_null($value)){
+            return '';
+        }else{
+            return $value;
+        }
     }
 }

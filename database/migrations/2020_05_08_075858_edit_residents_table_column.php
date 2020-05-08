@@ -15,8 +15,9 @@ class EditResidentsTableColumn extends Migration
     {
         Schema::table('residents', function (Blueprint $table) {
             $table->string('residence_address')->default('')->change();
-            $table->string('nation',30)->nullable();
-            $table->date('birthday')->nullable();
+            $table->string('nation',30)->nullable()->default('')->change();
+            $table->date('birthday')->nullable()->change();
+            $table->string('id_number')->nullable()->change();
         });
     }
 
