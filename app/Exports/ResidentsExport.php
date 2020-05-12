@@ -11,14 +11,21 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings, WithTitle, ShouldAutoSize
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Events\BeforeSheet;
+
+class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings, WithTitle, ShouldAutoSize, WithEvents
 {
 	  use Exportable;
 
 	  private $fileName='居民信息.xlsx';
 
     protected $select;
+    protected $data;
    
     public function withSelect($select)
     {
@@ -116,20 +123,25 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
             'residents.tag',
             'residents.other',
         ];
-      $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no')->select($flied);
-    	return $build;
+      
+        $build = $build->where('is_replace',0)->join('information','information.id','=','residents.information_id')->orderBy('information.present_address','desc')->orderBy('information.building')->orderBy('information.door')->orderBy('information.no')->select($flied);
+    	 return $build;
     }
 
     public function map($resident): array
     {
 
         return [
+
+
            $resident->name,
+           $resident->sex,
+           $resident->age,
            ' '.$resident->id_number,
            $resident->information->present_address.'庭苑  '.$resident->information->building.' - '.$resident->information->door.' - '.$resident->information->no,
             $resident->residence_address,
             $resident->information->residence_status,
-           $resident->sex,
+           
            $resident->nation,
            $resident->birthday,
            $resident->relationship,
@@ -145,7 +157,55 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
         ];
     }
 
-    
+    public function registerEvents(): array
+    {
+      $data = $this->query()->pluck('id');
+        return [
+            AfterSheet::class  => function(AfterSheet $event)use($data) {
+              
+                foreach($data as $k => $v){
+                $color = \DB::table('colors')->where('resident_id',$v)->get();
+                if($color){
+                  foreach($color as $kk => $vv){
+                    switch($vv->column_name){
+                      case  'name':
+                        $line = 'A';
+                      break;
+                      case  'sex':
+                        $line = 'B';
+                      break;
+                      case  'age':
+                        $line = 'C';
+                      break;
+                      case  'number':
+                        $line = 'D';
+                      break;
+                      case  'address':
+                        $line = 'E';
+                      break;
+
+                    }
+                         
+                      $event->sheet->getDelegate()->getStyle($line . ($k+2) . ':'  . $line . ($k+2))->applyFromArray([
+                        'font' => [
+                            'name' => 'Arial',
+                            'bold' => true,
+                            'italic' => false,
+                            'strikethrough' => false,
+                            'color' => [
+                                'rgb' => substr($vv->color,1)
+                            ]
+                        ],
+                      
+                    ]);
+                  }
+                }
+              
+              
+              }
+            }
+        ];
+    }
 
     public function headings(): array
     {
