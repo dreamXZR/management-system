@@ -182,6 +182,9 @@
                                                     户主关系
                                                 </th>
                                                 <th scope="col">
+                                                    年龄
+                                                </th>
+                                                <th scope="col">
                                                     民族
                                                 </th>
                                                 <th scope="col">
@@ -215,6 +218,9 @@
                                                 </td>
 				                                <td>
                                                     @{{item.relationship}}
+                                                </td>
+                                                <td>
+                                                    @{{item.age}}
                                                 </td>
                                                 <td>
                                                     @{{item.nation}}
@@ -435,6 +441,9 @@
                         var info=this.id_number_format(this.resident.id_number);
                         //this.resident.sex=info[0];
                         this.resident.birthday=info[1];
+                        this.resident.age=info[2];
+                    }else{
+                        this.resident.age='';
                     }
 
                     if(this.resident.other_relationship){
@@ -479,6 +488,7 @@
                     if(this.resident.id_number){
                         var info=this.id_number_format(this.resident.id_number);
                         this.resident.birthday=info[1];
+                        this.resident.age=info[2];
                     }
                     if(this.resident.other_relationship){
                         this.resident.relationship=this.resident.other_relationship
@@ -537,6 +547,7 @@
             id_number_format:function(idCard){
                 let birthday='';
                 let sex=0;
+                let age=0;
 
                 if(idCard.length==15){
                     birthday = "19"+idCard.substr(6,6); 
@@ -545,9 +556,59 @@
                     birthday = idCard.substr(6,8);
                     sex=(idCard[16]%2 === 0)?'0':'1';
                 }
-                birthday = birthday.replace(/(.{4})(.{2})/,"$1-$2-"); 
-                
-                return [sex,birthday];
+                birthday = birthday.replace(/(.{4})(.{2})/,"$1-$2-");
+                age = this.get_age(birthday);
+                return [sex,birthday,age];
+            },
+
+            get_age:function(strBirthday){
+                var returnAge;
+                var strBirthdayArr=strBirthday.split("-");
+                var birthYear = strBirthdayArr[0];
+                var birthMonth = strBirthdayArr[1];
+                var birthDay = strBirthdayArr[2];
+
+                d = new Date();
+                var nowYear = d.getFullYear();
+                var nowMonth = d.getMonth() + 1;
+                var nowDay = d.getDate();
+
+                if(nowYear == birthYear){
+                    returnAge = 0;//同年 则为0岁
+                }
+                else{
+                    var ageDiff = nowYear - birthYear ; //年之差
+                    if(ageDiff > 0){
+                        if(nowMonth == birthMonth) {
+                            var dayDiff = nowDay - birthDay;//日之差
+                            if(dayDiff < 0)
+                            {
+                                returnAge = ageDiff - 1;
+                            }
+                            else
+                            {
+                                returnAge = ageDiff ;
+                            }
+                        }
+                        else
+                        {
+                            var monthDiff = nowMonth - birthMonth;//月之差
+                            if(monthDiff < 0)
+                            {
+                                returnAge = ageDiff - 1;
+                            }
+                            else
+                            {
+                                returnAge = ageDiff ;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
+                    }
+                }
+                return returnAge;//返回周岁年龄
             },
 
             handicapped_validate:function(data){
@@ -560,15 +621,16 @@
             },
 
             resident_validate:function(data){
-                if(data.name && data.relationship  && data.sex && data.phone){
-                  	var ph= /^((\+?86)|(\(\+86\)))?(13[012356789][0-9]{8}|15[012356789][0-9]{8}|18[02356789][0-9]{8}|147[0-9]{8}|1349[0-9]{7})$/;
+                if(data.name && data.relationship  && data.sex){
+                  	var ph= /^[1][2,3,4,5,6,7,8,9][0-9]{9}$/;
                     var mb= /^([0-9]{3,4}-)?[0-9]{7,8}$/;
-                    if(ph.test(data.phone) || mb.test(data.phone)){
-
-                    }else {
-                        alert("手机号码有误，请重填");
-                        return false;
+                    if(data.phone){
+                        if(!ph.test(data.phone)&&!mb.test(data.phone)){
+                            alert("手机号码有误，请重填");
+                            return false;
+                        }
                     }
+
                     if(data.id_number && !/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.id_number)){
                         alert("身份证号有误，请重填");  
                         return false; 

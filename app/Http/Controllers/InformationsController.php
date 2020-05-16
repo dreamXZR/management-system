@@ -168,6 +168,9 @@ class InformationsController extends Controller
     {
         $information=Information::find($request->information_id);
         $residents=$information->residents;
+        foreach ($residents as &$v){
+            $v['age'] = $v->age;
+        }
         $handicappeds=$information->handicappeds;
 
         return response()->json([

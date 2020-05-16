@@ -201,13 +201,4 @@ class Resident extends baseModel
             $age -= 1;
         return $age;
     }
-
-    public function setResidenceAddressAttribute($value)
-    {
-        if(is_null($value)){
-            return '';
-        }else{
-            return $value;
-        }
-    }
 }

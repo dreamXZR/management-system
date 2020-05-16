@@ -27,8 +27,8 @@
                             
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
-                                    <div class="avatar" title="View your public profile">
-                                        <img src="{{asset('assets/img/avatars/adam-jansen.jpg')}}">
+                                    <div class="avatar" title="View your public profile" style="border-left: 0;">
+                                        <img src="{{asset('assets/img/logo.png')}}">
                                     </div>
                                     <section>
                                         <h2><span class="profile"><span>{{ Auth::user()->name }}</span></span></h2>

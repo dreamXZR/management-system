@@ -17,7 +17,9 @@
             <label for="recipient-name" class="control-label">性别:</label><br/>
             <input type="radio"  v-model='resident.sex' value="男" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">男&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio"  v-model='resident.sex' value="女" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;">女
-            
+              <br><br>
+              <span class="red">* 必填</span>
+
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">与户主关系:</label><br/>
@@ -26,11 +28,12 @@
               <input type="radio"  v-model='resident.relationship' value="{{$ship}}" style="position:initial;display: inline-block;opacity:1;margin-right: 5px;" @click="relationship_radio('{{$ship}}')" name="relationship">{{$ship}}&nbsp;&nbsp;&nbsp;&nbsp;
             @endforeach
             <input style="width: 15%; display: inline-block;" type="text" class="form-control" v-model='resident.other_relationship' :disabled="resident.relationship!='其它'">
+              <span class="red">* 必填</span>
           </div>
           <div class="form-group">
               <label for="recipient-name" class="control-label">联系方式(手机/座机):</label>
               <input type="text" class="form-control" v-model='resident.phone'>
-              <span class="red">* 必填</span>
+              <span class="red">* 非必填（请尽量填写）</span>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">户籍所在地:</label>

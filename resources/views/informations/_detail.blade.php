@@ -42,12 +42,14 @@
                     <th scope="col">
                         户籍所在地
                     </th>
-                    
                     <th scope="col">
                         姓名
                     </th>
                     <th scope="col">
                         与户主关系
+                    </th>
+                    <th scope="col">
+                        年龄
                     </th>
                     <th scope="col">
                         性别
@@ -108,6 +110,9 @@
                         <td>
                             {{$resident->relationship}}
                         </td>
+                         <td>
+                             {{$resident->age}}
+                         </td>
                         <td>
                             {{$resident->sex}}
                         </td>
