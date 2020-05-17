@@ -141,8 +141,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
            $resident->information->present_address.'庭苑  '.$resident->information->building.' - '.$resident->information->door.' - '.$resident->information->no,
             $resident->residence_address,
             $resident->information->residence_status,
-           
-           $resident->nation,
+            $resident->nation,
            $resident->birthday,
            $resident->relationship,
            $resident->culture,
@@ -150,7 +149,7 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
            $resident->marriage,
            $resident->identity,
            $resident->unit,
-           $resident->phone,
+            ' '.$resident->phone,
            $resident->hobby,
             $resident->information->other,
            $resident->other,
