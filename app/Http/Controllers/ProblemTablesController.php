@@ -50,6 +50,8 @@ class ProblemTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$problem_table = ProblemTable::create($post_data);
+        //未完成+1
+        $problem_table->total_increment('problem_unfinish_num');
 		return redirect()->route('problem_tables.show', $problem_table->id)->with('success', '添加成功');
 	}
 
@@ -79,6 +81,9 @@ class ProblemTablesController extends Controller
 	public function destroy(ProblemTable $problem_table)
 	{
 		$this->authorize('destroy', $problem_table);
+		if($problem_table->is_finish == 0){
+            $problem_table->total_decrement('problem_unfinish_num');
+        }
 		$problem_table->delete();
 
 		return redirect()->route('problem_tables.index')->with('success', '删除成功');
