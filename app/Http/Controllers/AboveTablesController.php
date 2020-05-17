@@ -93,16 +93,25 @@ class AboveTablesController extends Controller
 		$above=AboveTable::find($request->id);
 		$above->is_finish=$request->is_finish;
 		$res=$above->save();
-		if($res){
-			session()->flash('success','操作成功');
-			return response()->json([
-				'status'=>true,
-			]);
-		}else{
-			session()->flash('danger','操作失败');
-			return response()->json([
-				'status'=>true,
-			]);
-		}
+        if($res){
+            //未完成总数计算
+            $above_table=new AboveTable;
+            if($request->is_finish){
+                $above_table->total_decrement('above_unfinish_num');
+            }else{
+                $above_table->total_increment('above_unfinish_num');
+            }
+
+            session()->flash('success','操作成功');
+            return response()->json([
+                'status'=>true,
+            ]);
+
+        }else{
+            session()->flash('danger','操作失败');
+            return response()->json([
+                'status'=>true,
+            ]);
+        }
 	}
 }

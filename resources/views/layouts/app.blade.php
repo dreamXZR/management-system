@@ -75,11 +75,22 @@ Purchase: http://wrapbootstrap.com
 
     <script type="text/javascript">
         $(document).ready(function(){
-            var total=<?php
+            //获取未完成数量
+            var register_unfinish_num=<?php
                         $register=new \App\Models\RegisterTable();
-                        echo $register->getTotal();
+                        echo $register->getTotal('register_unfinish_num');
                     ?>;
-            $('.total').text(total);
+            var above_unfinish_num=<?php
+                $above=new \App\Models\AboveTable();
+                echo $above->getTotal('above_unfinish_num');
+                ?>;
+            var problem_unfinish_num=<?php
+                $problem=new \App\Models\ProblemTable();
+                echo $problem->getTotal('problem_unfinish_num');
+                ?>;
+            $('.register_unfinish_num').text(register_unfinish_num);
+            $('.above_unfinish_num').text(above_unfinish_num);
+            $('.problem_unfinish_num').text(problem_unfinish_num);
         });
 
 

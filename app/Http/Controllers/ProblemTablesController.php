@@ -89,16 +89,25 @@ class ProblemTablesController extends Controller
 		$problem=ProblemTable::find($request->id);
 		$problem->is_finish=$request->is_finish;
 		$res=$problem->save();
-		if($res){
-			session()->flash('success','操作成功');
-			return response()->json([
-				'status'=>true,
-			]);
-		}else{
-			session()->flash('danger','操作失败');
-			return response()->json([
-				'status'=>true,
-			]);
-		}
+        if($res){
+            //未完成总数计算
+            $problem_table=new ProblemTable;
+            if($request->is_finish){
+                $problem_table->total_decrement('problem_unfinish_num');
+            }else{
+                $problem_table->total_increment('problem_unfinish_num');
+            }
+
+            session()->flash('success','操作成功');
+            return response()->json([
+                'status'=>true,
+            ]);
+
+        }else{
+            session()->flash('danger','操作失败');
+            return response()->json([
+                'status'=>true,
+            ]);
+        }
 	}
 }

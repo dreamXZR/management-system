@@ -113,9 +113,9 @@ class RegisterTablesController extends Controller
             //未完成总数计算
             $register_table=new RegisterTable;
             if($request->is_finish){
-                $register_table->total_decrement();
+                $register_table->total_decrement('register_unfinish_num');
             }else{
-                $register_table->total_increment();
+                $register_table->total_increment('register_unfinish_num');
             }
 
 			session()->flash('success','操作成功');
