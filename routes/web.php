@@ -72,6 +72,9 @@ Route::middleware(['auth'])->group(function(){
 	//历史记录
 	Route::get('history/{information}','HistoryController@show')->name('history.show');
 
+	//更改颜色
+	Route::post('editColor','ResidentsController@editColor');
+
 
 });
 
