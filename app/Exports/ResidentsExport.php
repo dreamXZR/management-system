@@ -210,11 +210,12 @@ class ResidentsExport implements FromQuery,Responsable,WithMapping, WithHeadings
     {
         return [
             '姓名',
+            '性别',
+            '年龄',
             '身份证号',
             '现居住地址',
             '户籍所在地',
             '户籍性质',
-            '性别',
             '民族',
             '生日',
             '与户主关系',
