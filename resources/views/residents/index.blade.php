@@ -192,7 +192,9 @@
 @stop
 
 @section('afterJavaScript')
-
+                        <script type="text/javascript" src="{{asset('/js/jquery.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('js/jquery.colorpicker.js')}}"></script>
+                        <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
     <script type="text/javascript">
         //跳转
         $('#skip_page').click(function(){

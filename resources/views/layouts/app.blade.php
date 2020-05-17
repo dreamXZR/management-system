@@ -39,13 +39,6 @@ Purchase: http://wrapbootstrap.com
     <script src="{{asset('assets/js/jquery-form.js')}}"></script>
 
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
-    <script type="text/javascript" src="{{asset('/js/jquery.js')}}"></script> 
-
-    
-
-    <script type="text/javascript" src="{{asset('js/jquery.colorpicker.js')}}"></script> 
-    <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
