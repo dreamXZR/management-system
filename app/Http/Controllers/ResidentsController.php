@@ -72,10 +72,8 @@ class ResidentsController extends Controller
 
     public function export(Request $request,ResidentsExport $residentExport)
     {
-         
-       return substr('#33FF33',1); 
+
        return $residentExport->withSelect($request->select);
-        //return $export->download('居民信息.xlsx');
     }
 
     public function editColor(Request $request)
