@@ -10,14 +10,8 @@ class InformationFilter extends ModelFilter
     *
     * @var array
     */
-    public $relations = ['residents'=>['name','id_number','phone']];
+    //public $relations = ['residents'=>['name','id_number','phone']];
 
-    // public function name($value)
-    // {
-    //     return $this->whereHas('residents',function($query) use($value){
-    //         return $query->where('name',$value);
-    //     });
-    // }
 
     public function setup()
     {
@@ -42,6 +36,21 @@ class InformationFilter extends ModelFilter
     public function no($value)
     {
         return $this->where('no',$value);
+    }
+
+    public function housePeople($value)
+    {
+        return $this->whereIn('house_people',$value);
+    }
+
+    public function houseStatus($value)
+    {
+        return $this->whereIn('house_status',$value);
+    }
+
+    public function people($value)
+    {
+        return $this->whereIn('people',$value);
     }
 
 }

@@ -14,12 +14,12 @@ use DB;
 
 class InformationsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,Information $information)
     {
         $page=$request->page ?? 1;
         $informations=Information::filter($request->all())->paginate(30);
         $select=$request->except('page');
-    	return view('informations.index',compact('informations','page','select'));
+    	return view('informations.index',compact('informations','page','select','information'));
     }
 
     public function create(Information $information,Resident $resident)

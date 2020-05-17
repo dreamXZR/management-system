@@ -24,20 +24,28 @@
             <input type="text" class="form-control" name="no">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">姓名:</label>
-            <input type="text" class="form-control" name="name">
+            <label for="recipient-name" class="control-label">房屋使用人:</label>
+            <select class="selectpicker form-control" multiple data-live-search="true" name="house_people[]">
+              @foreach($information->house_people_map as $k=>$v)
+                <option value="{{$k}}">{{$v}}</option>
+              @endforeach
+            </select>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">身份证:</label>
-            <input type="text" class="form-control" name="id_number">
+            <label for="recipient-name" class="control-label">房屋状态:</label>
+            <select class="selectpicker form-control" multiple data-live-search="true" name="house_status[]">
+              @foreach($information->house_status_map as $k=>$v)
+                <option value="{{$k}}">{{$v}}</option>
+              @endforeach
+            </select>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">手机号:</label>
-            <input type="text" class="form-control" name="phone">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">现居住地:</label>
-            <input type="text" class="form-control" name="present_address">
+            <label for="recipient-name" class="control-label">住户情况:</label>
+            <select class="selectpicker form-control" multiple data-live-search="true" name="people[]">
+              @foreach($information->people_map as $k=>$v)
+                <option value="{{$k}}">{{$v}}</option>
+              @endforeach
+            </select>
           </div>
         </form>
       </div>
@@ -48,3 +56,22 @@
     </div>
   </div>
 </div>
+{{-- select --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/select/bootstrap-select.min.css')}}">
+<script src="{{asset('assets/select/bootstrap-select.min.js')}}"></script>
+<script type="text/javascript">
+  $('.selectpicker').selectpicker({
+    'selectedText': 'cat'
+  });
+</script>
+<!--Bootstrap Date Picker-->
+<script src="{{asset('assets/js/datetime/moment.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/datetime/locales/zh-cn.js')}}"></script>
+<script type="text/javascript">
+  $('.date-picker').datetimepicker({
+    locale: moment.locale('zh-cn'),
+    format: 'YYYY-MM-DD',
+
+  });
+</script>

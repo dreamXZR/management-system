@@ -9,14 +9,14 @@ class Information extends baseModel
 {
     use Filterable;    
 
-	private $residence_status_map=[
+	public $residence_status_map=[
                 1=>'农业',
                 2=>'非农业'
             ];
-    private $house_people_map=[
+    public $house_people_map=[
                 1=>'业主',
                 2=>'租户',
-                3=>'空房'
+                3=>'空房',
             ];
     public $house_status_map=[
                 1=>'户在',

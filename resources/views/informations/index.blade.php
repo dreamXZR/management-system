@@ -40,6 +40,9 @@
                                     <input type="checkbox" id="allcheck" style="opacity: 1; position: initial;">
                                 </th>
                                 <th class="text-center">现居住地址</th>
+                                <th class="text-center">房屋使用人</th>
+                                <th class="text-center">房屋状态</th>
+                                <th class="text-center">住户情况</th>
                                 <th class="text-center" width="30%">操作</th>
                             </tr>
                         </thead>
@@ -50,8 +53,9 @@
                                     <input type="checkbox" name="check" style="opacity: 1; position: initial;" value="{{$info->id}}">
                                 </td>
                                 <td >{{$info->present_address}}庭苑&nbsp;&nbsp;{{$info->building}}&nbsp;-&nbsp;{{$info->door}}&nbsp;-&nbsp;{{$info->no}}</td>
-                                
-                                
+                                <td >{{$info->house_people}}</td>
+                                <td >{{$info->house_status}}</td>
+                                <td >{{$info->people}}</td>
                                 <td align="center">
                                     <a class="btn btn-xs btn-primary" href="{{route('informations.show',$info->id).'?page='.$page}}">
                                         <i class="glyphicon glyphicon-eye-open"></i> 
