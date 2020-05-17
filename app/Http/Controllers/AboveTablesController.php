@@ -51,6 +51,8 @@ class AboveTablesController extends Controller
 		$post_data['secondary']=!empty($post_data['secondary']) ? implode(',', $post_data['secondary']) : '';
 		$post_data['join']=!empty($post_data['join']) ? implode(',', $post_data['join']) : '';
 		$above_table = AboveTable::create($post_data);
+        //未完成+1
+        $above_table->total_increment('above_unfinish_num');
 		return redirect()->route('above_tables.show', $above_table->id)->with('success', '添加成功');
 	}
 
@@ -83,6 +85,10 @@ class AboveTablesController extends Controller
 	public function destroy(AboveTable $above_table)
 	{
 		$this->authorize('destroy', $above_table);
+        //未完成-1
+        if(!$above_table->is_finish){
+            $above_table->total_decrement('above_unfinish_num');
+        }
 		$above_table->delete();
 
 		return redirect()->route('above_tables.index')->with('success', '删除成功');

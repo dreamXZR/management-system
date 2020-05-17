@@ -62,7 +62,7 @@ class RegisterTablesController extends Controller
         $post_data['charge']=\Auth::user()->name;
 		$register_table = RegisterTable::create($post_data);
 		//未完成+1
-        $register_table->total_increment();
+        $register_table->total_increment('register_unfinish_num');
 		return redirect()->route('register_tables.show', $register_table->id)->with('success', '添加成功');
 	}
 
@@ -96,7 +96,7 @@ class RegisterTablesController extends Controller
 		$this->authorize('destroy', $register_table);
         //未完成-1
         if(!$register_table->is_finish){
-            $register_table->total_decrement();
+            $register_table->total_decrement('register_unfinish_num');
         }
 
 		$register_table->delete();
