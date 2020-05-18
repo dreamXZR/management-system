@@ -47,9 +47,9 @@ class InformationFilter extends ModelFilter
     {
         $sql = '(';
         foreach ($value as $v){
-            $sql .= "house_status like '%".$v."%' or ";
+            $sql .= "house_status like '%".$v."%' and ";
         }
-        $sql = substr($sql,0,strlen($sql)-3);
+        $sql = substr($sql,0,strlen($sql)-4);
         $sql = $sql.")";
         return $this->whereRaw($sql);
     }
