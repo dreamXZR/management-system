@@ -31,7 +31,7 @@
         <div class="widget">
             <div class="widget-body">
                 <div class="table-scrollable">
-                    <table class="table table-striped table-bordered table-hover">
+                    <table id="table1" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">
@@ -100,22 +100,25 @@
 
                             </tr>
                         </thead>
+                 
                         <tbody>
-                        	@foreach($residents as $resident)
+                            @foreach($residents as $resident)
+                            
                             <tr>
-                                <td>
+                            <!-- 　<input type="color" name="color" id="color" width="128" height="128">    -->
+                                <td id="{{$resident->id . '_name'}}" style="color: {{$resident->name_color}};">
                                    {{$resident->name}}
                                 </td>
-                                <td>
+                                <td id="{{$resident->id . '_sex'}}" style="color: {{$resident->name_sex}};">
                                     {{$resident->sex}}
                                 </td>
-                                <td>
+                                <td id="{{$resident->id . '_age'}}" style="color: {{$resident->name_age}};">
                                     {{$resident->age}}
                                 </td>
-                                <td>
+                                <td id="{{$resident->id . '_number'}}" style="color: {{$resident->name_number}};">
                                     {{$resident->id_number}}
                                 </td>
-                                <td>
+                                <td id="{{$resident->id . '_address'}}" style="color: {{$resident->name_address}};">
                                     {{$resident->information->present_address}}庭苑&nbsp;&nbsp;{{$resident->information->building}}&nbsp;-&nbsp;{{$resident->information->door}}&nbsp;-&nbsp;{{$resident->information->no}}
                                 </td>
                                 <td>
@@ -189,6 +192,9 @@
 @stop
 
 @section('afterJavaScript')
+                        <script type="text/javascript" src="{{asset('/js/jquery.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('js/jquery.colorpicker.js')}}"></script>
+                        <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
     <script type="text/javascript">
         //跳转
         $('#skip_page').click(function(){
@@ -197,6 +203,36 @@
                 skip_page_num=1;
             }
             window.location.href="{{env('APP_URL')}}"+"/residents?page="+skip_page_num;
+        });   
+
+         $("#table1 td").click(function(){
+            editColor($(this).attr('id'))
+
         });
+
+        function editColor(id){
+            $("#" + id).colorpicker({
+                fillcolor:true,
+                success:function(o,color) {
+                    ajax(id,color)
+                }
+
+             });
+        }
+       function ajax(id,color){
+        $.ajax({
+        url: '/editColor',
+        type: 'post',
+        data: { '_token':'{{csrf_token()}}',id: id,color:color},
+        success: function (res) {
+            console.log(res)
+        }
+        })
+
+       }
+    
+ 
+       
     </script>
 @endsection
+

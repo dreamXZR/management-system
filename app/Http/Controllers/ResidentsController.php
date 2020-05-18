@@ -41,9 +41,21 @@ class ResidentsController extends Controller
             'residents.tag',
             'residents.other',
         ];
-        $residents=Resident::with('information')->filter($get_data)->select($flied)->paginate(40);
+        $residents=Resident::with('information')->filter($get_data)->select($flied)
+                    
+                 ->paginate(40);
+        $residents->map(function ($value, $key) {
+            $value['name_color'] = \DB::table('colors')->where(['resident_id'=>$value['id'],'column_name'=>'name'])->value('color');
+            $value['name_sex'] = \DB::table('colors')->where(['resident_id'=>$value['id'],'column_name'=>'sex'])->value('color');
+            $value['name_age'] = \DB::table('colors')->where(['resident_id'=>$value['id'],'column_name'=>'age'])->value('color');
+            $value['name_number'] = \DB::table('colors')->where(['resident_id'=>$value['id'],'column_name'=>'number'])->value('color');
+            $value['name_address'] = \DB::table('colors')->where(['resident_id'=>$value['id'],'column_name'=>'address'])->value('color');
+            return $value;
+        });
         $mzs=\DB::table('mz')->where('mz_id','>',0)->get(['mzname','mz_id']);
         $select=$request->except('page');
+        
+    
         return view('residents.index',compact('residents','select','mzs','resident'));
     }
     
@@ -60,7 +72,25 @@ class ResidentsController extends Controller
 
     public function export(Request $request,ResidentsExport $residentExport)
     {
-        return $residentExport->withSelect($request->select);
-        //return $export->download('居民信息.xlsx');
+
+       return $residentExport->withSelect($request->select);
     }
+
+    public function editColor(Request $request)
+    {
+        $array = explode('_',$request->id);
+        if( \DB::table('colors')->where(['resident_id'=>$array[0],'column_name'=>$array[1]])->first()){//如果存在就修改
+            \DB::table('colors')
+            ->where(['resident_id'=>$array[0],'column_name'=>$array[1]])
+            ->update(['color' => $request->color]);
+        }else{//保存
+            \DB::table('colors')->insert(
+                ['resident_id' => $array[0], 'column_name' => $array[1],'color'=>$request->color]
+            );
+        }
+
+    
+       
+    }
+
 }

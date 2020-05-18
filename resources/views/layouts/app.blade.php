@@ -37,8 +37,8 @@ Purchase: http://wrapbootstrap.com
     <script src="{{asset('assets/js/skins.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-2.0.3.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-form.js')}}"></script>
-    
-    <script src="{{asset('assets/js/datetime/locales/bootstrap-datepicker.zh-CN.js')}}"></script>
+
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
@@ -64,7 +64,6 @@ Purchase: http://wrapbootstrap.com
 
     <!--Basic Scripts-->
     
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!--Beyond Scripts-->
     <script src="{{asset('assets/js/beyond.min.js')}}"></script>
